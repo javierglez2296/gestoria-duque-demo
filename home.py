@@ -445,7 +445,7 @@ def build_hero():
                     "backgroundImage": f"url('{slide['image']}')",
                     "backgroundSize": "cover",
                     "backgroundPosition": "center",
-                    "transition": "background-image 0.6s ease-in-out",
+                    "transition": "background-image 0.7s ease-in-out",
                     "transform": "scale(1.02)",
                 },
             ),
@@ -481,132 +481,7 @@ def build_hero():
                         dbc.Col(
                             html.Div(
                                 id="hero-content",
-                                className="hero-content-animate",
-                                children=[
-                                    html.Div(
-                                        id="hero-eyebrow",
-                                        children=slide["eyebrow"],
-                                        className="mb-4 reveal reveal-1",
-                                        style={
-                                            "display": "inline-flex",
-                                            "alignItems": "center",
-                                            "padding": "0.62rem 0.95rem",
-                                            "borderRadius": "999px",
-                                            "background": "rgba(255,255,255,0.08)",
-                                            "border": "1px solid rgba(255,255,255,0.14)",
-                                            "backdropFilter": "blur(8px)",
-                                            "WebkitBackdropFilter": "blur(8px)",
-                                            "fontWeight": "700",
-                                            "fontSize": "0.75rem",
-                                            "letterSpacing": "0.12em",
-                                            "color": "rgba(255,255,255,0.92)",
-                                            "textTransform": "uppercase",
-                                        },
-                                    ),
-                                    html.H1(
-                                        id="hero-title",
-                                        children=slide["title"],
-                                        className="fw-bold mb-4 reveal reveal-2",
-                                        style={
-                                            "fontSize": "clamp(3rem, 5.1vw, 5.7rem)",
-                                            "lineHeight": "0.92",
-                                            "letterSpacing": "-0.075em",
-                                            "color": "#ffffff",
-                                            "maxWidth": "820px",
-                                        },
-                                    ),
-                                    html.P(
-                                        id="hero-text",
-                                        children=slide["text"],
-                                        className="mb-4 reveal reveal-3",
-                                        style={
-                                            "fontSize": "1.05rem",
-                                            "lineHeight": "1.95",
-                                            "color": "rgba(255,255,255,0.82)",
-                                            "maxWidth": "650px",
-                                        },
-                                    ),
-                                    html.Div(
-                                        [
-                                            html.Div(
-                                                "Desde 1950",
-                                                className="me-4 mb-2 reveal reveal-4",
-                                                style={
-                                                    "display": "inline-block",
-                                                    "color": "#ffffff",
-                                                    "fontWeight": "700",
-                                                    "fontSize": "0.98rem",
-                                                },
-                                            ),
-                                            html.Div(
-                                                "Fiscal · Laboral · Contable",
-                                                className="me-4 mb-2 reveal reveal-5",
-                                                style={
-                                                    "display": "inline-block",
-                                                    "color": "rgba(255,255,255,0.76)",
-                                                    "fontWeight": "600",
-                                                    "fontSize": "0.96rem",
-                                                },
-                                            ),
-                                            html.Div(
-                                                "Atención local en Ávila",
-                                                className="mb-2 reveal reveal-6",
-                                                style={
-                                                    "display": "inline-block",
-                                                    "color": "rgba(255,255,255,0.76)",
-                                                    "fontWeight": "600",
-                                                    "fontSize": "0.96rem",
-                                                },
-                                            ),
-                                        ],
-                                        className="mb-4",
-                                    ),
-                                    html.Div(
-                                        [
-                                            dbc.Button(
-                                                "Solicitar información",
-                                                href=f"mailto:{EMAIL}",
-                                                color="light",
-                                                className="rounded-pill fw-bold me-2 mb-2 reveal reveal-5",
-                                                style={
-                                                    "padding": "1rem 1.5rem",
-                                                    "minHeight": "58px",
-                                                    "fontSize": "1rem",
-                                                    "color": "#101828",
-                                                    "background": "#ffffff",
-                                                    "border": "none",
-                                                    "boxShadow": "0 18px 42px rgba(0,0,0,0.18)",
-                                                },
-                                            ),
-                                            dbc.Button(
-                                                "Llamar ahora",
-                                                href=f"tel:{TELEFONO_1.replace(' ', '')}",
-                                                color="link",
-                                                className="fw-semibold text-decoration-none mb-2 reveal reveal-6",
-                                                style={
-                                                    "padding": "1rem 1rem",
-                                                    "minHeight": "58px",
-                                                    "fontSize": "1rem",
-                                                    "color": "white",
-                                                },
-                                            ),
-                                        ],
-                                        className="mb-4",
-                                    ),
-                                    html.Div(
-                                        id="hero-indicators",
-                                        children=[
-                                            hero_indicator(i, active=(i == 0))
-                                            for i in range(len(HERO_SLIDES))
-                                        ],
-                                        className="reveal reveal-6",
-                                        style={
-                                            "display": "flex",
-                                            "alignItems": "center",
-                                            "marginTop": "0.75rem",
-                                        },
-                                    ),
-                                ],
+                                children=[],
                             ),
                             lg=7,
                             className="mb-5 mb-lg-0",
@@ -654,41 +529,13 @@ def build_hero():
                                             ]
                                         ),
                                         html.Hr(style={"opacity": "0.08"}),
-                                        html.Div(
-                                            "📞 Teléfono",
-                                            className="fw-semibold mb-1",
-                                            style={"color": "#101828"},
-                                        ),
-                                        html.Div(
-                                            TELEFONO_1,
-                                            className="mb-3",
-                                            style={"color": "#667085"},
-                                        ),
-                                        html.Div(
-                                            "📱 Móvil",
-                                            className="fw-semibold mb-1",
-                                            style={"color": "#101828"},
-                                        ),
-                                        html.Div(
-                                            TELEFONO_2,
-                                            className="mb-3",
-                                            style={"color": "#667085"},
-                                        ),
-                                        html.Div(
-                                            "✉️ Email",
-                                            className="fw-semibold mb-1",
-                                            style={"color": "#101828"},
-                                        ),
-                                        html.Div(
-                                            EMAIL,
-                                            className="mb-3",
-                                            style={"color": "#667085"},
-                                        ),
-                                        html.Div(
-                                            "📍 Dirección",
-                                            className="fw-semibold mb-1",
-                                            style={"color": "#101828"},
-                                        ),
+                                        html.Div("📞 Teléfono", className="fw-semibold mb-1", style={"color": "#101828"}),
+                                        html.Div(TELEFONO_1, className="mb-3", style={"color": "#667085"}),
+                                        html.Div("📱 Móvil", className="fw-semibold mb-1", style={"color": "#101828"}),
+                                        html.Div(TELEFONO_2, className="mb-3", style={"color": "#667085"}),
+                                        html.Div("✉️ Email", className="fw-semibold mb-1", style={"color": "#101828"}),
+                                        html.Div(EMAIL, className="mb-3", style={"color": "#667085"}),
+                                        html.Div("📍 Dirección", className="fw-semibold mb-1", style={"color": "#101828"}),
                                         html.Div(
                                             DIRECCION,
                                             className="mb-4",
@@ -796,6 +643,138 @@ def build_hero():
             "minHeight": "88vh",
             "overflow": "hidden",
         },
+    )
+def build_hero_content(slide_index):
+    slide = HERO_SLIDES[slide_index]
+
+    return html.Div(
+        key=f"hero-content-{slide_index}",
+        className="hero-content-animate",
+        children=[
+            html.Div(
+                id="hero-eyebrow",
+                children=slide["eyebrow"],
+                className="mb-4 reveal reveal-1",
+                style={
+                    "display": "inline-flex",
+                    "alignItems": "center",
+                    "padding": "0.62rem 0.95rem",
+                    "borderRadius": "999px",
+                    "background": "rgba(255,255,255,0.08)",
+                    "border": "1px solid rgba(255,255,255,0.14)",
+                    "backdropFilter": "blur(8px)",
+                    "WebkitBackdropFilter": "blur(8px)",
+                    "fontWeight": "700",
+                    "fontSize": "0.75rem",
+                    "letterSpacing": "0.12em",
+                    "color": "rgba(255,255,255,0.92)",
+                    "textTransform": "uppercase",
+                },
+            ),
+            html.H1(
+                id="hero-title",
+                children=slide["title"],
+                className="fw-bold mb-4 reveal reveal-2",
+                style={
+                    "fontSize": "clamp(3rem, 5.1vw, 5.7rem)",
+                    "lineHeight": "0.92",
+                    "letterSpacing": "-0.075em",
+                    "color": "#ffffff",
+                    "maxWidth": "820px",
+                },
+            ),
+            html.P(
+                id="hero-text",
+                children=slide["text"],
+                className="mb-4 reveal reveal-3",
+                style={
+                    "fontSize": "1.05rem",
+                    "lineHeight": "1.95",
+                    "color": "rgba(255,255,255,0.82)",
+                    "maxWidth": "650px",
+                },
+            ),
+            html.Div(
+                [
+                    html.Div(
+                        "Desde 1950",
+                        className="me-4 mb-2 reveal reveal-4",
+                        style={
+                            "display": "inline-block",
+                            "color": "#ffffff",
+                            "fontWeight": "700",
+                            "fontSize": "0.98rem",
+                        },
+                    ),
+                    html.Div(
+                        "Fiscal · Laboral · Contable",
+                        className="me-4 mb-2 reveal reveal-5",
+                        style={
+                            "display": "inline-block",
+                            "color": "rgba(255,255,255,0.76)",
+                            "fontWeight": "600",
+                            "fontSize": "0.96rem",
+                        },
+                    ),
+                    html.Div(
+                        "Atención local en Ávila",
+                        className="mb-2 reveal reveal-6",
+                        style={
+                            "display": "inline-block",
+                            "color": "rgba(255,255,255,0.76)",
+                            "fontWeight": "600",
+                            "fontSize": "0.96rem",
+                        },
+                    ),
+                ],
+                className="mb-4",
+            ),
+            html.Div(
+                [
+                    dbc.Button(
+                        "Solicitar información",
+                        href=f"mailto:{EMAIL}",
+                        color="light",
+                        className="rounded-pill fw-bold me-2 mb-2 reveal reveal-5",
+                        style={
+                            "padding": "1rem 1.5rem",
+                            "minHeight": "58px",
+                            "fontSize": "1rem",
+                            "color": "#101828",
+                            "background": "#ffffff",
+                            "border": "none",
+                            "boxShadow": "0 18px 42px rgba(0,0,0,0.18)",
+                        },
+                    ),
+                    dbc.Button(
+                        "Llamar ahora",
+                        href=f"tel:{TELEFONO_1.replace(' ', '')}",
+                        color="link",
+                        className="fw-semibold text-decoration-none mb-2 reveal reveal-6",
+                        style={
+                            "padding": "1rem 1rem",
+                            "minHeight": "58px",
+                            "fontSize": "1rem",
+                            "color": "white",
+                        },
+                    ),
+                ],
+                className="mb-4",
+            ),
+            html.Div(
+                id="hero-indicators",
+                children=[
+                    hero_indicator(i, active=(i == slide_index))
+                    for i in range(len(HERO_SLIDES))
+                ],
+                className="reveal reveal-6",
+                style={
+                    "display": "flex",
+                    "alignItems": "center",
+                    "marginTop": "0.75rem",
+                },
+            ),
+        ],
     )
 hero_section = build_hero()
 
@@ -1316,10 +1295,7 @@ def update_hero_slide(_, prev_clicks, next_clicks, indicator_clicks, current_ind
 
 @callback(
     Output("hero-background", "style"),
-    Output("hero-eyebrow", "children"),
-    Output("hero-title", "children"),
-    Output("hero-text", "children"),
-    Output("hero-indicators", "children"),
+    Output("hero-content", "children"),
     Input("hero-slide-index", "data"),
 )
 def render_hero_slide(index):
@@ -1331,19 +1307,8 @@ def render_hero_slide(index):
         "backgroundImage": f"url('{slide['image']}')",
         "backgroundSize": "cover",
         "backgroundPosition": "center",
-        "transition": "background-image 0.6s ease-in-out",
+        "transition": "background-image 0.7s ease-in-out",
         "transform": "scale(1.02)",
     }
 
-    indicators = [
-        hero_indicator(i, active=(i == index))
-        for i in range(len(HERO_SLIDES))
-    ]
-
-    return (
-        background_style,
-        slide["eyebrow"],
-        slide["title"],
-        slide["text"],
-        indicators,
-    )
+    return background_style, build_hero_content(index)
