@@ -1,0 +1,134 @@
+.page-shell .reveal,
+.page-shell .reveal-up,
+.page-shell .section-fade,
+.page-shell .hero-content-animate .reveal {
+    opacity: 0;
+    transform: translateY(28px);
+    filter: blur(10px);
+}
+
+.page-shell.page-loaded .reveal,
+.page-shell.page-loaded .reveal-up,
+.page-shell.page-loaded .section-fade,
+.page-shell.page-loaded .hero-content-animate .reveal {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+}
+
+.reveal {
+    transition:
+        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.reveal-1 { transition-delay: 0.08s; }
+.reveal-2 { transition-delay: 0.16s; }
+.reveal-3 { transition-delay: 0.24s; }
+.reveal-4 { transition-delay: 0.32s; }
+.reveal-5 { transition-delay: 0.40s; }
+.reveal-6 { transition-delay: 0.48s; }
+
+.reveal-up {
+    transition:
+        opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 0.85s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: 0.12s;
+}
+
+.section-fade {
+    transition:
+        opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
+        transform 1s cubic-bezier(0.22, 1, 0.36, 1),
+        filter 1s cubic-bezier(0.22, 1, 0.36, 1);
+    transition-delay: 0.08s;
+}
+
+#hero-background {
+    will-change: transform, opacity;
+    animation: heroZoomSoft 10s ease-out both;
+}
+
+@keyframes heroZoomSoft {
+    0% {
+        transform: scale(1.08);
+        opacity: 0.78;
+    }
+    100% {
+        transform: scale(1.02);
+        opacity: 1;
+    }
+}
+
+.hero-content-animate .reveal {
+    animation: heroContentIn 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@keyframes heroContentIn {
+    0% {
+        opacity: 0;
+        transform: translateY(24px);
+        filter: blur(8px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+.reveal-up .card,
+.section-fade .card,
+.card.reveal-up {
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+.reveal-up .card:hover,
+.section-fade .card:hover,
+.card.reveal-up:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 60px rgba(16, 24, 40, 0.10) !important;
+}
+
+.btn {
+    transition:
+        transform 0.28s ease,
+        box-shadow 0.28s ease,
+        opacity 0.28s ease;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+a[href*="wa.me"] {
+    transition: transform 0.28s ease, box-shadow 0.28s ease;
+}
+
+a[href*="wa.me"]:hover {
+    transform: translateY(-3px) scale(1.02);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .page-shell .reveal,
+    .page-shell .reveal-up,
+    .page-shell .section-fade,
+    .page-shell.page-loaded .reveal,
+    .page-shell.page-loaded .reveal-up,
+    .page-shell.page-loaded .section-fade,
+    .page-shell.page-loaded .hero-content-animate .reveal,
+    #hero-background,
+    .btn,
+    a[href*="wa.me"] {
+        opacity: 1 !important;
+        transform: none !important;
+        filter: none !important;
+        animation: none !important;
+        transition: none !important;
+    }
+}
