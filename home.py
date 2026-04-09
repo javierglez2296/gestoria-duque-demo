@@ -416,14 +416,14 @@ def hero_indicator(index, active=False):
         id={"type": "hero-indicator", "index": index},
         n_clicks=0,
         style={
-            "width": "10px",
+            "width": "26px" if active else "10px",
             "height": "10px",
             "borderRadius": "999px",
             "border": "none",
             "padding": "0",
             "marginRight": "10px",
-            "background": "#ffffff" if active else "rgba(255,255,255,0.35)",
-            "transition": "all 0.25s ease",
+            "background": "#ffffff" if active else "rgba(255,255,255,0.30)",
+            "transition": "all 0.28s ease",
             "cursor": "pointer",
         },
     )
