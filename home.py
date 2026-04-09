@@ -480,7 +480,9 @@ def build_hero():
                     [
                         dbc.Col(
                             html.Div(
-                                [
+                                id="hero-content",
+                                className="hero-content-animate",
+                                children=[
                                     html.Div(
                                         id="hero-eyebrow",
                                         children=slide["eyebrow"],
@@ -604,7 +606,7 @@ def build_hero():
                                             "marginTop": "0.75rem",
                                         },
                                     ),
-                                ]
+                                ],
                             ),
                             lg=7,
                             className="mb-5 mb-lg-0",
@@ -1318,7 +1320,6 @@ def update_hero_slide(_, prev_clicks, next_clicks, indicator_clicks, current_ind
     Output("hero-title", "children"),
     Output("hero-text", "children"),
     Output("hero-indicators", "children"),
-    Output("hero-content", "className"),
     Input("hero-slide-index", "data"),
 )
 def render_hero_slide(index):
@@ -1345,5 +1346,4 @@ def render_hero_slide(index):
         slide["title"],
         slide["text"],
         indicators,
-        "hero-content-animate",
     )
