@@ -1,134 +1,472 @@
+/* =========================================================
+   HOME ANIMATIONS · PREMIUM
+   ========================================================= */
+
+/* ---------- Base ---------- */
+:root {
+    --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+    --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
+    --shadow-premium: 0 24px 70px rgba(16, 24, 40, 0.10);
+    --shadow-premium-strong: 0 34px 90px rgba(16, 24, 40, 0.16);
+    --shadow-button: 0 16px 34px rgba(16, 24, 40, 0.14);
+    --border-soft: rgba(255, 255, 255, 0.14);
+    --blur-soft: blur(10px);
+}
+
+/* Mejor render visual */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* ---------- Estados iniciales de entrada ---------- */
 .page-shell .reveal,
 .page-shell .reveal-up,
+.page-shell .reveal-left,
+.page-shell .reveal-right,
 .page-shell .section-fade,
 .page-shell .hero-content-animate .reveal {
     opacity: 0;
-    transform: translateY(28px);
+    will-change: transform, opacity, filter;
+}
+
+.page-shell .reveal,
+.page-shell .hero-content-animate .reveal {
+    transform: translateY(28px) scale(0.985);
     filter: blur(10px);
 }
 
+.page-shell .reveal-up {
+    transform: translateY(34px);
+    filter: blur(10px);
+}
+
+.page-shell .reveal-left {
+    transform: translateX(-32px);
+    filter: blur(10px);
+}
+
+.page-shell .reveal-right {
+    transform: translateX(32px);
+    filter: blur(10px);
+}
+
+.page-shell .section-fade {
+    transform: translateY(40px);
+    filter: blur(12px);
+}
+
+/* ---------- Estado cargado ---------- */
 .page-shell.page-loaded .reveal,
 .page-shell.page-loaded .reveal-up,
+.page-shell.page-loaded .reveal-left,
+.page-shell.page-loaded .reveal-right,
 .page-shell.page-loaded .section-fade,
 .page-shell.page-loaded .hero-content-animate .reveal {
     opacity: 1;
-    transform: translateY(0);
+    transform: translate(0, 0) scale(1);
     filter: blur(0);
 }
 
+/* ---------- Timing principal ---------- */
 .reveal {
     transition:
-        opacity 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+        opacity 1s var(--ease-premium),
+        transform 1s var(--ease-premium),
+        filter 1s var(--ease-premium);
 }
 
+.reveal-up,
+.reveal-left,
+.reveal-right {
+    transition:
+        opacity 0.95s var(--ease-premium),
+        transform 0.95s var(--ease-premium),
+        filter 0.95s var(--ease-premium);
+}
+
+.section-fade {
+    transition:
+        opacity 1.15s var(--ease-premium),
+        transform 1.15s var(--ease-premium),
+        filter 1.15s var(--ease-premium);
+}
+
+/* ---------- Stagger ---------- */
 .reveal-1 { transition-delay: 0.08s; }
 .reveal-2 { transition-delay: 0.16s; }
 .reveal-3 { transition-delay: 0.24s; }
 .reveal-4 { transition-delay: 0.32s; }
 .reveal-5 { transition-delay: 0.40s; }
 .reveal-6 { transition-delay: 0.48s; }
+.reveal-7 { transition-delay: 0.56s; }
+.reveal-8 { transition-delay: 0.64s; }
 
-.reveal-up {
-    transition:
-        opacity 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 0.85s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 0.85s cubic-bezier(0.22, 1, 0.36, 1);
-    transition-delay: 0.12s;
-}
-
-.section-fade {
-    transition:
-        opacity 1s cubic-bezier(0.22, 1, 0.36, 1),
-        transform 1s cubic-bezier(0.22, 1, 0.36, 1),
-        filter 1s cubic-bezier(0.22, 1, 0.36, 1);
-    transition-delay: 0.08s;
-}
-
+/* ---------- Hero background ---------- */
 #hero-background {
-    will-change: transform, opacity;
-    animation: heroZoomSoft 10s ease-out both;
+    will-change: transform, opacity, filter;
+    animation: heroZoomSoft 8s var(--ease-soft) both;
+    backface-visibility: hidden;
+    transform-origin: center center;
 }
 
 @keyframes heroZoomSoft {
     0% {
-        transform: scale(1.08);
-        opacity: 0.78;
+        transform: scale(1.075);
+        opacity: 0.80;
+        filter: saturate(0.94);
     }
     100% {
         transform: scale(1.02);
         opacity: 1;
+        filter: saturate(1);
     }
 }
 
+/* Sutil respiración del fondo del hero */
+.page-shell.page-loaded #hero-background {
+    animation:
+        heroZoomSoft 1.6s var(--ease-premium) both,
+        heroFloatSlow 18s ease-in-out 1.8s infinite alternate;
+}
+
+@keyframes heroFloatSlow {
+    0% {
+        transform: scale(1.02) translate3d(0, 0, 0);
+    }
+    100% {
+        transform: scale(1.045) translate3d(0, -8px, 0);
+    }
+}
+
+/* ---------- Contenido del hero ---------- */
 .hero-content-animate .reveal {
-    animation: heroContentIn 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+    animation: heroContentIn 1s var(--ease-premium);
+    animation-fill-mode: both;
 }
 
 @keyframes heroContentIn {
     0% {
         opacity: 0;
-        transform: translateY(24px);
-        filter: blur(8px);
+        transform: translateY(26px) scale(0.99);
+        filter: blur(10px);
     }
     100% {
         opacity: 1;
-        transform: translateY(0);
+        transform: translateY(0) scale(1);
         filter: blur(0);
     }
+}
+
+/* Títulos premium */
+#hero-title {
+    will-change: transform, opacity;
+    text-wrap: balance;
+}
+
+/* Texto con ancho cómodo */
+#hero-text {
+    text-wrap: pretty;
+}
+
+/* ---------- Chips / elementos glass ---------- */
+#hero-eyebrow,
+#hero-indicators button,
+[class*="glass"],
+.hero-glass,
+span[style*="backdropFilter"] {
+    backface-visibility: hidden;
+}
+
+#hero-eyebrow {
+    box-shadow:
+        inset 0 1px 0 rgba(255,255,255,0.10),
+        0 12px 30px rgba(0,0,0,0.10);
+}
+
+/* ---------- Indicadores del slider ---------- */
+#hero-indicators button {
+    transition:
+        width 0.28s var(--ease-soft),
+        opacity 0.28s var(--ease-soft),
+        background-color 0.28s var(--ease-soft),
+        transform 0.28s var(--ease-soft),
+        box-shadow 0.28s var(--ease-soft);
+}
+
+#hero-indicators button:hover {
+    transform: translateY(-1px) scale(1.04);
+    box-shadow: 0 8px 18px rgba(255,255,255,0.12);
+}
+
+/* ---------- Flechas del hero ---------- */
+#hero-prev,
+#hero-next {
+    transition:
+        transform 0.28s var(--ease-soft),
+        background 0.28s var(--ease-soft),
+        border-color 0.28s var(--ease-soft),
+        box-shadow 0.28s var(--ease-soft),
+        opacity 0.28s var(--ease-soft);
+    box-shadow: 0 18px 36px rgba(0,0,0,0.10);
+}
+
+#hero-prev:hover,
+#hero-next:hover {
+    transform: translateY(-2px) scale(1.02);
+    background: rgba(255,255,255,0.14) !important;
+    border-color: rgba(255,255,255,0.26) !important;
+    box-shadow: 0 22px 46px rgba(0,0,0,0.16);
+}
+
+#hero-prev:active,
+#hero-next:active {
+    transform: translateY(0) scale(0.98);
+}
+
+/* ---------- Secciones ---------- */
+section {
+    position: relative;
+}
+
+.section-fade {
+    isolation: isolate;
+}
+
+/* ---------- Tarjetas ---------- */
+.card {
+    transition:
+        transform 0.42s var(--ease-soft),
+        box-shadow 0.42s var(--ease-soft),
+        border-color 0.42s var(--ease-soft),
+        background 0.42s var(--ease-soft),
+        filter 0.42s var(--ease-soft);
+    backface-visibility: hidden;
+    transform: translateZ(0);
 }
 
 .reveal-up .card,
 .section-fade .card,
 .card.reveal-up {
     transition:
-        transform 0.35s ease,
-        box-shadow 0.35s ease,
-        border-color 0.35s ease;
+        transform 0.42s var(--ease-soft),
+        box-shadow 0.42s var(--ease-soft),
+        border-color 0.42s var(--ease-soft),
+        background 0.42s var(--ease-soft),
+        filter 0.42s var(--ease-soft);
 }
 
 .reveal-up .card:hover,
 .section-fade .card:hover,
 .card.reveal-up:hover {
-    transform: translateY(-6px);
-    box-shadow: 0 24px 60px rgba(16, 24, 40, 0.10) !important;
+    transform: translateY(-8px);
+    box-shadow: var(--shadow-premium) !important;
+    filter: saturate(1.02);
 }
 
-.btn {
+/* Tarjetas del hero más potentes */
+#hero-background + div + div + .container .card,
+section .card[style*="backdropFilter"] {
+    box-shadow: var(--shadow-premium-strong);
+}
+
+/* ---------- Botones ---------- */
+.btn,
+button {
     transition:
-        transform 0.28s ease,
-        box-shadow 0.28s ease,
-        opacity 0.28s ease;
+        transform 0.28s var(--ease-soft),
+        box-shadow 0.28s var(--ease-soft),
+        opacity 0.28s var(--ease-soft),
+        background-color 0.28s var(--ease-soft),
+        border-color 0.28s var(--ease-soft),
+        color 0.28s var(--ease-soft);
 }
 
 .btn:hover {
     transform: translateY(-2px);
 }
 
+.btn:active {
+    transform: translateY(0) scale(0.985);
+}
+
+/* Botones principales más “caros” */
+.btn-primary,
+.btn-dark,
+.btn-success {
+    box-shadow: var(--shadow-button);
+}
+
+.btn-primary:hover,
+.btn-dark:hover,
+.btn-success:hover {
+    box-shadow: 0 20px 44px rgba(16, 24, 40, 0.18);
+}
+
+/* ---------- Links ---------- */
+a {
+    transition:
+        opacity 0.25s ease,
+        color 0.25s ease,
+        transform 0.25s ease;
+}
+
+a:hover {
+    opacity: 0.96;
+}
+
+/* ---------- WhatsApp flotante ---------- */
 a[href*="wa.me"] {
-    transition: transform 0.28s ease, box-shadow 0.28s ease;
+    transition:
+        transform 0.30s var(--ease-soft),
+        box-shadow 0.30s var(--ease-soft),
+        opacity 0.30s var(--ease-soft),
+        filter 0.30s var(--ease-soft);
+    will-change: transform;
 }
 
 a[href*="wa.me"]:hover {
-    transform: translateY(-3px) scale(1.02);
+    transform: translateY(-4px) scale(1.03);
+    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.20) !important;
+    filter: saturate(1.04);
 }
 
-@media (prefers-reduced-motion: reduce) {
+a[href*="wa.me"]:active {
+    transform: translateY(0) scale(0.985);
+}
+
+/* ---------- Accordion ---------- */
+.accordion-item {
+    transition:
+        transform 0.32s var(--ease-soft),
+        box-shadow 0.32s var(--ease-soft),
+        border-color 0.32s var(--ease-soft);
+}
+
+.accordion-item:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 34px rgba(16, 24, 40, 0.05);
+}
+
+.accordion-button {
+    transition:
+        background-color 0.28s ease,
+        color 0.28s ease,
+        box-shadow 0.28s ease;
+}
+
+/* ---------- Microdetalles premium ---------- */
+h1, h2, h3 {
+    text-wrap: balance;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+/* Pequeño brillo atmosférico para bloques premium */
+.section-fade::before {
+    content: "";
+    position: absolute;
+    inset: auto auto 0 0;
+    width: 220px;
+    height: 220px;
+    border-radius: 999px;
+    background: radial-gradient(circle, rgba(13,110,253,0.05) 0%, rgba(13,110,253,0.00) 70%);
+    filter: blur(24px);
+    pointer-events: none;
+    z-index: -1;
+    opacity: 0.6;
+}
+
+/* Evitar exceso en secciones con fondo muy claro */
+footer.section-fade::before,
+#contacto.section-fade::before {
+    opacity: 0.35;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width: 991.98px) {
+    .reveal,
+    .reveal-up,
+    .reveal-left,
+    .reveal-right,
+    .section-fade {
+        transition-duration: 0.82s;
+    }
+
+    #hero-background {
+        animation-duration: 6.5s;
+    }
+
+    .card:hover,
+    .reveal-up .card:hover,
+    .section-fade .card:hover,
+    .card.reveal-up:hover {
+        transform: translateY(-4px);
+    }
+}
+
+@media (max-width: 767.98px) {
     .page-shell .reveal,
     .page-shell .reveal-up,
+    .page-shell .reveal-left,
+    .page-shell .reveal-right,
     .page-shell .section-fade,
+    .page-shell .hero-content-animate .reveal {
+        filter: blur(7px);
+    }
+
+    .reveal-1 { transition-delay: 0.04s; }
+    .reveal-2 { transition-delay: 0.10s; }
+    .reveal-3 { transition-delay: 0.16s; }
+    .reveal-4 { transition-delay: 0.22s; }
+    .reveal-5 { transition-delay: 0.28s; }
+    .reveal-6 { transition-delay: 0.34s; }
+
+    a[href*="wa.me"] {
+        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18) !important;
+    }
+}
+
+/* ---------- Reduced motion ---------- */
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .page-shell .reveal,
+    .page-shell .reveal-up,
+    .page-shell .reveal-left,
+    .page-shell .reveal-right,
+    .page-shell .section-fade,
+    .page-shell .hero-content-animate .reveal,
     .page-shell.page-loaded .reveal,
     .page-shell.page-loaded .reveal-up,
+    .page-shell.page-loaded .reveal-left,
+    .page-shell.page-loaded .reveal-right,
     .page-shell.page-loaded .section-fade,
     .page-shell.page-loaded .hero-content-animate .reveal,
     #hero-background,
+    .card,
     .btn,
-    a[href*="wa.me"] {
+    button,
+    a,
+    .accordion-item,
+    .accordion-button {
         opacity: 1 !important;
         transform: none !important;
         filter: none !important;
         animation: none !important;
         transition: none !important;
+    }
+
+    .section-fade::before {
+        display: none !important;
     }
 }
