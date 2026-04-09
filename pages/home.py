@@ -9,7 +9,7 @@ dash.register_page(
     name="Inicio",
     description=(
         "Gestoría en Ávila para autónomos, empresas y particulares. "
-        "Asesoría fiscal, laboral, contable y trámites con atención clara, cercana y profesional."
+        "Asesoría fiscal, laboral, contable y trámites con una imagen moderna, clara y profesional."
     ),
 )
 
@@ -23,80 +23,90 @@ SERVICIOS = [
     {
         "icono": "📊",
         "titulo": "Asesoría fiscal y contable",
-        "texto": "Impuestos, contabilidad, cierres, IVA, IRPF y declaraciones con un enfoque claro, ordenado y profesional.",
+        "texto": "Impuestos, declaraciones, IVA, IRPF, contabilidad y seguimiento económico con un enfoque claro y ordenado.",
     },
     {
         "icono": "👥",
         "titulo": "Asesoría laboral",
-        "texto": "Contratos, nóminas, seguros sociales, altas, bajas e incidencias del día a día laboral de tu negocio.",
+        "texto": "Contratos, nóminas, seguros sociales, altas, bajas e incidencias laborales para el día a día del negocio.",
     },
     {
         "icono": "🏢",
         "titulo": "Empresas y sociedades",
-        "texto": "Apoyo para pymes y sociedades que buscan control, orden administrativo y acompañamiento constante.",
+        "texto": "Apoyo para pymes y sociedades que buscan estructura, control administrativo y acompañamiento estable.",
     },
     {
         "icono": "🧾",
         "titulo": "Trámites administrativos",
-        "texto": "Certificados, autorizaciones, documentación y gestiones habituales con organismos públicos.",
+        "texto": "Documentación, certificados, autorizaciones y gestiones con organismos públicos de forma ágil.",
     },
     {
         "icono": "🚗",
         "titulo": "Tráfico y vehículos",
-        "texto": "Transferencias, cambios de titularidad y documentación relacionada con vehículos de forma ágil.",
+        "texto": "Transferencias, cambios de titularidad y documentación relacionada con vehículos de forma sencilla.",
     },
     {
         "icono": "🙋",
         "titulo": "Atención a particulares",
-        "texto": "Acompañamiento cercano para resolver trámites concretos o recibir orientación puntual con claridad.",
+        "texto": "Ayuda clara y cercana para resolver trámites concretos o recibir orientación puntual.",
     },
 ]
 
-BENEFICIOS = [
+PILARES = [
     {
+        "numero": "01",
         "titulo": "Claridad",
-        "texto": "Una web premium ayuda a que el cliente entienda rápido qué hacéis y por qué puede confiar.",
+        "texto": "Explicar bien qué hacéis y cómo ayudáis genera confianza mucho antes del primer contacto.",
     },
     {
-        "titulo": "Confianza",
-        "texto": "Una mejor presentación transmite orden, experiencia y sensación de despacho sólido.",
+        "numero": "02",
+        "titulo": "Cercanía",
+        "texto": "Una gestoría local debe transmitir atención humana, accesible y fácil de entender.",
     },
     {
-        "titulo": "Conversión",
-        "texto": "Cuanto más fácil es entenderos y contactar, más probable es que os llamen o escriban.",
+        "numero": "03",
+        "titulo": "Solidez",
+        "texto": "Una imagen bien trabajada hace que el despacho parezca más serio, más actual y más fiable.",
     },
+]
+
+SERVICIO_DESTACADO = [
+    "Fiscalidad y contabilidad para autónomos",
+    "Gestión laboral y nóminas",
+    "Asesoría para sociedades y pymes",
+    "Trámites administrativos y documentación",
 ]
 
 PROCESO = [
     {
         "numero": "01",
-        "titulo": "Entendemos tu caso",
-        "texto": "Escuchamos qué necesitas y en qué contexto te podemos ayudar.",
+        "titulo": "Escuchamos tu caso",
+        "texto": "Entendemos qué necesitas y qué situación quieres resolver.",
     },
     {
         "numero": "02",
-        "titulo": "Te orientamos",
-        "texto": "Te explicamos con claridad qué pasos conviene seguir y cómo resolverlo.",
+        "titulo": "Te orientamos con claridad",
+        "texto": "Te explicamos el camino más conveniente de forma sencilla.",
     },
     {
         "numero": "03",
         "titulo": "Lo gestionamos contigo",
-        "texto": "Nos ocupamos del proceso para darte más orden, tiempo y tranquilidad.",
+        "texto": "Nos ocupamos del proceso para darte más tiempo, orden y tranquilidad.",
     },
 ]
 
 TESTIMONIOS = [
     {
         "nombre": "Autónomo de Ávila",
-        "texto": "Muy buena atención. Transmiten confianza y te explican todo con claridad.",
+        "texto": "Transmiten mucha confianza y explican todo de forma clara. Se nota experiencia.",
     },
     {
         "nombre": "Empresa local",
-        "texto": "Profesionales, cercanos y rápidos. Se nota experiencia en la forma de trabajar.",
+        "texto": "Atención cercana y muy profesional. Responden rápido y ordenan todo muy bien.",
     },
     {
         "nombre": "Cliente particular",
-        "texto": "Me ayudaron con varios trámites de forma sencilla y con un trato excelente.",
+        "texto": "Me ayudaron con varios trámites sin complicaciones y con un trato excelente.",
     },
 ]
 
@@ -107,42 +117,42 @@ FAQS = [
     ),
     (
         "¿Lleváis fiscal, laboral y contabilidad?",
-        "Sí. El objetivo es ofrecer un servicio integral para que el cliente tenga un apoyo estable y claro.",
+        "Sí. La idea es ofrecer un servicio integral para que el cliente tenga un punto de apoyo claro y estable.",
     ),
     (
-        "¿Solo atendéis en Ávila?",
-        "La base del despacho está en Ávila, lo que refuerza la cercanía local, aunque muchas gestiones también se pueden apoyar por teléfono o email.",
+        "¿La atención es solo presencial?",
+        "La base está en Ávila, pero muchas gestiones también pueden apoyarse por teléfono o email.",
     ),
 ]
 
 
-def section_kicker(text):
+def section_tag(text):
     return html.Div(
         text,
         className="text-uppercase fw-bold mb-3",
         style={
             "fontSize": "0.76rem",
-            "letterSpacing": "0.16em",
+            "letterSpacing": "0.18em",
             "color": "#667085",
         },
     )
 
 
-def pill(text):
+def glass_chip(text):
     return html.Span(
         text,
         className="d-inline-flex align-items-center me-2 mb-2",
         style={
-            "padding": "0.72rem 1rem",
+            "padding": "0.75rem 1rem",
             "borderRadius": "999px",
-            "background": "rgba(255,255,255,0.82)",
+            "background": "rgba(255,255,255,0.72)",
             "border": "1px solid rgba(15, 23, 42, 0.08)",
             "color": "#344054",
             "fontWeight": "600",
-            "fontSize": "0.94rem",
-            "boxShadow": "0 8px 18px rgba(16, 24, 40, 0.04)",
+            "fontSize": "0.93rem",
             "backdropFilter": "blur(10px)",
             "WebkitBackdropFilter": "blur(10px)",
+            "boxShadow": "0 10px 24px rgba(16, 24, 40, 0.04)",
         },
     )
 
@@ -156,7 +166,7 @@ def stat_card(value, label):
                         value,
                         className="fw-bold mb-1",
                         style={
-                            "fontSize": "clamp(1.8rem, 3vw, 2.5rem)",
+                            "fontSize": "clamp(1.9rem, 3vw, 2.6rem)",
                             "lineHeight": "1",
                             "letterSpacing": "-0.05em",
                             "color": "#101828",
@@ -166,16 +176,17 @@ def stat_card(value, label):
                         label,
                         style={
                             "color": "#667085",
-                            "fontSize": "0.95rem",
+                            "fontSize": "0.96rem",
+                            "lineHeight": "1.5",
                         },
                     ),
                 ]
             ),
             className="border-0 h-100",
             style={
-                "borderRadius": "22px",
-                "background": "#ffffff",
-                "boxShadow": "0 14px 34px rgba(16, 24, 40, 0.06)",
+                "borderRadius": "24px",
+                "background": "rgba(255,255,255,0.88)",
+                "boxShadow": "0 18px 44px rgba(16, 24, 40, 0.06)",
             },
         ),
         md=4,
@@ -192,23 +203,24 @@ def service_card(icono, titulo, texto):
                         icono,
                         className="mb-4",
                         style={
-                            "width": "56px",
-                            "height": "56px",
+                            "width": "58px",
+                            "height": "58px",
                             "display": "flex",
                             "alignItems": "center",
                             "justifyContent": "center",
-                            "fontSize": "1.7rem",
+                            "fontSize": "1.65rem",
                             "borderRadius": "18px",
                             "background": "linear-gradient(135deg, #eef4ff 0%, #f8fbff 100%)",
+                            "boxShadow": "inset 0 1px 0 rgba(255,255,255,0.8)",
                         },
                     ),
                     html.H3(
                         titulo,
                         className="fw-bold mb-2",
                         style={
-                            "fontSize": "1.15rem",
-                            "color": "#101828",
+                            "fontSize": "1.14rem",
                             "letterSpacing": "-0.02em",
+                            "color": "#101828",
                         },
                     ),
                     html.P(
@@ -216,7 +228,7 @@ def service_card(icono, titulo, texto):
                         className="mb-0",
                         style={
                             "color": "#667085",
-                            "lineHeight": "1.8",
+                            "lineHeight": "1.85",
                             "fontSize": "0.97rem",
                         },
                     ),
@@ -224,9 +236,9 @@ def service_card(icono, titulo, texto):
             ),
             className="border-0 h-100",
             style={
-                "borderRadius": "24px",
-                "background": "rgba(255,255,255,0.92)",
-                "boxShadow": "0 18px 42px rgba(16, 24, 40, 0.06)",
+                "borderRadius": "26px",
+                "background": "rgba(255,255,255,0.9)",
+                "boxShadow": "0 18px 46px rgba(16, 24, 40, 0.06)",
             },
         ),
         lg=4,
@@ -235,18 +247,17 @@ def service_card(icono, titulo, texto):
     )
 
 
-def benefit_card(titulo, texto):
+def pillar_card(numero, titulo, texto):
     return dbc.Col(
         dbc.Card(
             dbc.CardBody(
                 [
                     html.Div(
-                        "•",
-                        className="mb-3",
+                        numero,
+                        className="fw-bold mb-3",
                         style={
-                            "fontSize": "2rem",
-                            "lineHeight": "1",
-                            "fontWeight": "700",
+                            "fontSize": "0.82rem",
+                            "letterSpacing": "0.18em",
                             "color": "#0d6efd",
                         },
                     ),
@@ -254,23 +265,26 @@ def benefit_card(titulo, texto):
                         titulo,
                         className="fw-bold mb-2",
                         style={
-                            "fontSize": "1.12rem",
+                            "fontSize": "1.2rem",
+                            "letterSpacing": "-0.03em",
                             "color": "#101828",
-                            "letterSpacing": "-0.02em",
                         },
                     ),
                     html.P(
                         texto,
                         className="mb-0",
-                        style={"color": "#667085", "lineHeight": "1.8"},
+                        style={
+                            "color": "#667085",
+                            "lineHeight": "1.85",
+                        },
                     ),
                 ]
             ),
             className="border-0 h-100",
             style={
-                "borderRadius": "24px",
+                "borderRadius": "26px",
                 "background": "#ffffff",
-                "boxShadow": "0 16px 38px rgba(16, 24, 40, 0.06)",
+                "boxShadow": "0 16px 40px rgba(16, 24, 40, 0.06)",
             },
         ),
         md=4,
@@ -278,7 +292,22 @@ def benefit_card(titulo, texto):
     )
 
 
-def process_item(numero, titulo, texto):
+def list_check(text):
+    return html.Div(
+        [
+            html.Span("●", className="me-2", style={"color": "#0d6efd"}),
+            html.Span(text),
+        ],
+        className="mb-3",
+        style={
+            "color": "#344054",
+            "fontWeight": "600",
+            "lineHeight": "1.6",
+        },
+    )
+
+
+def process_card(numero, titulo, texto):
     return dbc.Col(
         html.Div(
             [
@@ -295,9 +324,9 @@ def process_item(numero, titulo, texto):
                     titulo,
                     className="fw-bold mb-2",
                     style={
-                        "fontSize": "1.2rem",
-                        "color": "#101828",
+                        "fontSize": "1.22rem",
                         "letterSpacing": "-0.03em",
+                        "color": "#101828",
                     },
                 ),
                 html.P(
@@ -310,7 +339,9 @@ def process_item(numero, titulo, texto):
                     },
                 ),
             ],
-            style={"padding": "1.2rem 0.25rem"},
+            style={
+                "padding": "1.2rem 0.25rem",
+            },
         ),
         md=4,
         className="mb-4",
@@ -327,7 +358,7 @@ def testimonial_card(nombre, texto):
                         className="mb-3",
                         style={
                             "color": "#f59e0b",
-                            "fontSize": "0.98rem",
+                            "fontSize": "0.96rem",
                             "letterSpacing": "0.08em",
                         },
                     ),
@@ -336,7 +367,7 @@ def testimonial_card(nombre, texto):
                         className="mb-4",
                         style={
                             "color": "#344054",
-                            "lineHeight": "1.9",
+                            "lineHeight": "1.95",
                             "fontSize": "0.98rem",
                         },
                     ),
@@ -349,68 +380,15 @@ def testimonial_card(nombre, texto):
             ),
             className="border-0 h-100",
             style={
-                "borderRadius": "24px",
+                "borderRadius": "26px",
                 "background": "linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%)",
-                "boxShadow": "0 16px 42px rgba(16, 24, 40, 0.06)",
+                "boxShadow": "0 18px 44px rgba(16, 24, 40, 0.06)",
             },
         ),
         md=4,
         className="mb-4",
     )
 
-
-top_strip = html.Div(
-    dbc.Container(
-        dbc.Row(
-            [
-                dbc.Col(
-                    html.Div(
-                        "Ávila · Más de 70 años de experiencia · Atención cercana y profesional",
-                        className="small",
-                        style={"color": "#667085", "fontWeight": "600"},
-                    ),
-                    md=8,
-                    className="d-none d-md-flex align-items-center",
-                ),
-                dbc.Col(
-                    html.Div(
-                        [
-                            html.A(
-                                "📞 920 000 000",
-                                href=f"tel:{TELEFONO_1.replace(' ', '')}",
-                                style={
-                                    "textDecoration": "none",
-                                    "color": "#344054",
-                                    "fontWeight": "600",
-                                    "marginRight": "1rem",
-                                },
-                            ),
-                            html.A(
-                                "✉️ info@gestoriaduque.com",
-                                href=f"mailto:{EMAIL}",
-                                style={
-                                    "textDecoration": "none",
-                                    "color": "#344054",
-                                    "fontWeight": "600",
-                                },
-                            ),
-                        ],
-                        className="small d-flex justify-content-md-end flex-wrap",
-                    ),
-                    md=4,
-                    className="d-flex align-items-center justify-content-start justify-content-md-end",
-                ),
-            ],
-            className="py-2",
-        )
-    ),
-    style={
-        "borderBottom": "1px solid rgba(15, 23, 42, 0.06)",
-        "background": "rgba(255,255,255,0.86)",
-        "backdropFilter": "blur(10px)",
-        "WebkitBackdropFilter": "blur(10px)",
-    },
-)
 
 hero_section = html.Section(
     dbc.Container(
@@ -427,7 +405,7 @@ hero_section = html.Section(
                                     "alignItems": "center",
                                     "padding": "0.72rem 1rem",
                                     "borderRadius": "999px",
-                                    "background": "rgba(255,255,255,0.78)",
+                                    "background": "rgba(255,255,255,0.8)",
                                     "border": "1px solid rgba(15, 23, 42, 0.08)",
                                     "fontWeight": "700",
                                     "fontSize": "0.78rem",
@@ -437,33 +415,33 @@ hero_section = html.Section(
                                 },
                             ),
                             html.H1(
-                                "Una imagen más premium para una gestoría que quiera destacar de verdad",
+                                "Una gestoría con imagen actual, sólida y preparada para transmitir confianza en segundos",
                                 className="fw-bold mb-4",
                                 style={
-                                    "fontSize": "clamp(2.8rem, 5vw, 5.2rem)",
-                                    "lineHeight": "0.97",
-                                    "letterSpacing": "-0.065em",
+                                    "fontSize": "clamp(2.9rem, 5.3vw, 5.5rem)",
+                                    "lineHeight": "0.96",
+                                    "letterSpacing": "-0.07em",
                                     "color": "#101828",
-                                    "maxWidth": "860px",
+                                    "maxWidth": "900px",
                                 },
                             ),
                             html.P(
-                                "Esta home está planteada para que el despacho se perciba como más sólido, más actual y mucho más fiable. "
-                                "No solo para verse mejor, sino para convertir mejor.",
+                                "Esta versión de home está diseñada para que el despacho se perciba mucho más moderno, más profesional y más fiable. "
+                                "Menos aspecto de gestoría clásica. Más sensación de firma sólida y actual.",
                                 className="mb-4",
                                 style={
                                     "fontSize": "1.08rem",
-                                    "lineHeight": "1.9",
+                                    "lineHeight": "1.95",
                                     "color": "#475467",
-                                    "maxWidth": "720px",
+                                    "maxWidth": "740px",
                                 },
                             ),
                             html.Div(
                                 [
-                                    pill("Más de 70 años de experiencia"),
-                                    pill("Despacho local en Ávila"),
-                                    pill("Asesoría fiscal, laboral y contable"),
-                                    pill("Trato claro y cercano"),
+                                    glass_chip("Más de 70 años de experiencia"),
+                                    glass_chip("Despacho local en Ávila"),
+                                    glass_chip("Asesoría integral"),
+                                    glass_chip("Atención clara y cercana"),
                                 ],
                                 className="mb-4",
                             ),
@@ -475,23 +453,23 @@ hero_section = html.Section(
                                         color="primary",
                                         className="rounded-pill fw-bold me-2 mb-2",
                                         style={
-                                            "padding": "1rem 1.55rem",
+                                            "padding": "1rem 1.6rem",
                                             "minHeight": "58px",
                                             "fontSize": "1rem",
-                                            "boxShadow": "0 14px 32px rgba(13, 110, 253, 0.22)",
+                                            "boxShadow": "0 14px 34px rgba(13, 110, 253, 0.22)",
                                         },
                                     ),
                                     dbc.Button(
-                                        "Abrir WhatsApp",
+                                        "WhatsApp",
                                         href=WHATSAPP_URL,
                                         target="_blank",
                                         color="light",
                                         className="rounded-pill fw-semibold border me-2 mb-2",
                                         style={
-                                            "padding": "1rem 1.55rem",
+                                            "padding": "1rem 1.6rem",
                                             "minHeight": "58px",
                                             "fontSize": "1rem",
-                                            "background": "rgba(255,255,255,0.86)",
+                                            "background": "rgba(255,255,255,0.82)",
                                         },
                                     ),
                                     dbc.Button(
@@ -517,8 +495,8 @@ hero_section = html.Section(
                             dbc.CardBody(
                                 [
                                     html.Div(
-                                        "Contacto directo",
-                                        className="mb-2 fw-bold",
+                                        "Despacho local · confianza directa",
+                                        className="mb-3 fw-bold",
                                         style={
                                             "fontSize": "0.78rem",
                                             "letterSpacing": "0.14em",
@@ -527,10 +505,10 @@ hero_section = html.Section(
                                         },
                                     ),
                                     html.H2(
-                                        "Una presencia digital más fuerte genera más confianza",
+                                        "Un bloque de contacto más elegante genera mejor sensación de marca",
                                         className="fw-bold mb-4",
                                         style={
-                                            "fontSize": "1.8rem",
+                                            "fontSize": "1.78rem",
                                             "lineHeight": "1.08",
                                             "letterSpacing": "-0.04em",
                                             "color": "#101828",
@@ -549,7 +527,7 @@ hero_section = html.Section(
                                         href=f"mailto:{EMAIL}",
                                         color="primary",
                                         className="w-100 rounded-pill fw-bold mb-2",
-                                        style={"padding": "0.98rem 1.2rem", "minHeight": "54px"},
+                                        style={"padding": "1rem 1.2rem", "minHeight": "54px"},
                                     ),
                                     dbc.Button(
                                         "Contactar por WhatsApp",
@@ -557,7 +535,7 @@ hero_section = html.Section(
                                         target="_blank",
                                         color="success",
                                         className="w-100 rounded-pill fw-semibold",
-                                        style={"padding": "0.98rem 1.2rem", "minHeight": "54px"},
+                                        style={"padding": "1rem 1.2rem", "minHeight": "54px"},
                                     ),
                                 ]
                             ),
@@ -565,7 +543,7 @@ hero_section = html.Section(
                             style={
                                 "borderRadius": "30px",
                                 "background": "rgba(255,255,255,0.84)",
-                                "boxShadow": "0 26px 70px rgba(16, 24, 40, 0.10)",
+                                "boxShadow": "0 28px 80px rgba(16, 24, 40, 0.10)",
                                 "backdropFilter": "blur(12px)",
                                 "WebkitBackdropFilter": "blur(12px)",
                             },
@@ -578,12 +556,12 @@ hero_section = html.Section(
         ]
     ),
     style={
-        "paddingTop": "5.4rem",
-        "paddingBottom": "4.5rem",
+        "paddingTop": "5.6rem",
+        "paddingBottom": "4.7rem",
         "background": (
-            "radial-gradient(circle at 0% 0%, rgba(13,110,253,0.14), transparent 28%),"
+            "radial-gradient(circle at 0% 0%, rgba(13,110,253,0.15), transparent 28%),"
             "radial-gradient(circle at 100% 0%, rgba(25,135,84,0.08), transparent 24%),"
-            "linear-gradient(180deg, #ffffff 0%, #f7faff 56%, #ffffff 100%)"
+            "linear-gradient(180deg, #ffffff 0%, #f7faff 54%, #ffffff 100%)"
         ),
     },
 )
@@ -605,44 +583,56 @@ stats_section = html.Section(
 services_section = html.Section(
     dbc.Container(
         [
-            section_kicker("Servicios"),
-            html.H2(
-                "Una propuesta visual más actual puede cambiar por completo la percepción del despacho",
-                className="fw-bold mb-3",
-                style={
-                    "fontSize": "clamp(2rem, 3.5vw, 3.1rem)",
-                    "lineHeight": "1.03",
-                    "letterSpacing": "-0.05em",
-                    "color": "#101828",
-                    "maxWidth": "780px",
-                },
-            ),
-            html.P(
-                "La web no debería parecer una lista genérica de servicios. Debería hacer que el visitante entienda rápido qué resolvéis, a quién ayudáis y por qué merece la pena contactar.",
-                className="mb-5",
-                style={
-                    "color": "#667085",
-                    "lineHeight": "1.9",
-                    "maxWidth": "860px",
-                    "fontSize": "1.01rem",
-                },
+            section_tag("Servicios"),
+            dbc.Row(
+                [
+                    dbc.Col(
+                        [
+                            html.H2(
+                                "Diseñada para que el visitante entienda rápido qué hacéis y por qué merece la pena contactar",
+                                className="fw-bold mb-3",
+                                style={
+                                    "fontSize": "clamp(2.1rem, 3.7vw, 3.25rem)",
+                                    "lineHeight": "1.02",
+                                    "letterSpacing": "-0.055em",
+                                    "color": "#101828",
+                                    "maxWidth": "820px",
+                                },
+                            ),
+                            html.P(
+                                "Aquí la web ya no parece una lista tradicional de servicios. Tiene más ritmo, más aire y una percepción más premium.",
+                                className="mb-5",
+                                style={
+                                    "color": "#667085",
+                                    "lineHeight": "1.92",
+                                    "maxWidth": "820px",
+                                    "fontSize": "1.02rem",
+                                },
+                            ),
+                        ]
+                    )
+                ]
             ),
             dbc.Row([service_card(s["icono"], s["titulo"], s["texto"]) for s in SERVICIOS]),
         ]
     ),
     id="servicios",
-    style={"paddingTop": "3rem", "paddingBottom": "4.5rem"},
+    style={
+        "paddingTop": "3rem",
+        "paddingBottom": "4.8rem",
+        "scrollMarginTop": "120px",
+    },
 )
 
-benefits_section = html.Section(
+pillars_section = html.Section(
     dbc.Container(
         [
-            section_kicker("Valor"),
+            section_tag("Pilares"),
             dbc.Row(
                 [
                     dbc.Col(
                         html.H2(
-                            "Más que una web bonita: una imagen que transmite orden, seriedad y confianza",
+                            "Una gestoría local puede parecer muchísimo más potente con una presentación adecuada",
                             className="fw-bold mb-4",
                             style={
                                 "fontSize": "clamp(2rem, 3.4vw, 3rem)",
@@ -656,7 +646,7 @@ benefits_section = html.Section(
                     ),
                     dbc.Col(
                         html.P(
-                            "Cuando una gestoría se presenta mejor, parece más sólida. Y cuando parece más sólida, convierte mejor.",
+                            "No se trata solo de diseño. Se trata de percepción, confianza y capacidad de convertir una visita en una llamada.",
                             className="mb-4 mb-lg-0",
                             style={
                                 "color": "#667085",
@@ -670,17 +660,17 @@ benefits_section = html.Section(
                 ],
                 className="mb-2",
             ),
-            dbc.Row([benefit_card(b["titulo"], b["texto"]) for b in BENEFICIOS]),
+            dbc.Row([pillar_card(p["numero"], p["titulo"], p["texto"]) for p in PILARES]),
         ]
     ),
     style={
-        "paddingTop": "4.5rem",
-        "paddingBottom": "4.5rem",
+        "paddingTop": "4.6rem",
+        "paddingBottom": "4.6rem",
         "background": "#f8fafc",
     },
 )
 
-positioning_section = html.Section(
+featured_section = html.Section(
     dbc.Container(
         dbc.Card(
             dbc.CardBody(
@@ -688,7 +678,7 @@ positioning_section = html.Section(
                     [
                         dbc.Col(
                             [
-                                section_kicker("Confianza"),
+                                section_tag("Enfoque"),
                                 html.H2(
                                     "Más de 70 años ayudando a clientes en Ávila",
                                     className="fw-bold mb-3",
@@ -700,8 +690,8 @@ positioning_section = html.Section(
                                     },
                                 ),
                                 html.P(
-                                    "La combinación de experiencia, despacho local y trato cercano tiene muchísimo valor. Esta sección está pensada para que se perciba de inmediato.",
-                                    className="mb-0",
+                                    "La experiencia del despacho es una ventaja enorme. Esta sección la convierte en algo visible, memorable y comercialmente útil.",
+                                    className="mb-4 mb-lg-0",
                                     style={
                                         "color": "#667085",
                                         "lineHeight": "1.9",
@@ -709,21 +699,15 @@ positioning_section = html.Section(
                                     },
                                 ),
                             ],
-                            lg=8,
+                            lg=7,
                             className="mb-4 mb-lg-0",
                         ),
                         dbc.Col(
-                            html.Div(
-                                [
-                                    html.Div("✔ Atención cercana y profesional", className="mb-3 fw-semibold"),
-                                    html.Div("✔ Trayectoria consolidada", className="mb-3 fw-semibold"),
-                                    html.Div("✔ Servicios bien definidos", className="mb-3 fw-semibold"),
-                                    html.Div("✔ Contacto visible y sencillo", className="fw-semibold"),
-                                ],
-                                style={"color": "#344054", "fontSize": "1rem"},
-                            ),
-                            lg=4,
-                            className="d-flex align-items-center",
+                            [
+                                list_check(text) for text in SERVICIO_DESTACADO
+                            ],
+                            lg=5,
+                            className="d-flex flex-column justify-content-center",
                         ),
                     ]
                 )
@@ -732,36 +716,36 @@ positioning_section = html.Section(
             style={
                 "borderRadius": "30px",
                 "background": "linear-gradient(135deg, #ffffff 0%, #f8fbff 100%)",
-                "boxShadow": "0 24px 60px rgba(16, 24, 40, 0.08)",
+                "boxShadow": "0 24px 62px rgba(16, 24, 40, 0.08)",
             },
         )
     ),
-    style={"paddingBottom": "4.5rem"},
+    style={"paddingBottom": "4.8rem"},
 )
 
 process_section = html.Section(
     dbc.Container(
         [
-            section_kicker("Proceso"),
+            section_tag("Proceso"),
             dbc.Row(
                 [
                     dbc.Col(
                         html.H2(
-                            "Una experiencia sencilla y elegante también ayuda a vender mejor",
+                            "Una experiencia simple y elegante ayuda a reducir fricción y a generar más contacto",
                             className="fw-bold mb-4",
                             style={
-                                "fontSize": "clamp(2rem, 3.3vw, 2.9rem)",
+                                "fontSize": "clamp(2rem, 3.35vw, 3rem)",
                                 "lineHeight": "1.04",
                                 "letterSpacing": "-0.05em",
                                 "color": "#101828",
-                                "maxWidth": "760px",
+                                "maxWidth": "780px",
                             },
                         ),
                         lg=7,
                     ),
                     dbc.Col(
                         html.P(
-                            "Explicar el proceso reduce fricción y da sensación de orden. Eso facilita mucho que el visitante dé el paso.",
+                            "Cuando el proceso se entiende rápido, el visitante siente menos distancia y más confianza para dar el paso.",
                             className="mb-4 mb-lg-0",
                             style={
                                 "color": "#667085",
@@ -775,18 +759,18 @@ process_section = html.Section(
                 ],
                 className="mb-3",
             ),
-            dbc.Row([process_item(p["numero"], p["titulo"], p["texto"]) for p in PROCESO]),
+            dbc.Row([process_card(p["numero"], p["titulo"], p["texto"]) for p in PROCESO]),
         ]
     ),
-    style={"paddingTop": "4.5rem", "paddingBottom": "4.5rem"},
+    style={"paddingTop": "4.6rem", "paddingBottom": "4.6rem"},
 )
 
 testimonials_section = html.Section(
     dbc.Container(
         [
-            section_kicker("Opiniones"),
+            section_tag("Opiniones"),
             html.H2(
-                "La confianza aumenta muchísimo cuando se apoya en testimonios reales",
+                "La confianza aumenta mucho cuando la imagen se apoya en testimonios reales",
                 className="fw-bold mb-3",
                 style={
                     "fontSize": "clamp(2rem, 3.2vw, 3rem)",
@@ -797,7 +781,7 @@ testimonials_section = html.Section(
                 },
             ),
             html.P(
-                "En la versión final conviene sustituir estos textos por reseñas reales de Google o testimonios auténticos del despacho.",
+                "En la versión final sustituiría estos ejemplos por reseñas reales de Google o testimonios auténticos del despacho.",
                 className="mb-5",
                 style={
                     "color": "#667085",
@@ -809,8 +793,8 @@ testimonials_section = html.Section(
         ]
     ),
     style={
-        "paddingTop": "4.5rem",
-        "paddingBottom": "4.5rem",
+        "paddingTop": "4.6rem",
+        "paddingBottom": "4.6rem",
         "background": "#f8fafc",
     },
 )
@@ -818,12 +802,12 @@ testimonials_section = html.Section(
 seo_section = html.Section(
     dbc.Container(
         [
-            section_kicker("SEO local"),
+            section_tag("SEO local"),
             html.H2(
                 "Gestoría en Ávila con enfoque fiscal, laboral, contable y administrativo",
                 className="fw-bold mb-3",
                 style={
-                    "fontSize": "clamp(1.95rem, 3vw, 2.6rem)",
+                    "fontSize": "clamp(1.95rem, 3vw, 2.65rem)",
                     "lineHeight": "1.06",
                     "letterSpacing": "-0.04em",
                     "color": "#101828",
@@ -831,7 +815,7 @@ seo_section = html.Section(
                 },
             ),
             html.P(
-                "Esta home está pensada para reforzar búsquedas como gestoría en Ávila, asesoría fiscal en Ávila, asesoría laboral en Ávila, gestoría para autónomos en Ávila o asesoría contable en Ávila. Al mismo tiempo, mejora bastante la conversión al explicar mejor qué hace el despacho, a quién ayuda y cómo contactar.",
+                "Esta home está pensada para apoyar búsquedas como gestoría en Ávila, asesoría fiscal en Ávila, asesoría laboral en Ávila, gestoría para autónomos en Ávila o asesoría contable en Ávila. Además, mejora mucho la percepción del despacho al explicar mejor qué hace, a quién ayuda y cómo contactar.",
                 className="mb-0",
                 style={
                     "color": "#667085",
@@ -841,13 +825,13 @@ seo_section = html.Section(
             ),
         ]
     ),
-    style={"paddingTop": "4.5rem", "paddingBottom": "4.5rem"},
+    style={"paddingTop": "4.6rem", "paddingBottom": "4.6rem"},
 )
 
 faq_section = html.Section(
     dbc.Container(
         [
-            section_kicker("Preguntas frecuentes"),
+            section_tag("Preguntas frecuentes"),
             html.H2(
                 "Dudas habituales antes de contactar con una gestoría",
                 className="fw-bold mb-4",
@@ -876,8 +860,8 @@ faq_section = html.Section(
         ]
     ),
     style={
-        "paddingTop": "4.5rem",
-        "paddingBottom": "4.5rem",
+        "paddingTop": "4.6rem",
+        "paddingBottom": "4.6rem",
         "background": "#f8fafc",
     },
 )
@@ -887,24 +871,24 @@ cta_section = html.Section(
         dbc.Card(
             dbc.CardBody(
                 [
-                    section_kicker("Contacto"),
+                    section_tag("Contacto"),
                     dbc.Row(
                         [
                             dbc.Col(
                                 [
                                     html.H2(
-                                        "Una mejor imagen digital suele traer más llamadas y más contactos",
+                                        "Una mejor imagen digital suele traducirse en más llamadas y más contactos",
                                         className="fw-bold mb-3",
                                         style={
-                                            "fontSize": "clamp(2rem, 3.4vw, 3rem)",
+                                            "fontSize": "clamp(2rem, 3.45vw, 3rem)",
                                             "lineHeight": "1.03",
                                             "letterSpacing": "-0.05em",
                                             "color": "#101828",
-                                            "maxWidth": "760px",
+                                            "maxWidth": "780px",
                                         },
                                     ),
                                     html.P(
-                                        "Esta demo está construida para que el visitante entienda rápido qué hacéis, por qué confiar y cómo contactar sin fricción.",
+                                        "Esta demo está pensada para que el visitante entienda rápido el valor del despacho y vea fácil el siguiente paso.",
                                         className="mb-0",
                                         style={
                                             "color": "#667085",
@@ -955,12 +939,16 @@ cta_section = html.Section(
             style={
                 "borderRadius": "30px",
                 "background": "linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%)",
-                "boxShadow": "0 24px 70px rgba(16, 24, 40, 0.10)",
+                "boxShadow": "0 26px 76px rgba(16, 24, 40, 0.10)",
             },
         )
     ),
     id="contacto",
-    style={"paddingTop": "2rem", "paddingBottom": "5rem"},
+    style={
+        "paddingTop": "2rem",
+        "paddingBottom": "5rem",
+        "scrollMarginTop": "120px",
+    },
 )
 
 footer_section = html.Footer(
@@ -1028,12 +1016,11 @@ floating_whatsapp = html.A(
 
 layout = html.Div(
     [
-        top_strip,
         hero_section,
         stats_section,
         services_section,
-        benefits_section,
-        positioning_section,
+        pillars_section,
+        featured_section,
         process_section,
         testimonials_section,
         seo_section,
