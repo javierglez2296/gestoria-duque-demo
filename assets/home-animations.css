@@ -1,19 +1,30 @@
 /* =========================================================
-   HOME ANIMATIONS · PREMIUM
+   HOME ANIMATIONS · PREMIUM FULL
+   Pensado para:
+   - page-shell / page-loaded
+   - hero-content reconstruido por slide
+   - clases reveal / reveal-up / section-fade
    ========================================================= */
 
-/* ---------- Base ---------- */
+/* =========================
+   VARIABLES
+   ========================= */
 :root {
     --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
-    --shadow-premium: 0 24px 70px rgba(16, 24, 40, 0.10);
-    --shadow-premium-strong: 0 34px 90px rgba(16, 24, 40, 0.16);
+
+    --shadow-soft: 0 18px 44px rgba(16, 24, 40, 0.06);
+    --shadow-medium: 0 24px 60px rgba(16, 24, 40, 0.10);
+    --shadow-strong: 0 32px 90px rgba(16, 24, 40, 0.16);
     --shadow-button: 0 16px 34px rgba(16, 24, 40, 0.14);
-    --border-soft: rgba(255, 255, 255, 0.14);
-    --blur-soft: blur(10px);
+
+    --blur-enter: 10px;
+    --radius-soft: 24px;
 }
 
-/* Mejor render visual */
+/* =========================
+   BASE
+   ========================= */
 html {
     scroll-behavior: smooth;
 }
@@ -24,101 +35,61 @@ body {
     -moz-osx-font-smoothing: grayscale;
 }
 
-/* ---------- Estados iniciales de entrada ---------- */
-.page-shell .reveal,
-.page-shell .reveal-up,
-.page-shell .reveal-left,
-.page-shell .reveal-right,
+h1, h2, h3 {
+    text-wrap: balance;
+}
+
+p {
+    text-wrap: pretty;
+}
+
+/* =========================
+   ENTRADA GLOBAL DE PÁGINA
+   ========================= */
 .page-shell .section-fade,
-.page-shell .hero-content-animate .reveal {
+.page-shell .reveal-up {
     opacity: 0;
+    transform: translateY(30px);
+    filter: blur(10px);
     will-change: transform, opacity, filter;
 }
 
-.page-shell .reveal,
-.page-shell .hero-content-animate .reveal {
-    transform: translateY(28px) scale(0.985);
-    filter: blur(10px);
-}
-
-.page-shell .reveal-up {
-    transform: translateY(34px);
-    filter: blur(10px);
-}
-
-.page-shell .reveal-left {
-    transform: translateX(-32px);
-    filter: blur(10px);
-}
-
-.page-shell .reveal-right {
-    transform: translateX(32px);
-    filter: blur(10px);
-}
-
-.page-shell .section-fade {
-    transform: translateY(40px);
-    filter: blur(12px);
-}
-
-/* ---------- Estado cargado ---------- */
-.page-shell.page-loaded .reveal,
-.page-shell.page-loaded .reveal-up,
-.page-shell.page-loaded .reveal-left,
-.page-shell.page-loaded .reveal-right,
 .page-shell.page-loaded .section-fade,
-.page-shell.page-loaded .hero-content-animate .reveal {
+.page-shell.page-loaded .reveal-up {
     opacity: 1;
-    transform: translate(0, 0) scale(1);
+    transform: translateY(0);
     filter: blur(0);
 }
 
-/* ---------- Timing principal ---------- */
-.reveal {
+.section-fade {
     transition:
         opacity 1s var(--ease-premium),
         transform 1s var(--ease-premium),
         filter 1s var(--ease-premium);
 }
 
-.reveal-up,
-.reveal-left,
-.reveal-right {
+.reveal-up {
     transition:
-        opacity 0.95s var(--ease-premium),
-        transform 0.95s var(--ease-premium),
-        filter 0.95s var(--ease-premium);
+        opacity 0.85s var(--ease-premium),
+        transform 0.85s var(--ease-premium),
+        filter 0.85s var(--ease-premium);
+    transition-delay: 0.10s;
 }
 
-.section-fade {
-    transition:
-        opacity 1.15s var(--ease-premium),
-        transform 1.15s var(--ease-premium),
-        filter 1.15s var(--ease-premium);
-}
-
-/* ---------- Stagger ---------- */
-.reveal-1 { transition-delay: 0.08s; }
-.reveal-2 { transition-delay: 0.16s; }
-.reveal-3 { transition-delay: 0.24s; }
-.reveal-4 { transition-delay: 0.32s; }
-.reveal-5 { transition-delay: 0.40s; }
-.reveal-6 { transition-delay: 0.48s; }
-.reveal-7 { transition-delay: 0.56s; }
-.reveal-8 { transition-delay: 0.64s; }
-
-/* ---------- Hero background ---------- */
+/* =========================
+   HERO BACKGROUND
+   ========================= */
 #hero-background {
     will-change: transform, opacity, filter;
-    animation: heroZoomSoft 8s var(--ease-soft) both;
-    backface-visibility: hidden;
     transform-origin: center center;
+    backface-visibility: hidden;
+    animation: heroZoomSoft 1.4s var(--ease-premium) both;
 }
 
 @keyframes heroZoomSoft {
     0% {
         transform: scale(1.075);
-        opacity: 0.80;
+        opacity: 0.82;
         filter: saturate(0.94);
     }
     100% {
@@ -128,11 +99,11 @@ body {
     }
 }
 
-/* Sutil respiración del fondo del hero */
+/* respiración lenta del fondo */
 .page-shell.page-loaded #hero-background {
     animation:
-        heroZoomSoft 1.6s var(--ease-premium) both,
-        heroFloatSlow 18s ease-in-out 1.8s infinite alternate;
+        heroZoomSoft 1.4s var(--ease-premium) both,
+        heroFloatSlow 18s ease-in-out 1.5s infinite alternate;
 }
 
 @keyframes heroFloatSlow {
@@ -144,10 +115,17 @@ body {
     }
 }
 
-/* ---------- Contenido del hero ---------- */
+/* =========================
+   HERO CONTENT ANIMADO
+   ESTA ES LA PARTE CLAVE
+   ========================= */
 .hero-content-animate .reveal {
-    animation: heroContentIn 1s var(--ease-premium);
+    opacity: 0;
+    animation-name: heroContentIn;
+    animation-duration: 0.95s;
+    animation-timing-function: var(--ease-premium);
     animation-fill-mode: both;
+    will-change: transform, opacity, filter;
 }
 
 @keyframes heroContentIn {
@@ -163,33 +141,37 @@ body {
     }
 }
 
-/* Títulos premium */
+/* Delays escalonados del hero */
+.hero-content-animate .reveal-1 { animation-delay: 0.08s; }
+.hero-content-animate .reveal-2 { animation-delay: 0.16s; }
+.hero-content-animate .reveal-3 { animation-delay: 0.24s; }
+.hero-content-animate .reveal-4 { animation-delay: 0.32s; }
+.hero-content-animate .reveal-5 { animation-delay: 0.40s; }
+.hero-content-animate .reveal-6 { animation-delay: 0.48s; }
+.hero-content-animate .reveal-7 { animation-delay: 0.56s; }
+.hero-content-animate .reveal-8 { animation-delay: 0.64s; }
+
+/* =========================
+   HERO TIPOGRAFÍA Y DETALLE
+   ========================= */
 #hero-title {
     will-change: transform, opacity;
-    text-wrap: balance;
 }
 
-/* Texto con ancho cómodo */
 #hero-text {
-    text-wrap: pretty;
-}
-
-/* ---------- Chips / elementos glass ---------- */
-#hero-eyebrow,
-#hero-indicators button,
-[class*="glass"],
-.hero-glass,
-span[style*="backdropFilter"] {
-    backface-visibility: hidden;
+    will-change: transform, opacity;
 }
 
 #hero-eyebrow {
     box-shadow:
         inset 0 1px 0 rgba(255,255,255,0.10),
         0 12px 30px rgba(0,0,0,0.10);
+    backface-visibility: hidden;
 }
 
-/* ---------- Indicadores del slider ---------- */
+/* =========================
+   INDICADORES SLIDER
+   ========================= */
 #hero-indicators button {
     transition:
         width 0.28s var(--ease-soft),
@@ -197,6 +179,7 @@ span[style*="backdropFilter"] {
         background-color 0.28s var(--ease-soft),
         transform 0.28s var(--ease-soft),
         box-shadow 0.28s var(--ease-soft);
+    backface-visibility: hidden;
 }
 
 #hero-indicators button:hover {
@@ -204,7 +187,9 @@ span[style*="backdropFilter"] {
     box-shadow: 0 8px 18px rgba(255,255,255,0.12);
 }
 
-/* ---------- Flechas del hero ---------- */
+/* =========================
+   FLECHAS HERO
+   ========================= */
 #hero-prev,
 #hero-next {
     transition:
@@ -229,23 +214,16 @@ span[style*="backdropFilter"] {
     transform: translateY(0) scale(0.98);
 }
 
-/* ---------- Secciones ---------- */
-section {
-    position: relative;
-}
-
-.section-fade {
-    isolation: isolate;
-}
-
-/* ---------- Tarjetas ---------- */
+/* =========================
+   TARJETAS
+   ========================= */
 .card {
     transition:
-        transform 0.42s var(--ease-soft),
-        box-shadow 0.42s var(--ease-soft),
-        border-color 0.42s var(--ease-soft),
-        background 0.42s var(--ease-soft),
-        filter 0.42s var(--ease-soft);
+        transform 0.38s var(--ease-soft),
+        box-shadow 0.38s var(--ease-soft),
+        border-color 0.38s var(--ease-soft),
+        background 0.38s var(--ease-soft),
+        filter 0.38s var(--ease-soft);
     backface-visibility: hidden;
     transform: translateZ(0);
 }
@@ -254,28 +232,30 @@ section {
 .section-fade .card,
 .card.reveal-up {
     transition:
-        transform 0.42s var(--ease-soft),
-        box-shadow 0.42s var(--ease-soft),
-        border-color 0.42s var(--ease-soft),
-        background 0.42s var(--ease-soft),
-        filter 0.42s var(--ease-soft);
+        transform 0.38s var(--ease-soft),
+        box-shadow 0.38s var(--ease-soft),
+        border-color 0.38s var(--ease-soft),
+        background 0.38s var(--ease-soft),
+        filter 0.38s var(--ease-soft);
 }
 
 .reveal-up .card:hover,
 .section-fade .card:hover,
 .card.reveal-up:hover {
     transform: translateY(-8px);
-    box-shadow: var(--shadow-premium) !important;
+    box-shadow: var(--shadow-medium) !important;
     filter: saturate(1.02);
 }
 
-/* Tarjetas del hero más potentes */
-#hero-background + div + div + .container .card,
-section .card[style*="backdropFilter"] {
-    box-shadow: var(--shadow-premium-strong);
+/* tarjeta fuerte del hero */
+section .card[style*="backdropFilter"],
+section .card[style*="WebkitBackdropFilter"] {
+    box-shadow: var(--shadow-strong);
 }
 
-/* ---------- Botones ---------- */
+/* =========================
+   BOTONES
+   ========================= */
 .btn,
 button {
     transition:
@@ -295,7 +275,6 @@ button {
     transform: translateY(0) scale(0.985);
 }
 
-/* Botones principales más “caros” */
 .btn-primary,
 .btn-dark,
 .btn-success {
@@ -308,7 +287,9 @@ button {
     box-shadow: 0 20px 44px rgba(16, 24, 40, 0.18);
 }
 
-/* ---------- Links ---------- */
+/* =========================
+   LINKS
+   ========================= */
 a {
     transition:
         opacity 0.25s ease,
@@ -320,7 +301,9 @@ a:hover {
     opacity: 0.96;
 }
 
-/* ---------- WhatsApp flotante ---------- */
+/* =========================
+   WHATSAPP FLOTANTE
+   ========================= */
 a[href*="wa.me"] {
     transition:
         transform 0.30s var(--ease-soft),
@@ -340,7 +323,9 @@ a[href*="wa.me"]:active {
     transform: translateY(0) scale(0.985);
 }
 
-/* ---------- Accordion ---------- */
+/* =========================
+   ACCORDION
+   ========================= */
 .accordion-item {
     transition:
         transform 0.32s var(--ease-soft),
@@ -360,16 +345,14 @@ a[href*="wa.me"]:active {
         box-shadow 0.28s ease;
 }
 
-/* ---------- Microdetalles premium ---------- */
-h1, h2, h3 {
-    text-wrap: balance;
+/* =========================
+   GLOW SUAVE DE SECCIONES
+   ========================= */
+.section-fade {
+    position: relative;
+    isolation: isolate;
 }
 
-p {
-    text-wrap: pretty;
-}
-
-/* Pequeño brillo atmosférico para bloques premium */
 .section-fade::before {
     content: "";
     position: absolute;
@@ -377,34 +360,38 @@ p {
     width: 220px;
     height: 220px;
     border-radius: 999px;
-    background: radial-gradient(circle, rgba(13,110,253,0.05) 0%, rgba(13,110,253,0.00) 70%);
+    background: radial-gradient(
+        circle,
+        rgba(13, 110, 253, 0.05) 0%,
+        rgba(13, 110, 253, 0.00) 70%
+    );
     filter: blur(24px);
     pointer-events: none;
     z-index: -1;
-    opacity: 0.6;
+    opacity: 0.60;
 }
 
-/* Evitar exceso en secciones con fondo muy claro */
 footer.section-fade::before,
 #contacto.section-fade::before {
     opacity: 0.35;
 }
 
-/* ---------- Responsive ---------- */
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media (max-width: 991.98px) {
-    .reveal,
-    .reveal-up,
-    .reveal-left,
-    .reveal-right,
     .section-fade {
-        transition-duration: 0.82s;
+        transition-duration: 0.88s;
+    }
+
+    .reveal-up {
+        transition-duration: 0.78s;
     }
 
     #hero-background {
-        animation-duration: 6.5s;
+        animation-duration: 1.2s;
     }
 
-    .card:hover,
     .reveal-up .card:hover,
     .section-fade .card:hover,
     .card.reveal-up:hover {
@@ -413,45 +400,34 @@ footer.section-fade::before,
 }
 
 @media (max-width: 767.98px) {
-    .page-shell .reveal,
-    .page-shell .reveal-up,
-    .page-shell .reveal-left,
-    .page-shell .reveal-right,
     .page-shell .section-fade,
-    .page-shell .hero-content-animate .reveal {
+    .page-shell .reveal-up {
         filter: blur(7px);
     }
 
-    .reveal-1 { transition-delay: 0.04s; }
-    .reveal-2 { transition-delay: 0.10s; }
-    .reveal-3 { transition-delay: 0.16s; }
-    .reveal-4 { transition-delay: 0.22s; }
-    .reveal-5 { transition-delay: 0.28s; }
-    .reveal-6 { transition-delay: 0.34s; }
+    .hero-content-animate .reveal-1 { animation-delay: 0.04s; }
+    .hero-content-animate .reveal-2 { animation-delay: 0.10s; }
+    .hero-content-animate .reveal-3 { animation-delay: 0.16s; }
+    .hero-content-animate .reveal-4 { animation-delay: 0.22s; }
+    .hero-content-animate .reveal-5 { animation-delay: 0.28s; }
+    .hero-content-animate .reveal-6 { animation-delay: 0.34s; }
 
     a[href*="wa.me"] {
         box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18) !important;
     }
 }
 
-/* ---------- Reduced motion ---------- */
+/* =========================
+   REDUCED MOTION
+   ========================= */
 @media (prefers-reduced-motion: reduce) {
     html {
         scroll-behavior: auto;
     }
 
-    .page-shell .reveal,
-    .page-shell .reveal-up,
-    .page-shell .reveal-left,
-    .page-shell .reveal-right,
     .page-shell .section-fade,
-    .page-shell .hero-content-animate .reveal,
-    .page-shell.page-loaded .reveal,
-    .page-shell.page-loaded .reveal-up,
-    .page-shell.page-loaded .reveal-left,
-    .page-shell.page-loaded .reveal-right,
-    .page-shell.page-loaded .section-fade,
-    .page-shell.page-loaded .hero-content-animate .reveal,
+    .page-shell .reveal-up,
+    .hero-content-animate .reveal,
     #hero-background,
     .card,
     .btn,
