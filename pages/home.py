@@ -1,5 +1,5 @@
 import dash
-from dash import html
+from dash import html, dcc, Input, Output, State, callback
 import dash_bootstrap_components as dbc
 
 dash.register_page(
@@ -18,6 +18,27 @@ TELEFONO_2 = "620 000 000"
 EMAIL = "info@gestoriaduque.com"
 DIRECCION = "Paseo de San Roque 00, 05003 Ávila"
 WHATSAPP_URL = "https://wa.me/34620000000"
+
+HERO_SLIDES = [
+    {
+        "eyebrow": "GESTORÍA EN ÁVILA · FISCAL · LABORAL · CONTABLE",
+        "title": "Gestoría en Ávila para autónomos, empresas y particulares",
+        "text": "Asesoría fiscal, laboral, contable y trámites con atención clara, cercana y profesional.",
+        "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80",
+    },
+    {
+        "eyebrow": "MÁS DE 70 AÑOS DE EXPERIENCIA",
+        "title": "Experiencia, orden y confianza para tu gestión",
+        "text": "Una propuesta moderna para un despacho con trayectoria, cercanía y capacidad real de ayudar.",
+        "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80",
+    },
+    {
+        "eyebrow": "DESPACHO LOCAL · ATENCIÓN DIRECTA",
+        "title": "Tu tranquilidad, nuestra prioridad",
+        "text": "Haz que la web transmita mejor lo que ya aporta la gestoría: claridad, servicio y confianza.",
+        "image": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1800&q=80",
+    },
+]
 
 SERVICIOS = [
     {
@@ -145,14 +166,14 @@ def glass_chip(text):
         style={
             "padding": "0.75rem 1rem",
             "borderRadius": "999px",
-            "background": "rgba(255,255,255,0.72)",
-            "border": "1px solid rgba(15, 23, 42, 0.08)",
-            "color": "#344054",
+            "background": "rgba(255,255,255,0.16)",
+            "border": "1px solid rgba(255,255,255,0.18)",
+            "color": "white",
             "fontWeight": "600",
             "fontSize": "0.93rem",
             "backdropFilter": "blur(10px)",
             "WebkitBackdropFilter": "blur(10px)",
-            "boxShadow": "0 10px 24px rgba(16, 24, 40, 0.04)",
+            "boxShadow": "0 10px 24px rgba(0, 0, 0, 0.08)",
         },
     )
 
@@ -185,7 +206,7 @@ def stat_card(value, label):
             className="border-0 h-100",
             style={
                 "borderRadius": "24px",
-                "background": "rgba(255,255,255,0.88)",
+                "background": "rgba(255,255,255,0.92)",
                 "boxShadow": "0 18px 44px rgba(16, 24, 40, 0.06)",
             },
         ),
@@ -237,7 +258,7 @@ def service_card(icono, titulo, texto):
             className="border-0 h-100",
             style={
                 "borderRadius": "26px",
-                "background": "rgba(255,255,255,0.9)",
+                "background": "rgba(255,255,255,0.96)",
                 "boxShadow": "0 18px 46px rgba(16, 24, 40, 0.06)",
             },
         ),
@@ -390,181 +411,369 @@ def testimonial_card(nombre, texto):
     )
 
 
-hero_section = html.Section(
-    dbc.Container(
+def hero_indicator(index, active=False):
+    return html.Button(
+        id={"type": "hero-indicator", "index": index},
+        n_clicks=0,
+        style={
+            "width": "10px",
+            "height": "10px",
+            "borderRadius": "999px",
+            "border": "none",
+            "padding": "0",
+            "marginRight": "10px",
+            "background": "#ffffff" if active else "rgba(255,255,255,0.35)",
+            "transition": "all 0.25s ease",
+            "cursor": "pointer",
+        },
+    )
+
+
+def build_hero():
+    slide = HERO_SLIDES[0]
+
+    return html.Section(
         [
-            dbc.Row(
-                [
-                    dbc.Col(
-                        [
-                            html.Div(
-                                "GESTORÍA EN ÁVILA · FISCAL · LABORAL · CONTABLE · TRÁMITES",
-                                className="mb-4",
-                                style={
-                                    "display": "inline-flex",
-                                    "alignItems": "center",
-                                    "padding": "0.72rem 1rem",
-                                    "borderRadius": "999px",
-                                    "background": "rgba(255,255,255,0.8)",
-                                    "border": "1px solid rgba(15, 23, 42, 0.08)",
-                                    "fontWeight": "700",
-                                    "fontSize": "0.78rem",
-                                    "letterSpacing": "0.08em",
-                                    "color": "#0d6efd",
-                                    "boxShadow": "0 8px 22px rgba(16, 24, 40, 0.04)",
-                                },
-                            ),
-                            html.H1(
-                                "Una gestoría con imagen actual, sólida y preparada para transmitir confianza en segundos",
-                                className="fw-bold mb-4",
-                                style={
-                                    "fontSize": "clamp(2.9rem, 5.3vw, 5.5rem)",
-                                    "lineHeight": "0.96",
-                                    "letterSpacing": "-0.07em",
-                                    "color": "#101828",
-                                    "maxWidth": "900px",
-                                },
-                            ),
-                            html.P(
-                                "Esta versión de home está diseñada para que el despacho se perciba mucho más moderno, más profesional y más fiable. "
-                                "Menos aspecto de gestoría clásica. Más sensación de firma sólida y actual.",
-                                className="mb-4",
-                                style={
-                                    "fontSize": "1.08rem",
-                                    "lineHeight": "1.95",
-                                    "color": "#475467",
-                                    "maxWidth": "740px",
-                                },
-                            ),
-                            html.Div(
-                                [
-                                    glass_chip("Más de 70 años de experiencia"),
-                                    glass_chip("Despacho local en Ávila"),
-                                    glass_chip("Asesoría integral"),
-                                    glass_chip("Atención clara y cercana"),
-                                ],
-                                className="mb-4",
-                            ),
-                            html.Div(
-                                [
-                                    dbc.Button(
-                                        "Llamar ahora",
-                                        href=f"tel:{TELEFONO_1.replace(' ', '')}",
-                                        color="primary",
-                                        className="rounded-pill fw-bold me-2 mb-2",
-                                        style={
-                                            "padding": "1rem 1.6rem",
-                                            "minHeight": "58px",
-                                            "fontSize": "1rem",
-                                            "boxShadow": "0 14px 34px rgba(13, 110, 253, 0.22)",
-                                        },
-                                    ),
-                                    dbc.Button(
-                                        "WhatsApp",
-                                        href=WHATSAPP_URL,
-                                        target="_blank",
-                                        color="light",
-                                        className="rounded-pill fw-semibold border me-2 mb-2",
-                                        style={
-                                            "padding": "1rem 1.6rem",
-                                            "minHeight": "58px",
-                                            "fontSize": "1rem",
-                                            "background": "rgba(255,255,255,0.82)",
-                                        },
-                                    ),
-                                    dbc.Button(
-                                        "Enviar email",
-                                        href=f"mailto:{EMAIL}",
-                                        color="link",
-                                        className="fw-semibold text-decoration-none mb-2",
-                                        style={
-                                            "padding": "1rem 1rem",
-                                            "minHeight": "58px",
-                                            "fontSize": "1rem",
-                                            "color": "#101828",
-                                        },
-                                    ),
-                                ]
-                            ),
-                        ],
-                        lg=7,
-                        className="mb-5 mb-lg-0",
+            dcc.Store(id="hero-slide-index", data=0),
+            dcc.Interval(id="hero-autoplay", interval=5000, n_intervals=0),
+
+            html.Div(
+                id="hero-background",
+                style={
+                    "position": "absolute",
+                    "inset": "0",
+                    "backgroundImage": f"url('{slide['image']}')",
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center",
+                    "transition": "background-image 0.6s ease-in-out",
+                    "transform": "scale(1.02)",
+                },
+            ),
+
+            html.Div(
+                style={
+                    "position": "absolute",
+                    "inset": "0",
+                    "background": (
+                        "linear-gradient(90deg, rgba(3, 7, 18, 0.82) 0%, "
+                        "rgba(3, 7, 18, 0.62) 42%, rgba(3, 7, 18, 0.38) 100%)"
                     ),
-                    dbc.Col(
-                        dbc.Card(
-                            dbc.CardBody(
-                                [
-                                    html.Div(
-                                        "Despacho local · confianza directa",
-                                        className="mb-3 fw-bold",
-                                        style={
-                                            "fontSize": "0.78rem",
-                                            "letterSpacing": "0.14em",
-                                            "textTransform": "uppercase",
-                                            "color": "#0d6efd",
-                                        },
-                                    ),
-                                    html.H2(
-                                        "Un bloque de contacto más elegante genera mejor sensación de marca",
-                                        className="fw-bold mb-4",
-                                        style={
-                                            "fontSize": "1.78rem",
-                                            "lineHeight": "1.08",
-                                            "letterSpacing": "-0.04em",
-                                            "color": "#101828",
-                                        },
-                                    ),
-                                    html.Div("📞 Teléfono", className="fw-semibold mb-1", style={"color": "#101828"}),
-                                    html.Div(TELEFONO_1, className="mb-3", style={"color": "#667085"}),
-                                    html.Div("📱 Móvil", className="fw-semibold mb-1", style={"color": "#101828"}),
-                                    html.Div(TELEFONO_2, className="mb-3", style={"color": "#667085"}),
-                                    html.Div("✉️ Email", className="fw-semibold mb-1", style={"color": "#101828"}),
-                                    html.Div(EMAIL, className="mb-3", style={"color": "#667085"}),
-                                    html.Div("📍 Dirección", className="fw-semibold mb-1", style={"color": "#101828"}),
-                                    html.Div(DIRECCION, className="mb-4", style={"color": "#667085", "lineHeight": "1.7"}),
-                                    dbc.Button(
-                                        "Solicitar información",
-                                        href=f"mailto:{EMAIL}",
-                                        color="primary",
-                                        className="w-100 rounded-pill fw-bold mb-2",
-                                        style={"padding": "1rem 1.2rem", "minHeight": "54px"},
-                                    ),
-                                    dbc.Button(
-                                        "Contactar por WhatsApp",
-                                        href=WHATSAPP_URL,
-                                        target="_blank",
-                                        color="success",
-                                        className="w-100 rounded-pill fw-semibold",
-                                        style={"padding": "1rem 1.2rem", "minHeight": "54px"},
-                                    ),
-                                ]
-                            ),
-                            className="border-0",
-                            style={
-                                "borderRadius": "30px",
-                                "background": "rgba(255,255,255,0.84)",
-                                "boxShadow": "0 28px 80px rgba(16, 24, 40, 0.10)",
-                                "backdropFilter": "blur(12px)",
-                                "WebkitBackdropFilter": "blur(12px)",
-                            },
+                }
+            ),
+
+            html.Div(
+                style={
+                    "position": "absolute",
+                    "top": "-120px",
+                    "right": "-120px",
+                    "width": "340px",
+                    "height": "340px",
+                    "borderRadius": "999px",
+                    "background": "rgba(13, 110, 253, 0.16)",
+                    "filter": "blur(40px)",
+                    "zIndex": "1",
+                }
+            ),
+
+            dbc.Container(
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            [
+                                html.Div(
+                                    id="hero-eyebrow",
+                                    children=slide["eyebrow"],
+                                    className="mb-4",
+                                    style={
+                                        "display": "inline-flex",
+                                        "alignItems": "center",
+                                        "padding": "0.72rem 1rem",
+                                        "borderRadius": "999px",
+                                        "background": "rgba(255,255,255,0.10)",
+                                        "border": "1px solid rgba(255,255,255,0.18)",
+                                        "backdropFilter": "blur(8px)",
+                                        "WebkitBackdropFilter": "blur(8px)",
+                                        "fontWeight": "700",
+                                        "fontSize": "0.78rem",
+                                        "letterSpacing": "0.08em",
+                                        "color": "white",
+                                    },
+                                ),
+                                html.H1(
+                                    id="hero-title",
+                                    children=slide["title"],
+                                    className="fw-bold mb-4",
+                                    style={
+                                        "fontSize": "clamp(2.9rem, 5vw, 5.5rem)",
+                                        "lineHeight": "0.95",
+                                        "letterSpacing": "-0.07em",
+                                        "color": "white",
+                                        "maxWidth": "900px",
+                                    },
+                                ),
+                                html.P(
+                                    id="hero-text",
+                                    children=slide["text"],
+                                    className="mb-4",
+                                    style={
+                                        "fontSize": "1.08rem",
+                                        "lineHeight": "1.95",
+                                        "color": "rgba(255,255,255,0.88)",
+                                        "maxWidth": "740px",
+                                    },
+                                ),
+                                html.Div(
+                                    [
+                                        glass_chip("Más de 70 años de experiencia"),
+                                        glass_chip("Despacho local en Ávila"),
+                                        glass_chip("Atención clara y cercana"),
+                                    ],
+                                    className="mb-4",
+                                ),
+                                html.Div(
+                                    [
+                                        dbc.Button(
+                                            "Llamar ahora",
+                                            href=f"tel:{TELEFONO_1.replace(' ', '')}",
+                                            color="primary",
+                                            className="rounded-pill fw-bold me-2 mb-2",
+                                            style={
+                                                "padding": "1rem 1.6rem",
+                                                "minHeight": "58px",
+                                                "fontSize": "1rem",
+                                                "boxShadow": "0 14px 34px rgba(13, 110, 253, 0.22)",
+                                            },
+                                        ),
+                                        dbc.Button(
+                                            "WhatsApp",
+                                            href=WHATSAPP_URL,
+                                            target="_blank",
+                                            color="light",
+                                            className="rounded-pill fw-semibold border me-2 mb-2",
+                                            style={
+                                                "padding": "1rem 1.6rem",
+                                                "minHeight": "58px",
+                                                "fontSize": "1rem",
+                                                "background": "rgba(255,255,255,0.92)",
+                                            },
+                                        ),
+                                        dbc.Button(
+                                            "Enviar email",
+                                            href=f"mailto:{EMAIL}",
+                                            color="link",
+                                            className="fw-semibold text-decoration-none mb-2",
+                                            style={
+                                                "padding": "1rem 1rem",
+                                                "minHeight": "58px",
+                                                "fontSize": "1rem",
+                                                "color": "white",
+                                            },
+                                        ),
+                                    ],
+                                    className="mb-4",
+                                ),
+                                html.Div(
+                                    id="hero-indicators",
+                                    children=[
+                                        hero_indicator(i, active=(i == 0))
+                                        for i in range(len(HERO_SLIDES))
+                                    ],
+                                    style={
+                                        "display": "flex",
+                                        "alignItems": "center",
+                                        "marginTop": "0.5rem",
+                                    },
+                                ),
+                            ],
+                            lg=7,
+                            className="mb-5 mb-lg-0",
                         ),
-                        lg=5,
+                        dbc.Col(
+                            dbc.Card(
+                                dbc.CardBody(
+                                    [
+                                        html.Div(
+                                            "Contacto directo",
+                                            className="mb-3 fw-bold",
+                                            style={
+                                                "fontSize": "0.78rem",
+                                                "letterSpacing": "0.14em",
+                                                "textTransform": "uppercase",
+                                                "color": "#0d6efd",
+                                            },
+                                        ),
+                                        html.H2(
+                                            "Una presencia digital más fuerte genera más confianza",
+                                            className="fw-bold mb-4",
+                                            style={
+                                                "fontSize": "1.78rem",
+                                                "lineHeight": "1.08",
+                                                "letterSpacing": "-0.04em",
+                                                "color": "#101828",
+                                            },
+                                        ),
+                                        dbc.Row(
+                                            [
+                                                dbc.Col(
+                                                    dbc.Card(
+                                                        dbc.CardBody(
+                                                            [
+                                                                html.Div(
+                                                                    "Desde 1950",
+                                                                    className="fw-bold mb-1",
+                                                                    style={
+                                                                        "fontSize": "1.35rem",
+                                                                        "lineHeight": "1",
+                                                                        "letterSpacing": "-0.04em",
+                                                                        "color": "#101828",
+                                                                    },
+                                                                ),
+                                                                html.Div(
+                                                                    "Trayectoria",
+                                                                    style={"color": "#667085", "fontSize": "0.9rem"},
+                                                                ),
+                                                            ]
+                                                        ),
+                                                        className="border-0 h-100",
+                                                        style={
+                                                            "borderRadius": "18px",
+                                                            "background": "#f8fafc",
+                                                        },
+                                                    ),
+                                                    md=6,
+                                                    className="mb-2",
+                                                ),
+                                                dbc.Col(
+                                                    dbc.Card(
+                                                        dbc.CardBody(
+                                                            [
+                                                                html.Div(
+                                                                    "Ávila",
+                                                                    className="fw-bold mb-1",
+                                                                    style={
+                                                                        "fontSize": "1.35rem",
+                                                                        "lineHeight": "1",
+                                                                        "letterSpacing": "-0.04em",
+                                                                        "color": "#101828",
+                                                                    },
+                                                                ),
+                                                                html.Div(
+                                                                    "Cercanía local",
+                                                                    style={"color": "#667085", "fontSize": "0.9rem"},
+                                                                ),
+                                                            ]
+                                                        ),
+                                                        className="border-0 h-100",
+                                                        style={
+                                                            "borderRadius": "18px",
+                                                            "background": "#f8fafc",
+                                                        },
+                                                    ),
+                                                    md=6,
+                                                    className="mb-2",
+                                                ),
+                                            ],
+                                            className="g-2",
+                                        ),
+                                        html.Div("📞 Teléfono", className="fw-semibold mb-1", style={"color": "#101828"}),
+                                        html.Div(TELEFONO_1, className="mb-3", style={"color": "#667085"}),
+                                        html.Div("📱 Móvil", className="fw-semibold mb-1", style={"color": "#101828"}),
+                                        html.Div(TELEFONO_2, className="mb-3", style={"color": "#667085"}),
+                                        html.Div("✉️ Email", className="fw-semibold mb-1", style={"color": "#101828"}),
+                                        html.Div(EMAIL, className="mb-3", style={"color": "#667085"}),
+                                        html.Div("📍 Dirección", className="fw-semibold mb-1", style={"color": "#101828"}),
+                                        html.Div(DIRECCION, className="mb-4", style={"color": "#667085", "lineHeight": "1.7"}),
+                                        dbc.Button(
+                                            "Solicitar información",
+                                            href=f"mailto:{EMAIL}",
+                                            color="primary",
+                                            className="w-100 rounded-pill fw-bold mb-2",
+                                            style={"padding": "1rem 1.2rem", "minHeight": "54px"},
+                                        ),
+                                        dbc.Button(
+                                            "Contactar por WhatsApp",
+                                            href=WHATSAPP_URL,
+                                            target="_blank",
+                                            color="success",
+                                            className="w-100 rounded-pill fw-semibold",
+                                            style={"padding": "1rem 1.2rem", "minHeight": "54px"},
+                                        ),
+                                    ]
+                                ),
+                                className="border-0 h-100",
+                                style={
+                                    "borderRadius": "30px",
+                                    "background": "rgba(255,255,255,0.92)",
+                                    "boxShadow": "0 28px 80px rgba(16, 24, 40, 0.12)",
+                                    "backdropFilter": "blur(12px)",
+                                    "WebkitBackdropFilter": "blur(12px)",
+                                },
+                            ),
+                            lg=5,
+                        ),
+                    ],
+                    className="align-items-center",
+                    style={"minHeight": "82vh", "position": "relative", "zIndex": "2"},
+                ),
+                style={"position": "relative", "zIndex": "2"},
+            ),
+
+            html.Div(
+                [
+                    html.Button(
+                        "←",
+                        id="hero-prev",
+                        n_clicks=0,
+                        style={
+                            "width": "54px",
+                            "height": "54px",
+                            "borderRadius": "999px",
+                            "border": "1px solid rgba(255,255,255,0.18)",
+                            "background": "rgba(255,255,255,0.10)",
+                            "color": "white",
+                            "fontSize": "1.3rem",
+                            "backdropFilter": "blur(8px)",
+                            "WebkitBackdropFilter": "blur(8px)",
+                            "marginRight": "0.75rem",
+                            "cursor": "pointer",
+                        },
+                    ),
+                    html.Button(
+                        "→",
+                        id="hero-next",
+                        n_clicks=0,
+                        style={
+                            "width": "54px",
+                            "height": "54px",
+                            "borderRadius": "999px",
+                            "border": "1px solid rgba(255,255,255,0.18)",
+                            "background": "rgba(255,255,255,0.10)",
+                            "color": "white",
+                            "fontSize": "1.3rem",
+                            "backdropFilter": "blur(8px)",
+                            "WebkitBackdropFilter": "blur(8px)",
+                            "cursor": "pointer",
+                        },
                     ),
                 ],
-                className="align-items-center",
-            )
-        ]
-    ),
-    style={
-        "paddingTop": "5.6rem",
-        "paddingBottom": "4.7rem",
-        "background": (
-            "radial-gradient(circle at 0% 0%, rgba(13,110,253,0.15), transparent 28%),"
-            "radial-gradient(circle at 100% 0%, rgba(25,135,84,0.08), transparent 24%),"
-            "linear-gradient(180deg, #ffffff 0%, #f7faff 54%, #ffffff 100%)"
-        ),
-    },
-)
+                className="d-none d-lg-flex",
+                style={
+                    "position": "absolute",
+                    "right": "40px",
+                    "bottom": "38px",
+                    "zIndex": "3",
+                },
+            ),
+        ],
+        style={
+            "position": "relative",
+            "minHeight": "82vh",
+            "overflow": "hidden",
+        },
+    )
+
+
+hero_section = build_hero()
 
 stats_section = html.Section(
     dbc.Container(
@@ -577,7 +786,7 @@ stats_section = html.Section(
             className="g-3",
         )
     ),
-    style={"paddingBottom": "4rem"},
+    style={"paddingTop": "3rem", "paddingBottom": "4rem"},
 )
 
 services_section = html.Section(
@@ -600,7 +809,7 @@ services_section = html.Section(
                                 },
                             ),
                             html.P(
-                                "Aquí la web ya no parece una lista tradicional de servicios. Tiene más ritmo, más aire y una percepción más premium.",
+                                "Aquí la web ya no parece una lista tradicional de servicios. Tiene más ritmo, más aire y una percepción mucho más premium.",
                                 className="mb-5",
                                 style={
                                     "color": "#667085",
@@ -703,9 +912,7 @@ featured_section = html.Section(
                             className="mb-4 mb-lg-0",
                         ),
                         dbc.Col(
-                            [
-                                list_check(text) for text in SERVICIO_DESTACADO
-                            ],
+                            [list_check(text) for text in SERVICIO_DESTACADO],
                             lg=5,
                             className="d-flex flex-column justify-content-center",
                         ),
@@ -1034,3 +1241,62 @@ layout = html.Div(
         "overflow": "hidden",
     },
 )
+
+
+@callback(
+    Output("hero-slide-index", "data"),
+    Input("hero-autoplay", "n_intervals"),
+    Input("hero-prev", "n_clicks"),
+    Input("hero-next", "n_clicks"),
+    Input({"type": "hero-indicator", "index": dash.ALL}, "n_clicks"),
+    State("hero-slide-index", "data"),
+    prevent_initial_call=True,
+)
+def update_hero_slide(_, prev_clicks, next_clicks, indicator_clicks, current_index):
+    triggered = dash.ctx.triggered_id
+
+    if triggered == "hero-prev":
+        return (current_index - 1) % len(HERO_SLIDES)
+
+    if triggered == "hero-next":
+        return (current_index + 1) % len(HERO_SLIDES)
+
+    if isinstance(triggered, dict) and triggered.get("type") == "hero-indicator":
+        return triggered["index"]
+
+    return (current_index + 1) % len(HERO_SLIDES)
+
+
+@callback(
+    Output("hero-background", "style"),
+    Output("hero-eyebrow", "children"),
+    Output("hero-title", "children"),
+    Output("hero-text", "children"),
+    Output("hero-indicators", "children"),
+    Input("hero-slide-index", "data"),
+)
+def render_hero_slide(index):
+    slide = HERO_SLIDES[index]
+
+    background_style = {
+        "position": "absolute",
+        "inset": "0",
+        "backgroundImage": f"url('{slide['image']}')",
+        "backgroundSize": "cover",
+        "backgroundPosition": "center",
+        "transition": "background-image 0.6s ease-in-out",
+        "transform": "scale(1.02)",
+    }
+
+    indicators = [
+        hero_indicator(i, active=(i == index))
+        for i in range(len(HERO_SLIDES))
+    ]
+
+    return (
+        background_style,
+        slide["eyebrow"],
+        slide["title"],
+        slide["text"],
+        indicators,
+    )
