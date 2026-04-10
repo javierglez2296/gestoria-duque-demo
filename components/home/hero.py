@@ -11,22 +11,17 @@ HERO_IMAGES = [
 def build_hero():
     return html.Section(
         [
-            # 👉 Intervalo para cambiar imagen
             dcc.Interval(
                 id="hero-interval",
                 interval=4000,
                 n_intervals=0,
             ),
-
-            # 👉 capa de imagen dinámica
             html.Div(
                 id="hero-bg",
                 className="hero-image-layer",
                 style={"backgroundImage": f"url('{HERO_IMAGES[0]}')"},
             ),
-
             html.Div(className="hero-overlay"),
-
             dbc.Container(
                 dbc.Row(
                     [
@@ -45,7 +40,7 @@ def build_hero():
                                         className="hero-line hero-title",
                                     ),
                                     html.P(
-                                        "Ayudamos a autónomos, empresas y particulares con una atención cercana, procesos claros y una imagen moderna y profesional.",
+                                        "Ayudamos a autónomos, empresas y particulares con una atención cercana, procesos claros y una imagen profesional a la altura de su negocio.",
                                         className="hero-line hero-subtitle",
                                     ),
                                     html.Div(
