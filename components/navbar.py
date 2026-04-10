@@ -17,13 +17,29 @@ def build_navbar():
                     href="/",
                     className="text-decoration-none",
                 ),
-                dbc.NavbarToggler(id="navbar-toggler", n_clicks=0, className="navbar-toggler-premium"),
+                dbc.NavbarToggler(
+                    id="navbar-toggler",
+                    n_clicks=0,
+                    className="navbar-toggler-premium",
+                ),
                 dbc.Collapse(
                     dbc.Nav(
                         [
-                            dbc.NavLink("Inicio", href="/", className="nav-link-premium"),
-                            dbc.NavLink("Servicios", href="/#servicios", className="nav-link-premium"),
-                            dbc.NavLink("Contacto", href="/#contacto", className="nav-link-premium"),
+                            dbc.NavLink(
+                                "Inicio",
+                                href="/",
+                                className="nav-link-premium",
+                            ),
+                            dbc.NavLink(
+                                "Servicios",
+                                href="/#servicios",
+                                className="nav-link-premium",
+                            ),
+                            dbc.NavLink(
+                                "Contacto",
+                                href="/#contacto",
+                                className="nav-link-premium",
+                            ),
                             dbc.Button(
                                 "Solicitar información",
                                 href="/#contacto",
