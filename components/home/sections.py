@@ -27,7 +27,7 @@ from components.home.ui import (
 def build_trust_section():
     items = [
         ("Desde 1950", "Trayectoria consolidada"),
-        ("Atención cercana", "Trato directo y profesional"),
+        ("Atención cercana", "Relación directa y profesional"),
         ("Servicio integral", "Fiscal, laboral y contable"),
         ("Ávila", "Despacho local de confianza"),
     ]
@@ -41,29 +41,28 @@ def build_trust_section():
                             [
                                 html.Div(
                                     titulo,
-                                    className="fw-bold mb-1",
+                                    className="fw-semibold mb-1",
                                     style={
-                                        "color": "#101828",
-                                        "fontSize": "1.02rem",
+                                        "color": "#111827",
+                                        "fontSize": "1rem",
                                         "letterSpacing": "-0.02em",
                                     },
                                 ),
                                 html.Div(
                                     texto,
                                     style={
-                                        "color": "#667085",
-                                        "fontSize": "0.94rem",
-                                        "lineHeight": "1.6",
+                                        "color": "#6b7280",
+                                        "fontSize": "0.93rem",
+                                        "lineHeight": "1.7",
                                     },
                                 ),
                             ],
                             className="h-100",
                             style={
-                                "padding": "1.1rem 1rem",
-                                "borderRadius": "18px",
-                                "background": "rgba(255,255,255,0.86)",
-                                "border": "1px solid rgba(16,24,40,0.06)",
-                                "boxShadow": "0 10px 30px rgba(16,24,40,0.04)",
+                                "padding": "1.15rem 1rem",
+                                "borderRadius": "16px",
+                                "background": "#ffffff",
+                                "border": "1px solid rgba(17, 24, 39, 0.06)",
                             },
                         ),
                         lg=3,
@@ -77,9 +76,9 @@ def build_trust_section():
         ),
         className="section-fade",
         style={
-            "paddingTop": "2.2rem",
-            "paddingBottom": "3rem",
-            "background": "linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%)",
+            "paddingTop": "2rem",
+            "paddingBottom": "2.8rem",
+            "background": "#ffffff",
         },
     )
 
@@ -97,7 +96,7 @@ def build_stats_section():
             )
         ),
         className="section-fade",
-        style={"paddingTop": "3rem", "paddingBottom": "4rem"},
+        style={"paddingTop": "2.5rem", "paddingBottom": "4rem"},
     )
 
 
@@ -114,28 +113,31 @@ def build_services_section():
                                     "Servicios de asesoría fiscal, laboral, contable y administrativa en Ávila",
                                     className="fw-bold mb-3 reveal-up",
                                     style={
-                                        "fontSize": "clamp(2.1rem, 3.7vw, 3.25rem)",
-                                        "lineHeight": "1.02",
-                                        "letterSpacing": "-0.055em",
-                                        "color": "#101828",
-                                        "maxWidth": "820px",
+                                        "fontSize": "clamp(2rem, 3.2vw, 2.95rem)",
+                                        "lineHeight": "1.06",
+                                        "letterSpacing": "-0.045em",
+                                        "color": "#111827",
+                                        "maxWidth": "860px",
                                     },
                                 ),
                                 html.P(
-                                    "Ofrecemos un servicio profesional y cercano para autónomos, empresas y particulares que buscan apoyo estable en su gestión diaria.",
+                                    "Prestamos un servicio profesional y cercano para empresas, autónomos y particulares que necesitan apoyo estable y una gestión bien coordinada.",
                                     className="mb-5 reveal-up",
                                     style={
-                                        "color": "#667085",
-                                        "lineHeight": "1.92",
+                                        "color": "#6b7280",
+                                        "lineHeight": "1.9",
                                         "maxWidth": "820px",
-                                        "fontSize": "1.02rem",
+                                        "fontSize": "1rem",
                                     },
                                 ),
                             ]
                         )
                     ]
                 ),
-                dbc.Row([service_card(s["icono"], s["titulo"], s["texto"]) for s in SERVICIOS]),
+                dbc.Row(
+                    [service_card(s["icono"], s["titulo"], s["texto"]) for s in SERVICIOS],
+                    className="g-4",
+                ),
             ]
         ),
         id="servicios",
@@ -151,109 +153,97 @@ def build_services_section():
 def build_about_section():
     return html.Section(
         dbc.Container(
-            dbc.Card(
-                dbc.CardBody(
-                    dbc.Row(
+            dbc.Row(
+                [
+                    dbc.Col(
                         [
-                            dbc.Col(
-                                [
-                                    section_tag("Despacho"),
-                                    html.H2(
-                                        "Más de 70 años acompañando a empresas, autónomos y particulares en Ávila",
-                                        className="fw-bold mb-3 reveal-up",
-                                        style={
-                                            "fontSize": "clamp(2rem, 3.2vw, 2.95rem)",
-                                            "lineHeight": "1.04",
-                                            "letterSpacing": "-0.05em",
-                                            "color": "#101828",
-                                            "maxWidth": "780px",
-                                        },
-                                    ),
-                                    html.P(
-                                        "Nuestra gestoría combina experiencia, cercanía y atención profesional para ofrecer un servicio claro, estable y adaptado a las necesidades reales de cada cliente.",
-                                        className="mb-3 reveal-up",
-                                        style={
-                                            "color": "#667085",
-                                            "lineHeight": "1.9",
-                                            "maxWidth": "760px",
-                                        },
-                                    ),
-                                    html.P(
-                                        "Trabajamos en el ámbito fiscal, laboral, contable y administrativo, ayudando tanto en la gestión diaria como en trámites concretos que requieren orden, confianza y agilidad.",
-                                        className="mb-0 reveal-up",
-                                        style={
-                                            "color": "#667085",
-                                            "lineHeight": "1.9",
-                                            "maxWidth": "760px",
-                                        },
-                                    ),
-                                ],
-                                lg=7,
-                                className="mb-4 mb-lg-0",
+                            section_tag("Despacho"),
+                            html.H2(
+                                "Más de 70 años acompañando a empresas, autónomos y particulares en Ávila",
+                                className="fw-bold mb-3 reveal-up",
+                                style={
+                                    "fontSize": "clamp(2rem, 3vw, 2.75rem)",
+                                    "lineHeight": "1.08",
+                                    "letterSpacing": "-0.04em",
+                                    "color": "#111827",
+                                    "maxWidth": "760px",
+                                },
                             ),
-                            dbc.Col(
-                                [
-                                    html.Div(
-                                        [
-                                            html.Div(
-                                                "Nuestra forma de trabajar",
-                                                className="fw-semibold mb-3 reveal-up",
-                                                style={
-                                                    "color": "#101828",
-                                                    "fontSize": "1rem",
-                                                },
-                                            ),
-                                            html.Div(
-                                                [
-                                                    html.Div(
-                                                        "• Atención directa y cercana",
-                                                        className="mb-2 reveal-up",
-                                                        style={"color": "#344054", "fontWeight": "600"},
-                                                    ),
-                                                    html.Div(
-                                                        "• Explicaciones claras y sencillas",
-                                                        className="mb-2 reveal-up",
-                                                        style={"color": "#344054", "fontWeight": "600"},
-                                                    ),
-                                                    html.Div(
-                                                        "• Experiencia en la gestión del día a día",
-                                                        className="mb-2 reveal-up",
-                                                        style={"color": "#344054", "fontWeight": "600"},
-                                                    ),
-                                                    html.Div(
-                                                        "• Acompañamiento estable para clientes y negocios",
-                                                        className="reveal-up",
-                                                        style={"color": "#344054", "fontWeight": "600"},
-                                                    ),
-                                                ]
-                                            ),
-                                        ],
-                                        style={
-                                            "padding": "1.5rem",
-                                            "borderRadius": "22px",
-                                            "background": "linear-gradient(180deg, #ffffff 0%, #f8fbff 100%)",
-                                            "boxShadow": "0 18px 46px rgba(16, 24, 40, 0.06)",
-                                            "height": "100%",
-                                        },
-                                    )
-                                ],
-                                lg=5,
+                            html.P(
+                                "Nuestra gestoría combina experiencia, cercanía y atención profesional para ofrecer un servicio claro, estable y adaptado a las necesidades reales de cada cliente.",
+                                className="mb-3 reveal-up",
+                                style={
+                                    "color": "#6b7280",
+                                    "lineHeight": "1.9",
+                                    "maxWidth": "760px",
+                                },
                             ),
-                        ]
-                    )
-                ),
-                className="border-0",
-                style={
-                    "borderRadius": "30px",
-                    "background": "linear-gradient(135deg, #ffffff 0%, #fbfcfe 100%)",
-                    "boxShadow": "0 24px 62px rgba(16, 24, 40, 0.08)",
-                },
+                            html.P(
+                                "Trabajamos en el ámbito fiscal, laboral, contable y administrativo, ayudando tanto en la gestión diaria como en trámites concretos que requieren orden, confianza y agilidad.",
+                                className="mb-0 reveal-up",
+                                style={
+                                    "color": "#6b7280",
+                                    "lineHeight": "1.9",
+                                    "maxWidth": "760px",
+                                },
+                            ),
+                        ],
+                        lg=7,
+                        className="mb-4 mb-lg-0",
+                    ),
+                    dbc.Col(
+                        html.Div(
+                            [
+                                html.Div(
+                                    "Forma de trabajo",
+                                    className="fw-semibold mb-3 reveal-up",
+                                    style={
+                                        "color": "#111827",
+                                        "fontSize": "0.98rem",
+                                        "letterSpacing": "0.02em",
+                                        "textTransform": "uppercase",
+                                    },
+                                ),
+                                html.Div(
+                                    "• Atención directa y cercana",
+                                    className="mb-2 reveal-up",
+                                    style={"color": "#374151", "fontWeight": "600"},
+                                ),
+                                html.Div(
+                                    "• Explicaciones claras y sencillas",
+                                    className="mb-2 reveal-up",
+                                    style={"color": "#374151", "fontWeight": "600"},
+                                ),
+                                html.Div(
+                                    "• Experiencia en la gestión del día a día",
+                                    className="mb-2 reveal-up",
+                                    style={"color": "#374151", "fontWeight": "600"},
+                                ),
+                                html.Div(
+                                    "• Acompañamiento estable para clientes y negocios",
+                                    className="reveal-up",
+                                    style={"color": "#374151", "fontWeight": "600"},
+                                ),
+                            ],
+                            style={
+                                "padding": "1.75rem",
+                                "borderRadius": "20px",
+                                "background": "#f8fafc",
+                                "border": "1px solid rgba(17, 24, 39, 0.06)",
+                                "height": "100%",
+                            },
+                        ),
+                        lg=5,
+                    ),
+                ],
+                className="align-items-stretch",
             )
         ),
         className="section-fade",
         style={
-            "paddingTop": "4.4rem",
-            "paddingBottom": "4.8rem",
+            "paddingTop": "4.2rem",
+            "paddingBottom": "4.6rem",
+            "background": "#ffffff",
         },
     )
 
@@ -267,13 +257,13 @@ def build_pillars_section():
                     [
                         dbc.Col(
                             html.H2(
-                                "Un despacho de confianza se apoya en experiencia, cercanía y una gestión bien explicada",
+                                "La confianza se construye con experiencia, cercanía y una gestión bien explicada",
                                 className="fw-bold mb-4 reveal-up",
                                 style={
-                                    "fontSize": "clamp(2rem, 3.4vw, 3rem)",
-                                    "lineHeight": "1.04",
-                                    "letterSpacing": "-0.05em",
-                                    "color": "#101828",
+                                    "fontSize": "clamp(2rem, 3.1vw, 2.8rem)",
+                                    "lineHeight": "1.08",
+                                    "letterSpacing": "-0.04em",
+                                    "color": "#111827",
                                     "maxWidth": "760px",
                                 },
                             ),
@@ -281,10 +271,10 @@ def build_pillars_section():
                         ),
                         dbc.Col(
                             html.P(
-                                "La confianza del cliente se construye con una atención profesional, una comunicación clara y una forma de trabajar estable en el tiempo.",
+                                "La relación con el cliente se refuerza mediante una atención profesional, una comunicación clara y una forma de trabajar estable en el tiempo.",
                                 className="mb-4 mb-lg-0 reveal-up",
                                 style={
-                                    "color": "#667085",
+                                    "color": "#6b7280",
                                     "lineHeight": "1.9",
                                     "maxWidth": "520px",
                                 },
@@ -295,13 +285,16 @@ def build_pillars_section():
                     ],
                     className="mb-2",
                 ),
-                dbc.Row([pillar_card(p["numero"], p["titulo"], p["texto"]) for p in PILARES]),
+                dbc.Row(
+                    [pillar_card(p["numero"], p["titulo"], p["texto"]) for p in PILARES],
+                    className="g-4",
+                ),
             ]
         ),
         className="section-fade",
         style={
-            "paddingTop": "4.6rem",
-            "paddingBottom": "4.6rem",
+            "paddingTop": "4.4rem",
+            "paddingBottom": "4.4rem",
             "background": "#f8fafc",
         },
     )
@@ -310,50 +303,51 @@ def build_pillars_section():
 def build_featured_section():
     return html.Section(
         dbc.Container(
-            dbc.Card(
-                dbc.CardBody(
-                    dbc.Row(
+            dbc.Row(
+                [
+                    dbc.Col(
                         [
-                            dbc.Col(
-                                [
-                                    section_tag("Especialidades"),
-                                    html.H2(
-                                        "Experiencia, cercanía y servicio profesional para el día a día de tus gestiones",
-                                        className="fw-bold mb-3 reveal-up",
-                                        style={
-                                            "fontSize": "clamp(2rem, 3vw, 2.7rem)",
-                                            "lineHeight": "1.05",
-                                            "letterSpacing": "-0.04em",
-                                            "color": "#101828",
-                                        },
-                                    ),
-                                    html.P(
-                                        "La trayectoria del despacho permite ofrecer una atención sólida, clara y orientada a resolver con agilidad las necesidades de cada cliente.",
-                                        className="mb-4 mb-lg-0 reveal-up",
-                                        style={
-                                            "color": "#667085",
-                                            "lineHeight": "1.9",
-                                            "maxWidth": "720px",
-                                        },
-                                    ),
-                                ],
-                                lg=7,
-                                className="mb-4 mb-lg-0",
+                            section_tag("Especialidades"),
+                            html.H2(
+                                "Áreas en las que el despacho ofrece un acompañamiento estable y profesional",
+                                className="fw-bold mb-3 reveal-up",
+                                style={
+                                    "fontSize": "clamp(1.95rem, 3vw, 2.65rem)",
+                                    "lineHeight": "1.08",
+                                    "letterSpacing": "-0.04em",
+                                    "color": "#111827",
+                                    "maxWidth": "700px",
+                                },
                             ),
-                            dbc.Col(
-                                [list_check(text) for text in SERVICIO_DESTACADO],
-                                lg=5,
-                                className="d-flex flex-column justify-content-center reveal-up",
+                            html.P(
+                                "La trayectoria del despacho permite ofrecer una atención sólida, ordenada y orientada a resolver con claridad las necesidades habituales de gestión.",
+                                className="mb-4 mb-lg-0 reveal-up",
+                                style={
+                                    "color": "#6b7280",
+                                    "lineHeight": "1.9",
+                                    "maxWidth": "720px",
+                                },
                             ),
-                        ]
-                    )
-                ),
-                className="border-0",
-                style={
-                    "borderRadius": "30px",
-                    "background": "linear-gradient(135deg, #ffffff 0%, #f8fbff 100%)",
-                    "boxShadow": "0 24px 62px rgba(16, 24, 40, 0.08)",
-                },
+                        ],
+                        lg=7,
+                        className="mb-4 mb-lg-0",
+                    ),
+                    dbc.Col(
+                        html.Div(
+                            [list_check(text) for text in SERVICIO_DESTACADO],
+                            className="reveal-up",
+                            style={
+                                "padding": "1.5rem",
+                                "borderRadius": "20px",
+                                "background": "#ffffff",
+                                "border": "1px solid rgba(17, 24, 39, 0.06)",
+                                "height": "100%",
+                            },
+                        ),
+                        lg=5,
+                    ),
+                ],
+                className="align-items-stretch",
             )
         ),
         className="section-fade",
@@ -370,24 +364,24 @@ def build_process_section():
                     [
                         dbc.Col(
                             html.H2(
-                                "Una atención clara y bien organizada ayuda a resolver cada gestión con más tranquilidad",
+                                "Una gestión clara y bien organizada aporta tranquilidad y confianza",
                                 className="fw-bold mb-4 reveal-up",
                                 style={
-                                    "fontSize": "clamp(2rem, 3.35vw, 3rem)",
-                                    "lineHeight": "1.04",
-                                    "letterSpacing": "-0.05em",
-                                    "color": "#101828",
-                                    "maxWidth": "780px",
+                                    "fontSize": "clamp(2rem, 3.05vw, 2.8rem)",
+                                    "lineHeight": "1.08",
+                                    "letterSpacing": "-0.04em",
+                                    "color": "#111827",
+                                    "maxWidth": "760px",
                                 },
                             ),
                             lg=7,
                         ),
                         dbc.Col(
                             html.P(
-                                "Cuando el cliente entiende el proceso y se siente acompañado, la relación resulta más sencilla, más cercana y más eficaz.",
+                                "Cuando cada paso se explica con claridad y el cliente se siente acompañado, la relación resulta más sencilla, más cercana y más eficaz.",
                                 className="mb-4 mb-lg-0 reveal-up",
                                 style={
-                                    "color": "#667085",
+                                    "color": "#6b7280",
                                     "lineHeight": "1.9",
                                     "maxWidth": "520px",
                                 },
@@ -398,11 +392,14 @@ def build_process_section():
                     ],
                     className="mb-3",
                 ),
-                dbc.Row([process_card(p["numero"], p["titulo"], p["texto"]) for p in PROCESO]),
+                dbc.Row(
+                    [process_card(p["numero"], p["titulo"], p["texto"]) for p in PROCESO],
+                    className="g-4",
+                ),
             ]
         ),
         className="section-fade",
-        style={"paddingTop": "4.6rem", "paddingBottom": "4.6rem"},
+        style={"paddingTop": "4.4rem", "paddingBottom": "4.4rem"},
     )
 
 
@@ -412,32 +409,35 @@ def build_testimonials_section():
             [
                 section_tag("Opiniones"),
                 html.H2(
-                    "La confianza se refuerza cuando la atención profesional se traduce en buenas experiencias",
+                    "La experiencia del cliente refuerza la confianza en el despacho",
                     className="fw-bold mb-3 reveal-up",
                     style={
-                        "fontSize": "clamp(2rem, 3.2vw, 3rem)",
-                        "lineHeight": "1.04",
-                        "letterSpacing": "-0.05em",
-                        "color": "#101828",
-                        "maxWidth": "780px",
+                        "fontSize": "clamp(2rem, 3vw, 2.8rem)",
+                        "lineHeight": "1.08",
+                        "letterSpacing": "-0.04em",
+                        "color": "#111827",
+                        "maxWidth": "760px",
                     },
                 ),
                 html.P(
-                    "Estas opiniones representan el tipo de trato cercano, claro y profesional que una gestoría consolidada busca ofrecer a sus clientes.",
+                    "Estas opiniones reflejan el tipo de atención cercana, clara y profesional que una gestoría consolidada busca ofrecer en cada gestión.",
                     className="mb-5 reveal-up",
                     style={
-                        "color": "#667085",
+                        "color": "#6b7280",
                         "lineHeight": "1.9",
-                        "maxWidth": "780px",
+                        "maxWidth": "760px",
                     },
                 ),
-                dbc.Row([testimonial_card(t["nombre"], t["texto"]) for t in TESTIMONIOS]),
+                dbc.Row(
+                    [testimonial_card(t["nombre"], t["texto"]) for t in TESTIMONIOS],
+                    className="g-4",
+                ),
             ]
         ),
         className="section-fade",
         style={
-            "paddingTop": "4.6rem",
-            "paddingBottom": "4.6rem",
+            "paddingTop": "4.4rem",
+            "paddingBottom": "4.4rem",
             "background": "#f8fafc",
         },
     )
@@ -456,20 +456,20 @@ def build_location_section():
                                     "Gestoría en Ávila con atención cercana y presencial",
                                     className="fw-bold mb-3 reveal-up",
                                     style={
-                                        "fontSize": "clamp(2rem, 3.2vw, 2.9rem)",
-                                        "lineHeight": "1.04",
-                                        "letterSpacing": "-0.05em",
-                                        "color": "#101828",
-                                        "maxWidth": "760px",
+                                        "fontSize": "clamp(2rem, 3vw, 2.75rem)",
+                                        "lineHeight": "1.08",
+                                        "letterSpacing": "-0.04em",
+                                        "color": "#111827",
+                                        "maxWidth": "740px",
                                     },
                                 ),
                                 html.P(
-                                    "Atendemos desde nuestra oficina en Ávila, ofreciendo un servicio próximo, claro y profesional para clientes particulares, autónomos y empresas.",
+                                    "Atendemos desde nuestra oficina en Ávila, ofreciendo un servicio próximo, claro y profesional para particulares, autónomos y empresas.",
                                     className="mb-4 reveal-up",
                                     style={
-                                        "color": "#667085",
+                                        "color": "#6b7280",
                                         "lineHeight": "1.9",
-                                        "maxWidth": "720px",
+                                        "maxWidth": "700px",
                                     },
                                 ),
                                 dbc.Card(
@@ -478,51 +478,56 @@ def build_location_section():
                                             html.Div(
                                                 "Datos de contacto",
                                                 className="fw-semibold mb-3 reveal-up",
-                                                style={"color": "#101828"},
+                                                style={"color": "#111827"},
                                             ),
                                             html.Div(
                                                 f"📍 {DIRECCION}",
                                                 className="mb-2 reveal-up",
-                                                style={"color": "#667085", "lineHeight": "1.8"},
+                                                style={"color": "#6b7280", "lineHeight": "1.8"},
                                             ),
                                             html.Div(
                                                 f"📞 {TELEFONO_1}",
                                                 className="mb-2 reveal-up",
-                                                style={"color": "#667085"},
+                                                style={"color": "#6b7280"},
                                             ),
                                             html.Div(
                                                 f"✉️ {EMAIL}",
                                                 className="mb-4 reveal-up",
-                                                style={"color": "#667085"},
+                                                style={"color": "#6b7280"},
                                             ),
                                             dbc.Button(
                                                 "Contactar por WhatsApp",
                                                 href=WHATSAPP_URL,
                                                 target="_blank",
-                                                color="success",
-                                                className="rounded-pill fw-semibold me-2 mb-2",
+                                                color="light",
+                                                className="fw-semibold me-2 mb-2 border-0",
                                                 style={
-                                                    "padding": "0.95rem 1.2rem",
-                                                    "minHeight": "52px",
+                                                    "padding": "0.9rem 1.2rem",
+                                                    "minHeight": "50px",
+                                                    "borderRadius": "999px",
+                                                    "background": "#eef2f7",
+                                                    "color": "#111827",
                                                 },
                                             ),
                                             dbc.Button(
                                                 "Enviar email",
                                                 href=f"mailto:{EMAIL}",
-                                                color="light",
-                                                className="rounded-pill fw-semibold border mb-2",
+                                                color="dark",
+                                                className="fw-semibold mb-2 border-0",
                                                 style={
-                                                    "padding": "0.95rem 1.2rem",
-                                                    "minHeight": "52px",
+                                                    "padding": "0.9rem 1.2rem",
+                                                    "minHeight": "50px",
+                                                    "borderRadius": "999px",
+                                                    "background": "#111827",
                                                 },
                                             ),
                                         ]
                                     ),
                                     className="border-0 reveal-up",
                                     style={
-                                        "borderRadius": "24px",
+                                        "borderRadius": "20px",
                                         "background": "#ffffff",
-                                        "boxShadow": "0 18px 46px rgba(16, 24, 40, 0.06)",
+                                        "border": "1px solid rgba(17, 24, 39, 0.06)",
                                     },
                                 ),
                             ],
@@ -537,13 +542,13 @@ def build_location_section():
                                             html.Div(
                                                 "Mapa / oficina",
                                                 className="fw-semibold mb-3 reveal-up",
-                                                style={"color": "#101828"},
+                                                style={"color": "#111827"},
                                             ),
                                             html.Div(
-                                                "Aquí puedes integrar un mapa de Google Maps, una imagen de la oficina o una captura de ubicación para reforzar la confianza del visitante.",
+                                                "Aquí puedes integrar Google Maps, una imagen real de la oficina o una referencia visual de la ubicación para reforzar la confianza del visitante.",
                                                 className="mb-4 reveal-up",
                                                 style={
-                                                    "color": "#667085",
+                                                    "color": "#6b7280",
                                                     "lineHeight": "1.85",
                                                     "maxWidth": "620px",
                                                 },
@@ -551,15 +556,13 @@ def build_location_section():
                                             html.Div(
                                                 style={
                                                     "height": "340px",
-                                                    "borderRadius": "22px",
-                                                    "background": (
-                                                        "linear-gradient(135deg, #edf4ff 0%, #f8fbff 100%)"
-                                                    ),
-                                                    "border": "1px solid rgba(13,110,253,0.08)",
+                                                    "borderRadius": "18px",
+                                                    "background": "#f8fafc",
+                                                    "border": "1px solid rgba(17, 24, 39, 0.06)",
                                                     "display": "flex",
                                                     "alignItems": "center",
                                                     "justifyContent": "center",
-                                                    "color": "#667085",
+                                                    "color": "#6b7280",
                                                     "fontWeight": "600",
                                                     "fontSize": "1rem",
                                                 },
@@ -571,9 +574,9 @@ def build_location_section():
                                 ),
                                 className="border-0 h-100",
                                 style={
-                                    "borderRadius": "28px",
-                                    "background": "linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%)",
-                                    "boxShadow": "0 20px 54px rgba(16, 24, 40, 0.06)",
+                                    "borderRadius": "22px",
+                                    "background": "#ffffff",
+                                    "border": "1px solid rgba(17, 24, 39, 0.06)",
                                 },
                             ),
                             lg=7,
@@ -585,7 +588,7 @@ def build_location_section():
         ),
         className="section-fade",
         style={
-            "paddingTop": "4.6rem",
+            "paddingTop": "4.4rem",
             "paddingBottom": "4.8rem",
             "background": "#f8fafc",
         },
@@ -601,18 +604,18 @@ def build_seo_section():
                     "Asesoría fiscal, laboral, contable y administrativa para empresas, autónomos y particulares",
                     className="fw-bold mb-3 reveal-up",
                     style={
-                        "fontSize": "clamp(1.95rem, 3vw, 2.65rem)",
-                        "lineHeight": "1.06",
+                        "fontSize": "clamp(1.9rem, 2.8vw, 2.5rem)",
+                        "lineHeight": "1.08",
                         "letterSpacing": "-0.04em",
-                        "color": "#101828",
+                        "color": "#111827",
                         "maxWidth": "860px",
                     },
                 ),
                 html.P(
-                    "Ofrecemos apoyo profesional en gestiones fiscales, laborales, contables y administrativas desde Ávila, con una atención cercana y orientada a resolver de forma clara las necesidades de cada cliente.",
+                    "Prestamos apoyo profesional en gestiones fiscales, laborales, contables y administrativas desde Ávila, con una atención cercana y orientada a resolver con claridad las necesidades de cada cliente.",
                     className="mb-0 reveal-up",
                     style={
-                        "color": "#667085",
+                        "color": "#6b7280",
                         "lineHeight": "1.95",
                         "maxWidth": "1040px",
                     },
@@ -620,7 +623,7 @@ def build_seo_section():
             ]
         ),
         className="section-fade",
-        style={"paddingTop": "4.6rem", "paddingBottom": "4.6rem"},
+        style={"paddingTop": "4.4rem", "paddingBottom": "4.4rem"},
     )
 
 
@@ -633,10 +636,10 @@ def build_faq_section():
                     "Dudas habituales antes de contactar con una gestoría",
                     className="fw-bold mb-4 reveal-up",
                     style={
-                        "fontSize": "clamp(1.9rem, 3vw, 2.5rem)",
-                        "lineHeight": "1.06",
+                        "fontSize": "clamp(1.9rem, 2.8vw, 2.45rem)",
+                        "lineHeight": "1.08",
                         "letterSpacing": "-0.04em",
-                        "color": "#101828",
+                        "color": "#111827",
                     },
                 ),
                 dbc.Accordion(
@@ -645,7 +648,7 @@ def build_faq_section():
                             html.P(
                                 texto,
                                 className="mb-0",
-                                style={"color": "#667085", "lineHeight": "1.8"},
+                                style={"color": "#6b7280", "lineHeight": "1.8"},
                             ),
                             title=pregunta,
                         )
@@ -658,8 +661,8 @@ def build_faq_section():
         ),
         className="section-fade",
         style={
-            "paddingTop": "4.6rem",
-            "paddingBottom": "4.6rem",
+            "paddingTop": "4.4rem",
+            "paddingBottom": "4.4rem",
             "background": "#f8fafc",
         },
     )
@@ -668,80 +671,80 @@ def build_faq_section():
 def build_cta_section():
     return html.Section(
         dbc.Container(
-            dbc.Card(
-                dbc.CardBody(
-                    [
-                        section_tag("Contacto"),
-                        dbc.Row(
-                            [
-                                dbc.Col(
-                                    [
-                                        html.H2(
-                                            "Contacta con nuestra gestoría en Ávila",
-                                            className="fw-bold mb-3 reveal-up",
-                                            style={
-                                                "fontSize": "clamp(2rem, 3.45vw, 3rem)",
-                                                "lineHeight": "1.03",
-                                                "letterSpacing": "-0.05em",
-                                                "color": "#101828",
-                                                "maxWidth": "780px",
-                                            },
-                                        ),
-                                        html.P(
-                                            "Estamos aquí para ayudarte con tus necesidades fiscales, laborales, contables y administrativas de forma clara, cercana y profesional.",
-                                            className="mb-0 reveal-up",
-                                            style={
-                                                "color": "#667085",
-                                                "lineHeight": "1.9",
-                                                "maxWidth": "700px",
-                                            },
-                                        ),
-                                    ],
-                                    lg=8,
-                                    className="mb-4 mb-lg-0",
-                                ),
-                                dbc.Col(
-                                    [
-                                        dbc.Button(
-                                            "Llamar ahora",
-                                            href=f"tel:{TELEFONO_1.replace(' ', '')}",
-                                            color="primary",
-                                            className="w-100 rounded-pill fw-bold mb-2",
-                                            style={
-                                                "padding": "1rem 1.4rem",
-                                                "minHeight": "56px",
-                                                "boxShadow": "0 12px 30px rgba(13, 110, 253, 0.22)",
-                                            },
-                                        ),
-                                        dbc.Button(
-                                            "WhatsApp",
-                                            href=WHATSAPP_URL,
-                                            target="_blank",
-                                            color="success",
-                                            className="w-100 rounded-pill fw-bold mb-2",
-                                            style={"padding": "1rem 1.4rem", "minHeight": "56px"},
-                                        ),
-                                        dbc.Button(
-                                            "Enviar email",
-                                            href=f"mailto:{EMAIL}",
-                                            color="light",
-                                            className="w-100 rounded-pill fw-semibold border",
-                                            style={"padding": "1rem 1.4rem", "minHeight": "56px"},
-                                        ),
-                                    ],
-                                    lg=4,
-                                    className="reveal-up",
-                                ),
-                            ]
-                        ),
-                    ]
-                ),
-                className="border-0",
-                style={
-                    "borderRadius": "30px",
-                    "background": "linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%)",
-                    "boxShadow": "0 26px 76px rgba(16, 24, 40, 0.10)",
-                },
+            dbc.Row(
+                [
+                    dbc.Col(
+                        [
+                            section_tag("Contacto"),
+                            html.H2(
+                                "Contacte con nuestra gestoría en Ávila",
+                                className="fw-bold mb-3 reveal-up",
+                                style={
+                                    "fontSize": "clamp(2rem, 3vw, 2.75rem)",
+                                    "lineHeight": "1.08",
+                                    "letterSpacing": "-0.04em",
+                                    "color": "#111827",
+                                    "maxWidth": "740px",
+                                },
+                            ),
+                            html.P(
+                                "Estamos a su disposición para ayudarle en cuestiones fiscales, laborales, contables y administrativas con una atención cercana, clara y profesional.",
+                                className="mb-0 reveal-up",
+                                style={
+                                    "color": "#6b7280",
+                                    "lineHeight": "1.9",
+                                    "maxWidth": "720px",
+                                },
+                            ),
+                        ],
+                        lg=8,
+                        className="mb-4 mb-lg-0",
+                    ),
+                    dbc.Col(
+                        [
+                            dbc.Button(
+                                "Llamar ahora",
+                                href=f"tel:{TELEFONO_1.replace(' ', '')}",
+                                color="dark",
+                                className="w-100 fw-semibold mb-2 border-0",
+                                style={
+                                    "padding": "0.95rem 1.4rem",
+                                    "minHeight": "54px",
+                                    "borderRadius": "999px",
+                                    "background": "#111827",
+                                },
+                            ),
+                            dbc.Button(
+                                "WhatsApp",
+                                href=WHATSAPP_URL,
+                                target="_blank",
+                                color="light",
+                                className="w-100 fw-semibold mb-2 border-0",
+                                style={
+                                    "padding": "0.95rem 1.4rem",
+                                    "minHeight": "54px",
+                                    "borderRadius": "999px",
+                                    "background": "#eef2f7",
+                                    "color": "#111827",
+                                },
+                            ),
+                            dbc.Button(
+                                "Enviar email",
+                                href=f"mailto:{EMAIL}",
+                                color="link",
+                                className="w-100 fw-semibold text-decoration-none",
+                                style={
+                                    "padding": "0.95rem 1.4rem",
+                                    "minHeight": "54px",
+                                    "color": "#4b5563",
+                                },
+                            ),
+                        ],
+                        lg=4,
+                        className="reveal-up",
+                    ),
+                ],
+                className="align-items-center",
             )
         ),
         id="contacto",
@@ -763,17 +766,17 @@ def build_footer_section():
                         [
                             html.Div(
                                 "Gestoría Duque",
-                                className="fw-bold mb-2 reveal-up",
+                                className="fw-semibold mb-2 reveal-up",
                                 style={
-                                    "color": "#101828",
-                                    "fontSize": "1.05rem",
+                                    "color": "#111827",
+                                    "fontSize": "1.02rem",
                                     "letterSpacing": "-0.02em",
                                 },
                             ),
                             html.Div(
                                 "Asesoría fiscal, laboral, contable y administrativa en Ávila con atención cercana y profesional.",
                                 className="reveal-up",
-                                style={"color": "#667085", "lineHeight": "1.8"},
+                                style={"color": "#6b7280", "lineHeight": "1.8"},
                             ),
                         ],
                         md=6,
@@ -781,9 +784,9 @@ def build_footer_section():
                     ),
                     dbc.Col(
                         [
-                            html.Div(f"📍 {DIRECCION}", className="mb-2 reveal-up", style={"color": "#667085"}),
-                            html.Div(f"📞 {TELEFONO_1}", className="mb-2 reveal-up", style={"color": "#667085"}),
-                            html.Div(f"✉️ {EMAIL}", className="reveal-up", style={"color": "#667085"}),
+                            html.Div(f"📍 {DIRECCION}", className="mb-2 reveal-up", style={"color": "#6b7280"}),
+                            html.Div(f"📞 {TELEFONO_1}", className="mb-2 reveal-up", style={"color": "#6b7280"}),
+                            html.Div(f"✉️ {EMAIL}", className="reveal-up", style={"color": "#6b7280"}),
                         ],
                         md=6,
                         className="text-md-end",
@@ -811,13 +814,13 @@ def build_floating_whatsapp():
             "right": "22px",
             "bottom": "22px",
             "zIndex": "999",
-            "background": "linear-gradient(135deg, #25D366 0%, #1fb85a 100%)",
+            "background": "#111827",
             "color": "white",
             "textDecoration": "none",
-            "padding": "0.95rem 1.2rem",
+            "padding": "0.92rem 1.18rem",
             "borderRadius": "999px",
             "fontWeight": "700",
             "letterSpacing": "0.01em",
-            "boxShadow": "0 16px 34px rgba(0, 0, 0, 0.18)",
+            "boxShadow": "0 14px 30px rgba(15, 23, 42, 0.18)",
         },
     )
