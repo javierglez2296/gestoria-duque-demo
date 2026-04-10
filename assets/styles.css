@@ -28,7 +28,9 @@ img {
     scroll-margin-top: 110px;
 }
 
-/* TOPBAR */
+/* =========================
+   TOPBAR
+   ========================= */
 .topbar {
     background: #ffffff;
     border-bottom: 1px solid rgba(15, 23, 42, 0.06);
@@ -36,27 +38,48 @@ img {
     z-index: 1100;
 }
 
-.topbar-inner {
-    min-height: 42px;
+.topbar-inner-wrap {
+    min-height: 48px;
+    padding-top: 0.35rem;
+    padding-bottom: 0.35rem;
 }
 
-.topbar-text {
-    color: #64748b;
-    font-size: 0.92rem;
+.topbar-left,
+.topbar-right {
+    min-height: 100%;
+}
+
+.topbar-badge {
+    display: inline-flex;
+    align-items: center;
+    min-height: 32px;
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    background: #f8fafc;
+    border: 1px solid rgba(15, 23, 42, 0.06);
+    color: #475569;
+    font-size: 0.86rem;
     font-weight: 600;
+    line-height: 1;
+    margin-right: 0.55rem;
+    margin-top: 0.15rem;
+    margin-bottom: 0.15rem;
 }
 
-.topbar-link {
+.topbar-contact-link {
     color: #2563eb;
-    font-size: 0.95rem;
-    font-weight: 600;
+    font-size: 0.92rem;
+    font-weight: 700;
+    transition: color 0.2s ease, opacity 0.2s ease;
 }
 
-.topbar-link:hover {
+.topbar-contact-link:hover {
     color: #1d4ed8;
 }
 
-/* NAVBAR */
+/* =========================
+   NAVBAR
+   ========================= */
 .navbar-premium {
     background: rgba(255, 255, 255, 0.94);
     backdrop-filter: blur(10px);
@@ -140,7 +163,9 @@ img {
     padding: 0.35rem 0.55rem;
 }
 
-/* FOOTER */
+/* =========================
+   FOOTER
+   ========================= */
 .site-footer {
     background: #0f172a;
     color: rgba(255, 255, 255, 0.8);
@@ -168,10 +193,16 @@ img {
     color: #ffffff;
 }
 
+/* =========================
+   GENERALES
+   ========================= */
 .content-section {
     padding: 4rem 0;
 }
 
+/* =========================
+   RESPONSIVE
+   ========================= */
 @media (max-width: 991px) {
     .navbar-nav-premium {
         align-items: flex-start !important;
@@ -191,5 +222,17 @@ img {
         margin-left: 0;
         margin-top: 0.85rem;
         width: 100%;
+    }
+}
+
+@media (max-width: 767px) {
+    .topbar-inner-wrap {
+        min-height: 42px;
+        padding-top: 0.2rem;
+        padding-bottom: 0.2rem;
+    }
+
+    .topbar-contact-link {
+        font-size: 0.88rem;
     }
 }
