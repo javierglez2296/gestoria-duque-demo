@@ -17,11 +17,14 @@ TELEFONO = "920 000 000"
 EMAIL = "info@gestoriaduque.com"
 WHATSAPP_URL = "https://wa.me/34620000000"
 
-
+# Orden recomendado:
+# 1) edificio corporativo
+# 2) skyline elegante
+# 3) oficina interior
 HERO_IMAGES = [
-    "/assets/hero/skyline-1.jpg",
-    "/assets/hero/skyline-2.jpg",
-    "/assets/hero/skyline-3.jpg",
+    "/assets/hero-2.png",
+    "/assets/hero-1.png",
+    "/assets/hero-3.png",
 ]
 
 
@@ -34,14 +37,17 @@ def build_hero():
                 n_intervals=0,
             ),
             dcc.Store(id="hero-index", data=0),
-
             html.Div(
                 id="hero-bg",
                 className="hero-bg",
-                style={"backgroundImage": f"url('{HERO_IMAGES[0]}')"},
+                style={
+                    "backgroundImage": f"url('{HERO_IMAGES[0]}')",
+                    "backgroundSize": "cover",
+                    "backgroundPosition": "center center",
+                    "backgroundRepeat": "no-repeat",
+                },
             ),
             html.Div(className="hero-overlay"),
-
             dbc.Container(
                 dbc.Row(
                     [
@@ -120,7 +126,10 @@ def build_services_preview():
         dbc.Container(
             [
                 html.Div("SERVICIOS", className="section-tag"),
-                html.H2("Soluciones claras para cada área clave de tu actividad.", className="section-title"),
+                html.H2(
+                    "Soluciones claras para cada área clave de tu actividad.",
+                    className="section-title",
+                ),
                 html.P(
                     "Un enfoque profesional, cercano y bien estructurado para ayudarte a tomar mejores decisiones.",
                     className="section-subtitle",
@@ -233,5 +242,8 @@ def rotate_hero(n):
 )
 def update_hero_bg(index):
     return {
-        "backgroundImage": f"url('{HERO_IMAGES[index]}')"
+        "backgroundImage": f"url('{HERO_IMAGES[index]}')",
+        "backgroundSize": "cover",
+        "backgroundPosition": "center center",
+        "backgroundRepeat": "no-repeat",
     }
