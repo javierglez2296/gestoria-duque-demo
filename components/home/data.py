@@ -7,20 +7,20 @@ WHATSAPP_URL = "https://wa.me/34620000000"
 HERO_SLIDES = [
     {
         "eyebrow": "GESTORÍA EN ÁVILA · FISCAL · LABORAL · CONTABLE",
-        "title": "Gestoría en Ávila para autónomos, empresas y particulares",
-        "text": "Asesoría fiscal, laboral, contable y trámites con atención clara, cercana y profesional.",
+        "title": "Gestoría en Ávila para empresas, autónomos y particulares",
+        "text": "Más de 70 años ofreciendo asesoría fiscal, laboral y contable con atención cercana, profesional y de confianza.",
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80",
     },
     {
         "eyebrow": "MÁS DE 70 AÑOS DE EXPERIENCIA",
-        "title": "Experiencia, orden y confianza para tu gestión",
-        "text": "Una propuesta moderna para un despacho con trayectoria, cercanía y capacidad real de ayudar.",
+        "title": "Experiencia, cercanía y confianza para tu gestión diaria",
+        "text": "Un despacho consolidado en Ávila que combina atención próxima, orden y acompañamiento profesional.",
         "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80",
     },
     {
         "eyebrow": "DESPACHO LOCAL · ATENCIÓN DIRECTA",
-        "title": "Tu tranquilidad, nuestra prioridad",
-        "text": "Haz que la web transmita mejor lo que ya aporta la gestoría: claridad, servicio y confianza.",
+        "title": "Asesoría fiscal, laboral y contable con trato cercano",
+        "text": "Ayudamos a empresas, autónomos y particulares con una gestión clara, ágil y respaldada por la experiencia.",
         "image": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1800&q=80",
     },
 ]
@@ -62,17 +62,17 @@ PILARES = [
     {
         "numero": "01",
         "titulo": "Claridad",
-        "texto": "Explicar bien qué hacéis y cómo ayudáis genera confianza mucho antes del primer contacto.",
+        "texto": "Explicamos cada gestión de forma sencilla para que el cliente entienda qué necesita y cómo se va a resolver.",
     },
     {
         "numero": "02",
         "titulo": "Cercanía",
-        "texto": "Una gestoría local debe transmitir atención humana, accesible y fácil de entender.",
+        "texto": "Ofrecemos una atención directa, humana y accesible, adaptada a las necesidades reales de cada caso.",
     },
     {
         "numero": "03",
         "titulo": "Solidez",
-        "texto": "Una imagen bien trabajada hace que el despacho parezca más serio, más actual y más fiable.",
+        "texto": "La experiencia del despacho transmite seguridad, continuidad y confianza en la gestión diaria.",
     },
 ]
 
@@ -87,46 +87,46 @@ PROCESO = [
     {
         "numero": "01",
         "titulo": "Escuchamos tu caso",
-        "texto": "Entendemos qué necesitas y qué situación quieres resolver.",
+        "texto": "Analizamos tu situación y entendemos qué necesitas resolver antes de plantear cualquier gestión.",
     },
     {
         "numero": "02",
         "titulo": "Te orientamos con claridad",
-        "texto": "Te explicamos el camino más conveniente de forma sencilla.",
+        "texto": "Te explicamos de forma sencilla la mejor opción y el proceso a seguir en cada caso.",
     },
     {
         "numero": "03",
         "titulo": "Lo gestionamos contigo",
-        "texto": "Nos ocupamos del proceso para darte más tiempo, orden y tranquilidad.",
+        "texto": "Nos ocupamos de la tramitación para darte más tranquilidad, orden y acompañamiento profesional.",
     },
 ]
 
 TESTIMONIOS = [
     {
         "nombre": "Autónomo de Ávila",
-        "texto": "Transmiten mucha confianza y explican todo de forma clara. Se nota experiencia.",
+        "texto": "Transmiten mucha confianza y explican todo de forma clara. Se nota la experiencia y el trato cercano.",
     },
     {
         "nombre": "Empresa local",
-        "texto": "Atención cercana y muy profesional. Responden rápido y ordenan todo muy bien.",
+        "texto": "Atención profesional y muy cercana. Responden rápido y ayudan a tener toda la gestión más ordenada.",
     },
     {
         "nombre": "Cliente particular",
-        "texto": "Me ayudaron con varios trámites sin complicaciones y con un trato excelente.",
+        "texto": "Me ayudaron con varios trámites sin complicaciones y con un trato excelente de principio a fin.",
     },
 ]
 
 FAQS = [
     (
         "¿Trabajáis con autónomos y empresas?",
-        "Sí. La gestoría está orientada a autónomos, pymes, sociedades y también particulares.",
+        "Sí. La gestoría trabaja con autónomos, pymes, sociedades y también con clientes particulares.",
     ),
     (
         "¿Lleváis fiscal, laboral y contabilidad?",
-        "Sí. La idea es ofrecer un servicio integral para que el cliente tenga un punto de apoyo claro y estable.",
+        "Sí. Ofrecemos un servicio integral para que el cliente cuente con un apoyo estable y bien coordinado.",
     ),
     (
         "¿La atención es solo presencial?",
-        "La base está en Ávila, pero muchas gestiones también pueden apoyarse por teléfono o email.",
+        "La atención se presta desde Ávila, aunque muchas gestiones también pueden apoyarse por teléfono o email.",
     ),
 ]
