@@ -1,4 +1,4 @@
-from dash import Dash, html, page_container
+from dash import Dash, html, page_container, Input, Output, State
 import dash_bootstrap_components as dbc
 
 
@@ -15,16 +15,11 @@ def build_topbar():
                     dbc.Col(
                         html.Div(
                             [
-                                html.Span("Ávila", className="me-3"),
-                                html.Span("Más de 70 años de experiencia", className="me-3"),
+                                html.Span("Ávila"),
+                                html.Span("Más de 70 años de experiencia"),
                                 html.Span("Atención cercana y profesional"),
                             ],
-                            className="small d-none d-md-flex flex-wrap",
-                            style={
-                                "color": "#667085",
-                                "fontWeight": "600",
-                                "gap": "0.25rem",
-                            },
+                            className="topbar-left d-none d-md-flex",
                         ),
                         md=7,
                         className="d-flex align-items-center",
@@ -33,40 +28,26 @@ def build_topbar():
                         html.Div(
                             [
                                 html.A(
-                                    f"📞 {TELEFONO}",
+                                    TELEFONO,
                                     href=f"tel:{TELEFONO.replace(' ', '')}",
-                                    style={
-                                        "textDecoration": "none",
-                                        "color": "#344054",
-                                        "fontWeight": "600",
-                                        "marginRight": "1rem",
-                                    },
+                                    className="topbar-link me-3",
                                 ),
                                 html.A(
-                                    f"✉️ {EMAIL}",
+                                    EMAIL,
                                     href=f"mailto:{EMAIL}",
-                                    style={
-                                        "textDecoration": "none",
-                                        "color": "#344054",
-                                        "fontWeight": "600",
-                                    },
+                                    className="topbar-link",
                                 ),
                             ],
-                            className="small d-flex justify-content-md-end flex-wrap",
+                            className="topbar-right d-flex justify-content-md-end flex-wrap",
                         ),
                         md=5,
                         className="d-flex align-items-center justify-content-start justify-content-md-end",
                     ),
                 ],
-                className="py-2",
+                className="py-2 align-items-center",
             )
         ),
-        style={
-            "borderBottom": "1px solid rgba(15, 23, 42, 0.06)",
-            "background": "rgba(255,255,255,0.82)",
-            "backdropFilter": "blur(10px)",
-            "WebkitBackdropFilter": "blur(10px)",
-        },
+        className="topbar-premium",
     )
 
 
@@ -75,98 +56,97 @@ def build_navbar():
         dbc.Container(
             [
                 html.A(
-                    dbc.NavbarBrand(
+                    html.Div(
                         [
-                            html.Span(
-                                "Gestoría",
-                                style={
-                                    "color": "#101828",
-                                    "fontWeight": "800",
-                                    "letterSpacing": "-0.04em",
-                                    "fontSize": "1.25rem",
-                                },
-                            ),
-                            html.Span(
-                                " Duque",
-                                style={
-                                    "color": "#0d6efd",
-                                    "fontWeight": "800",
-                                    "letterSpacing": "-0.04em",
-                                    "fontSize": "1.25rem",
-                                },
-                            ),
+                            html.Span("GESTORÍA", className="navbar-logo-main"),
+                            html.Span("DUQUE", className="navbar-logo-sub"),
                         ],
-                        className="mb-0",
+                        className="navbar-logo",
                     ),
                     href="/",
-                    style={"textDecoration": "none"},
+                    className="text-decoration-none",
                 ),
-                dbc.Nav(
-                    [
-                        dbc.NavLink(
-                            "Inicio",
-                            href="/",
-                            className="fw-semibold px-3",
-                            style={"color": "#344054"},
-                        ),
-                        dbc.NavLink(
-                            "Servicios",
-                            href="#servicios",
-                            className="fw-semibold px-3",
-                            style={"color": "#344054"},
-                        ),
-                        dbc.NavLink(
-                            "Contacto",
-                            href="#contacto",
-                            className="fw-semibold px-3",
-                            style={"color": "#344054"},
-                        ),
-                    ],
-                    className="ms-auto d-none d-lg-flex",
+                dbc.NavbarToggler(id="navbar-toggler", n_clicks=0, className="border-0"),
+                dbc.Collapse(
+                    dbc.Nav(
+                        [
+                            dbc.NavLink("Inicio", href="/", className="nav-link-premium"),
+                            dbc.NavLink("Servicios", href="/#servicios", className="nav-link-premium"),
+                            dbc.NavLink("Contacto", href="/#contacto", className="nav-link-premium"),
+                            dbc.Button(
+                                "WhatsApp",
+                                href=WHATSAPP_URL,
+                                target="_blank",
+                                className="navbar-btn navbar-btn-secondary",
+                            ),
+                            dbc.Button(
+                                "Llamar ahora",
+                                href=f"tel:{TELEFONO.replace(' ', '')}",
+                                className="navbar-btn navbar-btn-primary",
+                            ),
+                        ],
+                        className="ms-auto align-items-lg-center navbar-menu-premium",
+                        navbar=True,
+                    ),
+                    id="navbar-collapse",
                     navbar=True,
-                ),
-                html.Div(
-                    [
-                        dbc.Button(
-                            "WhatsApp",
-                            href=WHATSAPP_URL,
-                            target="_blank",
-                            color="light",
-                            className="rounded-pill fw-semibold border me-2 d-none d-md-inline-flex",
-                            style={
-                                "padding": "0.72rem 1.15rem",
-                                "minHeight": "44px",
-                                "background": "rgba(255,255,255,0.78)",
-                            },
-                        ),
-                        dbc.Button(
-                            "Llamar ahora",
-                            href=f"tel:{TELEFONO.replace(' ', '')}",
-                            color="primary",
-                            className="rounded-pill fw-semibold",
-                            style={
-                                "padding": "0.72rem 1.2rem",
-                                "minHeight": "44px",
-                                "boxShadow": "0 10px 22px rgba(13, 110, 253, 0.18)",
-                            },
-                        ),
-                    ],
-                    className="ms-3 d-flex align-items-center",
                 ),
             ],
             fluid=True,
-            style={"maxWidth": "1280px"},
+            className="navbar-inner",
         ),
-        color="white",
-        dark=False,
         sticky="top",
-        className="shadow-sm",
-        style={
-            "background": "rgba(255,255,255,0.88)",
-            "backdropFilter": "blur(14px)",
-            "WebkitBackdropFilter": "blur(14px)",
-            "borderBottom": "1px solid rgba(15, 23, 42, 0.06)",
-        },
+        className="navbar-premium-app",
+    )
+
+
+def build_footer():
+    return html.Footer(
+        dbc.Container(
+            [
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            [
+                                html.Div("Gestoría Duque", className="footer-logo"),
+                                html.P(
+                                    "Asesoría fiscal, laboral y contable en Ávila con una imagen más clara, actual y profesional.",
+                                    className="footer-text",
+                                ),
+                            ],
+                            md=4,
+                            className="mb-4",
+                        ),
+                        dbc.Col(
+                            [
+                                html.Div("Navegación", className="footer-title"),
+                                html.A("Inicio", href="/", className="footer-link"),
+                                html.A("Servicios", href="/#servicios", className="footer-link"),
+                                html.A("Contacto", href="/#contacto", className="footer-link"),
+                            ],
+                            md=4,
+                            className="mb-4",
+                        ),
+                        dbc.Col(
+                            [
+                                html.Div("Contacto", className="footer-title"),
+                                html.Div(TELEFONO, className="footer-text"),
+                                html.Div(EMAIL, className="footer-text"),
+                                html.Div("Ávila", className="footer-text"),
+                            ],
+                            md=4,
+                            className="mb-4",
+                        ),
+                    ]
+                ),
+                html.Hr(className="footer-divider"),
+                html.Div(
+                    "© 2026 Gestoría Duque · Todos los derechos reservados",
+                    className="footer-bottom",
+                ),
+            ]
+        ),
+        className="footer-premium",
     )
 
 
@@ -196,17 +176,23 @@ app.layout = html.Div(
         html.Main(
             page_container,
             className="site-main",
-            style={
-                "background": "#ffffff",
-            },
         ),
+        build_footer(),
     ],
     className="site-shell",
-    style={
-        "backgroundColor": "#ffffff",
-        "minHeight": "100vh",
-    },
 )
+
+
+@app.callback(
+    Output("navbar-collapse", "is_open"),
+    Input("navbar-toggler", "n_clicks"),
+    State("navbar-collapse", "is_open"),
+)
+def toggle_navbar(n, is_open):
+    if n:
+        return not is_open
+    return is_open
+
 
 if __name__ == "__main__":
     app.run(debug=True)
