@@ -1,428 +1,180 @@
 /* =========================================================
-   HOME ANIMATIONS · TOLEDO MODERNIZADO
-   Animación visible, elegante y corporativa
+   ANIMACIONES PREMIUM · VERSION ESTABLE
    ========================================================= */
 
 /* =========================
-   VARIABLES
+   BASE REVEAL
    ========================= */
-:root {
-    --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
-    --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
 
-    --shadow-soft: 0 12px 28px rgba(16, 24, 40, 0.05);
-    --shadow-medium: 0 18px 40px rgba(16, 24, 40, 0.08);
-    --shadow-strong: 0 26px 64px rgba(16, 24, 40, 0.14);
-    --shadow-button: 0 12px 28px rgba(16, 24, 40, 0.12);
-
-    --blur-enter: 6px;
-    --radius-soft: 20px;
-}
-
-/* =========================
-   BASE
-   ========================= */
-html {
-    scroll-behavior: smooth;
-}
-
-body {
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-}
-
-h1, h2, h3 {
-    text-wrap: balance;
-}
-
-p {
-    text-wrap: pretty;
-}
-
-/* =========================
-   ENTRADA GLOBAL DE PÁGINA
-   ========================= */
-.page-shell .section-fade,
-.page-shell .reveal-up {
+.reveal {
     opacity: 0;
-    transform: translate3d(-22px, 0, 0);
-    filter: blur(6px);
-    will-change: transform, opacity, filter;
+    transform: translateY(30px);
+    animation: revealUp 0.9s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-.page-shell.page-loaded .section-fade,
-.page-shell.page-loaded .reveal-up {
-    opacity: 1;
-    transform: translate3d(0, 0, 0);
-    filter: blur(0);
-}
+/* Delay progresivo (hero típico) */
+.reveal:nth-child(1) { animation-delay: 0.2s; }
+.reveal:nth-child(2) { animation-delay: 0.4s; }
+.reveal:nth-child(3) { animation-delay: 0.6s; }
+.reveal:nth-child(4) { animation-delay: 0.8s; }
+.reveal:nth-child(5) { animation-delay: 1s; }
 
-.section-fade {
-    transition:
-        opacity 0.95s var(--ease-premium),
-        transform 0.95s var(--ease-premium),
-        filter 0.95s var(--ease-premium);
-}
+
+/* =========================
+   VARIANTES
+   ========================= */
 
 .reveal-up {
-    transition:
-        opacity 0.78s var(--ease-premium),
-        transform 0.78s var(--ease-premium),
-        filter 0.78s var(--ease-premium);
-    transition-delay: 0.08s;
-}
-
-/* =========================
-   HERO BACKGROUND
-   ========================= */
-#hero-background {
-    will-change: transform, opacity, filter;
-    transform-origin: center center;
-    backface-visibility: hidden;
-    animation: heroZoomSoft 1.2s var(--ease-premium) both;
-}
-
-@keyframes heroZoomSoft {
-    0% {
-        transform: scale(1.045);
-        opacity: 0.88;
-        filter: saturate(0.96);
-    }
-    100% {
-        transform: scale(1.02);
-        opacity: 1;
-        filter: saturate(1);
-    }
-}
-
-.page-shell.page-loaded #hero-background {
-    animation:
-        heroZoomSoft 1.2s var(--ease-premium) both,
-        heroFloatSlow 18s ease-in-out 1.25s infinite alternate;
-}
-
-@keyframes heroFloatSlow {
-    0% {
-        transform: scale(1.02) translate3d(0, 0, 0);
-    }
-    100% {
-        transform: scale(1.035) translate3d(0, -6px, 0);
-    }
-}
-
-/* =========================
-   HERO CONTENT ANIMADO
-   ========================= */
-.hero-content-animate .reveal {
     opacity: 0;
-    animation-name: heroContentInLeft;
-    animation-duration: 0.82s;
-    animation-timing-function: var(--ease-premium);
-    animation-fill-mode: both;
-    will-change: transform, opacity, filter;
+    transform: translateY(40px);
+    animation: revealUp 1s cubic-bezier(0.22, 1, 0.36, 1) forwards;
 }
 
-@keyframes heroContentInLeft {
-    0% {
-        opacity: 0;
-        transform: translate3d(-34px, 0, 0);
-        filter: blur(6px);
-    }
-    100% {
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-40px);
+    animation: revealLeft 0.9s ease forwards;
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(40px);
+    animation: revealRight 0.9s ease forwards;
+}
+
+.reveal-fade {
+    opacity: 0;
+    animation: revealFade 1s ease forwards;
+}
+
+
+/* =========================
+   SECCIONES ENTERAS
+   ========================= */
+
+.section-fade {
+    opacity: 0;
+    animation: sectionFade 1.1s ease forwards;
+    animation-delay: 0.2s;
+}
+
+
+/* =========================
+   KEYFRAMES
+   ========================= */
+
+@keyframes revealUp {
+    to {
         opacity: 1;
-        transform: translate3d(0, 0, 0);
-        filter: blur(0);
+        transform: translateY(0);
     }
 }
 
-.hero-content-animate .reveal-1 { animation-delay: 0.06s; }
-.hero-content-animate .reveal-2 { animation-delay: 0.14s; }
-.hero-content-animate .reveal-3 { animation-delay: 0.22s; }
-.hero-content-animate .reveal-4 { animation-delay: 0.30s; }
-.hero-content-animate .reveal-5 { animation-delay: 0.38s; }
-.hero-content-animate .reveal-6 { animation-delay: 0.46s; }
-.hero-content-animate .reveal-7 { animation-delay: 0.54s; }
-.hero-content-animate .reveal-8 { animation-delay: 0.62s; }
+@keyframes revealLeft {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes revealRight {
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes revealFade {
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes sectionFade {
+    to {
+        opacity: 1;
+    }
+}
+
 
 /* =========================
-   HERO DETALLE
+   HERO ANIMATION (extra smooth)
    ========================= */
-#hero-title,
-#hero-text {
-    will-change: transform, opacity;
+
+.hero-content-animate {
+    animation: heroFade 0.8s ease forwards;
 }
 
-#hero-eyebrow {
-    backface-visibility: hidden;
+@keyframes heroFade {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
+
 
 /* =========================
-   INDICADORES SLIDER
+   HOVER PREMIUM
    ========================= */
-#hero-indicators button {
-    transition:
-        width 0.26s var(--ease-soft),
-        opacity 0.26s var(--ease-soft),
-        background-color 0.26s var(--ease-soft),
-        transform 0.26s var(--ease-soft);
-    backface-visibility: hidden;
+
+.service-card,
+.metric-card,
+.trust-card,
+.contact-card {
+    transition: all 0.35s cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-#hero-indicators button:hover {
-    transform: translateY(-1px);
+.service-card:hover,
+.metric-card:hover,
+.trust-card:hover,
+.contact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 22px 50px rgba(16, 24, 40, 0.12);
 }
 
-/* =========================
-   FLECHAS HERO
-   ========================= */
-#hero-prev,
-#hero-next {
-    transition:
-        transform 0.26s var(--ease-soft),
-        background 0.26s var(--ease-soft),
-        border-color 0.26s var(--ease-soft),
-        box-shadow 0.26s var(--ease-soft),
-        opacity 0.26s var(--ease-soft);
-    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.10);
-}
-
-#hero-prev:hover,
-#hero-next:hover {
-    transform: translateY(-2px);
-    background: rgba(255,255,255,0.14) !important;
-    border-color: rgba(255,255,255,0.24) !important;
-    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.14);
-}
-
-#hero-prev:active,
-#hero-next:active {
-    transform: translateY(0) scale(0.985);
-}
-
-/* =========================
-   TARJETAS
-   ========================= */
-.card {
-    transition:
-        transform 0.30s var(--ease-soft),
-        box-shadow 0.30s var(--ease-soft),
-        border-color 0.30s var(--ease-soft),
-        background 0.30s var(--ease-soft);
-    backface-visibility: hidden;
-    transform: translateZ(0);
-}
-
-.reveal-up .card,
-.section-fade .card,
-.card.reveal-up {
-    transition:
-        transform 0.30s var(--ease-soft),
-        box-shadow 0.30s var(--ease-soft),
-        border-color 0.30s var(--ease-soft),
-        background 0.30s var(--ease-soft);
-}
-
-.reveal-up .card:hover,
-.section-fade .card:hover,
-.card.reveal-up:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-medium) !important;
-}
-
-section .card[style*="backdropFilter"],
-section .card[style*="WebkitBackdropFilter"] {
-    box-shadow: var(--shadow-strong);
-}
 
 /* =========================
    BOTONES
    ========================= */
-.btn,
-button {
-    transition:
-        transform 0.24s var(--ease-soft),
-        box-shadow 0.24s var(--ease-soft),
-        opacity 0.24s var(--ease-soft),
-        background-color 0.24s var(--ease-soft),
-        border-color 0.24s var(--ease-soft),
-        color 0.24s var(--ease-soft);
+
+.btn {
+    transition: all 0.25s ease;
 }
 
 .btn:hover {
     transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
 }
 
-.btn:active {
-    transform: translateY(0) scale(0.985);
-}
-
-.btn-primary,
-.btn-dark {
-    box-shadow: var(--shadow-button);
-}
-
-.btn-primary:hover,
-.btn-dark:hover {
-    box-shadow: 0 16px 34px rgba(16, 24, 40, 0.16);
-}
 
 /* =========================
-   LINKS
+   SCROLL SUAVE
    ========================= */
-a {
-    transition:
-        opacity 0.24s ease,
-        color 0.24s ease,
-        transform 0.24s ease;
+
+html {
+    scroll-behavior: smooth;
 }
 
-a:hover {
-    opacity: 0.96;
-}
 
 /* =========================
-   WHATSAPP FLOTANTE
+   MOBILE OPTIMIZATION
    ========================= */
-a[href*="wa.me"] {
-    transition:
-        transform 0.28s var(--ease-soft),
-        box-shadow 0.28s var(--ease-soft),
-        opacity 0.28s var(--ease-soft);
-    will-change: transform;
-}
 
-a[href*="wa.me"]:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18) !important;
-}
+@media (max-width: 768px) {
 
-a[href*="wa.me"]:active {
-    transform: translateY(0) scale(0.985);
-}
+    .reveal,
+    .reveal-up,
+    .reveal-left,
+    .reveal-right {
+        transform: none;
+        animation-duration: 0.6s;
+    }
 
-/* =========================
-   ACCORDION
-   ========================= */
-.accordion-item {
-    transition:
-        transform 0.26s var(--ease-soft),
-        box-shadow 0.26s var(--ease-soft),
-        border-color 0.26s var(--ease-soft);
-}
-
-.accordion-item:hover {
-    transform: translateY(-2px);
-    box-shadow: 0 10px 22px rgba(16, 24, 40, 0.05);
-}
-
-.accordion-button {
-    transition:
-        background-color 0.24s ease,
-        color 0.24s ease,
-        box-shadow 0.24s ease;
-}
-
-/* =========================
-   GLOW SUAVE DE SECCIONES
-   Muy reducido para no parecer tech
-   ========================= */
-.section-fade {
-    position: relative;
-    isolation: isolate;
-}
-
-.section-fade::before {
-    content: "";
-    position: absolute;
-    inset: auto auto 0 0;
-    width: 180px;
-    height: 180px;
-    border-radius: 999px;
-    background: radial-gradient(
-        circle,
-        rgba(17, 24, 39, 0.03) 0%,
-        rgba(17, 24, 39, 0.00) 72%
-    );
-    filter: blur(20px);
-    pointer-events: none;
-    z-index: -1;
-    opacity: 0.32;
-}
-
-footer.section-fade::before,
-#contacto.section-fade::before {
-    opacity: 0.18;
-}
-
-/* =========================
-   RESPONSIVE
-   ========================= */
-@media (max-width: 991.98px) {
     .section-fade {
-        transition-duration: 0.84s;
-    }
-
-    .reveal-up {
-        transition-duration: 0.72s;
-    }
-
-    #hero-background {
-        animation-duration: 1.05s;
-    }
-
-    .reveal-up .card:hover,
-    .section-fade .card:hover,
-    .card.reveal-up:hover {
-        transform: translateY(-3px);
-    }
-}
-
-@media (max-width: 767.98px) {
-    .page-shell .section-fade,
-    .page-shell .reveal-up {
-        filter: blur(4px);
-        transform: translate3d(-14px, 0, 0);
-    }
-
-    .hero-content-animate .reveal-1 { animation-delay: 0.03s; }
-    .hero-content-animate .reveal-2 { animation-delay: 0.09s; }
-    .hero-content-animate .reveal-3 { animation-delay: 0.15s; }
-    .hero-content-animate .reveal-4 { animation-delay: 0.21s; }
-    .hero-content-animate .reveal-5 { animation-delay: 0.27s; }
-    .hero-content-animate .reveal-6 { animation-delay: 0.33s; }
-
-    a[href*="wa.me"] {
-        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16) !important;
-    }
-}
-
-/* =========================
-   REDUCED MOTION
-   ========================= */
-@media (prefers-reduced-motion: reduce) {
-    html {
-        scroll-behavior: auto;
-    }
-
-    .page-shell .section-fade,
-    .page-shell .reveal-up,
-    .hero-content-animate .reveal,
-    #hero-background,
-    .card,
-    .btn,
-    button,
-    a,
-    .accordion-item,
-    .accordion-button {
-        opacity: 1 !important;
-        transform: none !important;
-        filter: none !important;
-        animation: none !important;
-        transition: none !important;
-    }
-
-    .section-fade::before {
-        display: none !important;
+        animation-duration: 0.7s;
     }
 }
