@@ -14,12 +14,6 @@ def build_topbar():
                 [
                     html.Div(
                         [
-                            html.Span("Asesoría en Ávila", className="topbar-mini-text"),
-                        ],
-                        className="d-none d-md-flex align-items-center",
-                    ),
-                    html.Div(
-                        [
                             html.A(
                                 TELEFONO,
                                 href=f"tel:{TELEFONO.replace(' ', '')}",
@@ -32,7 +26,7 @@ def build_topbar():
                                 className="topbar-link d-none d-sm-inline",
                             ),
                         ],
-                        className="d-flex align-items-center gap-3",
+                        className="d-flex align-items-center justify-content-center justify-content-md-end gap-3 w-100",
                     ),
                 ],
                 className="topbar-content",
