@@ -164,18 +164,3 @@ img {
 .content-section {
     padding: 4rem 0;
 }
-
-/* Evitar conflictos con la home */
-.hero-bg,
-.hero-overlay,
-.hero-section,
-.hero-container,
-.hero-content,
-.hero-title,
-.hero-subtitle,
-.hero-actions,
-.hero-btn,
-.hero-eyebrow,
-.hero-line {
-    all: unset;
-}
