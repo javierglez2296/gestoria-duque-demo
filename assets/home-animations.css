@@ -1,10 +1,6 @@
 /* =========================================================
    HOME ANIMATIONS · PREMIUM FULL
    Versión corregida para entrada izquierda -> derecha
-   Pensado para:
-   - page-shell / page-loaded
-   - hero-content reconstruido por slide
-   - clases reveal / reveal-up / section-fade
    ========================================================= */
 
 /* =========================
@@ -46,7 +42,6 @@ p {
 
 /* =========================
    ENTRADA GLOBAL DE PÁGINA
-   Ahora también entra lateralmente
    ========================= */
 .page-shell .section-fade,
 .page-shell .reveal-up {
@@ -101,7 +96,6 @@ p {
     }
 }
 
-/* respiración lenta del fondo */
 .page-shell.page-loaded #hero-background {
     animation:
         heroZoomSoft 1.4s var(--ease-premium) both,
@@ -119,7 +113,6 @@ p {
 
 /* =========================
    HERO CONTENT ANIMADO
-   PARTE CLAVE: izquierda -> derecha
    ========================= */
 .hero-content-animate .reveal {
     opacity: 0;
@@ -143,7 +136,6 @@ p {
     }
 }
 
-/* Delays escalonados del hero */
 .hero-content-animate .reveal-1 { animation-delay: 0.08s; }
 .hero-content-animate .reveal-2 { animation-delay: 0.16s; }
 .hero-content-animate .reveal-3 { animation-delay: 0.24s; }
@@ -156,10 +148,7 @@ p {
 /* =========================
    HERO TIPOGRAFÍA Y DETALLE
    ========================= */
-#hero-title {
-    will-change: transform, opacity;
-}
-
+#hero-title,
 #hero-text {
     will-change: transform, opacity;
 }
@@ -249,7 +238,6 @@ p {
     filter: saturate(1.02);
 }
 
-/* tarjeta fuerte del hero */
 section .card[style*="backdropFilter"],
 section .card[style*="WebkitBackdropFilter"] {
     box-shadow: var(--shadow-strong);
