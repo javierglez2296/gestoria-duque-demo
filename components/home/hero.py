@@ -66,7 +66,7 @@ def build_hero_content(slide_index):
                         style={
                             "width": "6px",
                             "height": "138px",
-                            "background": "rgba(255,255,255,0.90)",
+                            "background": "rgba(255,255,255,0.65)",
                             "marginRight": "24px",
                             "flexShrink": "0",
                             "alignSelf": "flex-start",
@@ -79,11 +79,11 @@ def build_hero_content(slide_index):
                                 id="hero-title",
                                 className="mb-4 reveal reveal-2",
                                 style={
-                                    "fontSize": "clamp(2.55rem, 4.5vw, 4.85rem)",
+                                    "fontSize": "clamp(2.2rem, 4vw, 3.8rem)",
                                     "lineHeight": "0.98",
                                     "letterSpacing": "-0.055em",
                                     "fontWeight": "700",
-                                    "color": "#ffffff",
+                                    "color": "rgba(255,255,255,0.94)",
                                     "maxWidth": "780px",
                                     "marginBottom": "1.35rem",
                                 },
@@ -95,7 +95,7 @@ def build_hero_content(slide_index):
                                 style={
                                     "fontSize": "1.02rem",
                                     "lineHeight": "1.9",
-                                    "color": "rgba(255,255,255,0.82)",
+                                    "color": "rgba(255,255,255,0.72)",
                                     "maxWidth": "640px",
                                     "marginBottom": "0",
                                 },
@@ -151,7 +151,7 @@ def build_hero_content(slide_index):
                             "background": "#ffffff",
                             "border": "none",
                             "borderRadius": "999px",
-                            "boxShadow": "0 16px 34px rgba(0,0,0,0.16)",
+                            "boxShadow": "0 10px 22px rgba(0,0,0,0.14)",
                         },
                     ),
                     html.A(
@@ -213,8 +213,8 @@ def build_hero():
                     "position": "absolute",
                     "inset": "0",
                     "background": (
-                        "linear-gradient(90deg, rgba(8, 12, 20, 0.84) 0%, "
-                        "rgba(8, 12, 20, 0.70) 34%, rgba(8, 12, 20, 0.38) 100%)"
+                        "linear-gradient(90deg, rgba(8, 12, 20, 0.92) 0%, "
+                        "rgba(8, 12, 20, 0.78) 42%, rgba(8, 12, 20, 0.42) 100%)"
                     ),
                 }
             ),
