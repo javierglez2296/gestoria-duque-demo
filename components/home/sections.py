@@ -32,7 +32,7 @@ def build_trust_section():
         ("Ávila", "Despacho local de confianza"),
     ]
 
-    return html.Section(
+    return html.Div(
         dbc.Container(
             dbc.Row(
                 [
@@ -84,7 +84,7 @@ def build_trust_section():
 
 
 def build_stats_section():
-    return html.Section(
+    return html.Div(
         dbc.Container(
             dbc.Row(
                 [
@@ -101,7 +101,7 @@ def build_stats_section():
 
 
 def build_services_section():
-    return html.Section(
+    return html.Div(
         dbc.Container(
             [
                 section_tag("Servicios"),
@@ -151,7 +151,7 @@ def build_services_section():
 
 
 def build_about_section():
-    return html.Section(
+    return html.Div(
         dbc.Container(
             dbc.Row(
                 [
@@ -249,7 +249,7 @@ def build_about_section():
 
 
 def build_pillars_section():
-    return html.Section(
+    return html.Div(
         dbc.Container(
             [
                 section_tag("Pilares"),
@@ -301,7 +301,7 @@ def build_pillars_section():
 
 
 def build_featured_section():
-    return html.Section(
+    return html.Div(
         dbc.Container(
             dbc.Row(
                 [
@@ -356,7 +356,7 @@ def build_featured_section():
 
 
 def build_process_section():
-    return html.Section(
+    return html.Div(
         dbc.Container(
             [
                 section_tag("Proceso"),
@@ -404,7 +404,7 @@ def build_process_section():
 
 
 def build_testimonials_section():
-    return html.Section(
+    return html.Div(
         dbc.Container(
             [
                 section_tag("Opiniones"),
@@ -444,7 +444,7 @@ def build_testimonials_section():
 
 
 def build_location_section():
-    return html.Section(
+    return html.Div(
         dbc.Container(
             [
                 section_tag("Ubicación"),
@@ -596,7 +596,7 @@ def build_location_section():
 
 
 def build_seo_section():
-    return html.Section(
+    return html.Div(
         dbc.Container(
             [
                 section_tag("Gestoría en Ávila"),
@@ -628,7 +628,7 @@ def build_seo_section():
 
 
 def build_faq_section():
-    return html.Section(
+    return html.Div(
         dbc.Container(
             [
                 section_tag("Preguntas frecuentes"),
@@ -669,7 +669,7 @@ def build_faq_section():
 
 
 def build_cta_section():
-    return html.Section(
+    return html.Div(
         dbc.Container(
             dbc.Row(
                 [
