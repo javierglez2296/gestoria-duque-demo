@@ -15,11 +15,11 @@ def build_topbar():
                     dbc.Col(
                         html.Div(
                             [
-                                html.Span("Ávila"),
-                                html.Span("Más de 70 años de experiencia"),
-                                html.Span("Atención cercana y profesional"),
+                                html.Span("Ávila", className="topbar-text me-3"),
+                                html.Span("Más de 70 años de experiencia", className="topbar-text me-3"),
+                                html.Span("Atención cercana y profesional", className="topbar-text"),
                             ],
-                            className="topbar-left d-none d-md-flex",
+                            className="topbar-inner d-none d-md-flex align-items-center flex-wrap",
                         ),
                         md=7,
                         className="d-flex align-items-center",
@@ -38,7 +38,7 @@ def build_topbar():
                                     className="topbar-link",
                                 ),
                             ],
-                            className="topbar-right d-flex justify-content-md-end flex-wrap",
+                            className="topbar-inner d-flex justify-content-md-end flex-wrap",
                         ),
                         md=5,
                         className="d-flex align-items-center justify-content-start justify-content-md-end",
@@ -47,7 +47,7 @@ def build_topbar():
                 className="py-2 align-items-center",
             )
         ),
-        className="topbar-premium",
+        className="topbar",
     )
 
 
@@ -66,37 +66,48 @@ def build_navbar():
                     href="/",
                     className="text-decoration-none",
                 ),
-                dbc.NavbarToggler(id="navbar-toggler", n_clicks=0, className="border-0"),
+                dbc.NavbarToggler(
+                    id="navbar-toggler",
+                    n_clicks=0,
+                    className="navbar-toggler-premium",
+                ),
                 dbc.Collapse(
                     dbc.Nav(
                         [
-                            dbc.NavLink("Inicio", href="/", className="nav-link-premium"),
-                            dbc.NavLink("Servicios", href="/#servicios", className="nav-link-premium"),
-                            dbc.NavLink("Contacto", href="/#contacto", className="nav-link-premium"),
-                            dbc.Button(
-                                "WhatsApp",
-                                href=WHATSAPP_URL,
-                                target="_blank",
-                                className="navbar-btn navbar-btn-secondary",
+                            dbc.NavLink(
+                                "Inicio",
+                                href="/",
+                                className="nav-link-premium",
+                            ),
+                            dbc.NavLink(
+                                "Servicios",
+                                href="/#servicios",
+                                className="nav-link-premium",
+                            ),
+                            dbc.NavLink(
+                                "Contacto",
+                                href="/#contacto",
+                                className="nav-link-premium",
                             ),
                             dbc.Button(
-                                "Llamar ahora",
-                                href=f"tel:{TELEFONO.replace(' ', '')}",
-                                className="navbar-btn navbar-btn-primary",
+                                "Solicitar información",
+                                href="/#contacto",
+                                className="navbar-cta",
                             ),
                         ],
-                        className="ms-auto align-items-lg-center navbar-menu-premium",
+                        className="ms-auto align-items-center navbar-nav-premium",
                         navbar=True,
                     ),
                     id="navbar-collapse",
                     navbar=True,
                 ),
             ],
-            fluid=True,
-            className="navbar-inner",
+            fluid=False,
+            className="navbar-container-premium",
         ),
         sticky="top",
-        className="navbar-premium-app",
+        className="navbar-premium",
+        dark=False,
     )
 
 
@@ -108,10 +119,10 @@ def build_footer():
                     [
                         dbc.Col(
                             [
-                                html.Div("Gestoría Duque", className="footer-logo"),
+                                html.Div("Gestoría Duque", className="site-footer-title"),
                                 html.P(
-                                    "Asesoría fiscal, laboral y contable en Ávila con una imagen más clara, actual y profesional.",
-                                    className="footer-text",
+                                    "Asesoría fiscal, laboral y contable en Ávila con una imagen clara, actual y profesional.",
+                                    className="site-footer-text",
                                 ),
                             ],
                             md=4,
@@ -119,34 +130,33 @@ def build_footer():
                         ),
                         dbc.Col(
                             [
-                                html.Div("Navegación", className="footer-title"),
-                                html.A("Inicio", href="/", className="footer-link"),
-                                html.A("Servicios", href="/#servicios", className="footer-link"),
-                                html.A("Contacto", href="/#contacto", className="footer-link"),
+                                html.Div("Navegación", className="site-footer-title"),
+                                html.Div(
+                                    [
+                                        html.A("Inicio", href="/", className="site-footer-link d-block mb-2"),
+                                        html.A("Servicios", href="/#servicios", className="site-footer-link d-block mb-2"),
+                                        html.A("Contacto", href="/#contacto", className="site-footer-link d-block"),
+                                    ]
+                                ),
                             ],
                             md=4,
                             className="mb-4",
                         ),
                         dbc.Col(
                             [
-                                html.Div("Contacto", className="footer-title"),
-                                html.Div(TELEFONO, className="footer-text"),
-                                html.Div(EMAIL, className="footer-text"),
-                                html.Div("Ávila", className="footer-text"),
+                                html.Div("Contacto", className="site-footer-title"),
+                                html.P(TELEFONO, className="site-footer-text"),
+                                html.P(EMAIL, className="site-footer-text"),
+                                html.P("Ávila", className="site-footer-text"),
                             ],
                             md=4,
                             className="mb-4",
                         ),
                     ]
                 ),
-                html.Hr(className="footer-divider"),
-                html.Div(
-                    "© 2026 Gestoría Duque · Todos los derechos reservados",
-                    className="footer-bottom",
-                ),
-            ]
+            ],
         ),
-        className="footer-premium",
+        className="site-footer",
     )
 
 
