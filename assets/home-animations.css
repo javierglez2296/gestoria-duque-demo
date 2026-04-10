@@ -1,5 +1,6 @@
 /* =========================================================
    HOME ANIMATIONS · PREMIUM FULL
+   Versión corregida para entrada izquierda -> derecha
    Pensado para:
    - page-shell / page-loaded
    - hero-content reconstruido por slide
@@ -45,11 +46,12 @@ p {
 
 /* =========================
    ENTRADA GLOBAL DE PÁGINA
+   Ahora también entra lateralmente
    ========================= */
 .page-shell .section-fade,
 .page-shell .reveal-up {
     opacity: 0;
-    transform: translateY(30px);
+    transform: translateX(-34px);
     filter: blur(10px);
     will-change: transform, opacity, filter;
 }
@@ -57,7 +59,7 @@ p {
 .page-shell.page-loaded .section-fade,
 .page-shell.page-loaded .reveal-up {
     opacity: 1;
-    transform: translateY(0);
+    transform: translateX(0);
     filter: blur(0);
 }
 
@@ -117,26 +119,26 @@ p {
 
 /* =========================
    HERO CONTENT ANIMADO
-   ESTA ES LA PARTE CLAVE
+   PARTE CLAVE: izquierda -> derecha
    ========================= */
 .hero-content-animate .reveal {
     opacity: 0;
-    animation-name: heroContentIn;
+    animation-name: heroContentInLeft;
     animation-duration: 0.95s;
     animation-timing-function: var(--ease-premium);
     animation-fill-mode: both;
     will-change: transform, opacity, filter;
 }
 
-@keyframes heroContentIn {
+@keyframes heroContentInLeft {
     0% {
         opacity: 0;
-        transform: translateY(26px) scale(0.99);
+        transform: translateX(-56px) scale(0.99);
         filter: blur(10px);
     }
     100% {
         opacity: 1;
-        transform: translateY(0) scale(1);
+        transform: translateX(0) scale(1);
         filter: blur(0);
     }
 }
@@ -403,6 +405,7 @@ footer.section-fade::before,
     .page-shell .section-fade,
     .page-shell .reveal-up {
         filter: blur(7px);
+        transform: translateX(-20px);
     }
 
     .hero-content-animate .reveal-1 { animation-delay: 0.04s; }
