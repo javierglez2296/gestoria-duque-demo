@@ -192,7 +192,7 @@ def build_hero_content(slide_index):
 def build_hero():
     slide = HERO_SLIDES[0]
 
-    return html.Section(
+    return html.Div(
         [
             dcc.Store(id="hero-slide-index", data=0),
             dcc.Interval(id="hero-autoplay", interval=5000, n_intervals=0),
