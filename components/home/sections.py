@@ -2,9 +2,9 @@ from dash import html
 import dash_bootstrap_components as dbc
 
 from components.home.data import (
+    DIRECCION,
     TELEFONO_1,
     EMAIL,
-    DIRECCION,
     WHATSAPP_URL,
     SERVICIOS,
     PILARES,
@@ -22,6 +22,66 @@ from components.home.ui import (
     process_card,
     testimonial_card,
 )
+
+
+def build_trust_section():
+    items = [
+        ("Desde 1950", "Trayectoria consolidada"),
+        ("Atención cercana", "Trato directo y profesional"),
+        ("Servicio integral", "Fiscal, laboral y contable"),
+        ("Ávila", "Despacho local de confianza"),
+    ]
+
+    return html.Section(
+        dbc.Container(
+            dbc.Row(
+                [
+                    dbc.Col(
+                        html.Div(
+                            [
+                                html.Div(
+                                    titulo,
+                                    className="fw-bold mb-1",
+                                    style={
+                                        "color": "#101828",
+                                        "fontSize": "1.02rem",
+                                        "letterSpacing": "-0.02em",
+                                    },
+                                ),
+                                html.Div(
+                                    texto,
+                                    style={
+                                        "color": "#667085",
+                                        "fontSize": "0.94rem",
+                                        "lineHeight": "1.6",
+                                    },
+                                ),
+                            ],
+                            className="h-100",
+                            style={
+                                "padding": "1.1rem 1rem",
+                                "borderRadius": "18px",
+                                "background": "rgba(255,255,255,0.86)",
+                                "border": "1px solid rgba(16,24,40,0.06)",
+                                "boxShadow": "0 10px 30px rgba(16,24,40,0.04)",
+                            },
+                        ),
+                        lg=3,
+                        md=6,
+                        className="mb-3 reveal-up",
+                    )
+                    for titulo, texto in items
+                ],
+                className="g-3",
+            )
+        ),
+        className="section-fade",
+        style={
+            "paddingTop": "2.2rem",
+            "paddingBottom": "3rem",
+            "background": "linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%)",
+        },
+    )
 
 
 def build_stats_section():
@@ -51,7 +111,7 @@ def build_services_section():
                         dbc.Col(
                             [
                                 html.H2(
-                                    "Diseñada para que el visitante entienda rápido qué hacéis y por qué merece la pena contactar",
+                                    "Servicios de asesoría fiscal, laboral, contable y administrativa en Ávila",
                                     className="fw-bold mb-3 reveal-up",
                                     style={
                                         "fontSize": "clamp(2.1rem, 3.7vw, 3.25rem)",
@@ -62,7 +122,7 @@ def build_services_section():
                                     },
                                 ),
                                 html.P(
-                                    "Aquí la web ya no parece una lista tradicional de servicios. Tiene más ritmo, más aire y una percepción mucho más premium.",
+                                    "Ofrecemos un servicio profesional y cercano para autónomos, empresas y particulares que buscan apoyo estable en su gestión diaria.",
                                     className="mb-5 reveal-up",
                                     style={
                                         "color": "#667085",
@@ -88,6 +148,116 @@ def build_services_section():
     )
 
 
+def build_about_section():
+    return html.Section(
+        dbc.Container(
+            dbc.Card(
+                dbc.CardBody(
+                    dbc.Row(
+                        [
+                            dbc.Col(
+                                [
+                                    section_tag("Despacho"),
+                                    html.H2(
+                                        "Más de 70 años acompañando a empresas, autónomos y particulares en Ávila",
+                                        className="fw-bold mb-3 reveal-up",
+                                        style={
+                                            "fontSize": "clamp(2rem, 3.2vw, 2.95rem)",
+                                            "lineHeight": "1.04",
+                                            "letterSpacing": "-0.05em",
+                                            "color": "#101828",
+                                            "maxWidth": "780px",
+                                        },
+                                    ),
+                                    html.P(
+                                        "Nuestra gestoría combina experiencia, cercanía y atención profesional para ofrecer un servicio claro, estable y adaptado a las necesidades reales de cada cliente.",
+                                        className="mb-3 reveal-up",
+                                        style={
+                                            "color": "#667085",
+                                            "lineHeight": "1.9",
+                                            "maxWidth": "760px",
+                                        },
+                                    ),
+                                    html.P(
+                                        "Trabajamos en el ámbito fiscal, laboral, contable y administrativo, ayudando tanto en la gestión diaria como en trámites concretos que requieren orden, confianza y agilidad.",
+                                        className="mb-0 reveal-up",
+                                        style={
+                                            "color": "#667085",
+                                            "lineHeight": "1.9",
+                                            "maxWidth": "760px",
+                                        },
+                                    ),
+                                ],
+                                lg=7,
+                                className="mb-4 mb-lg-0",
+                            ),
+                            dbc.Col(
+                                [
+                                    html.Div(
+                                        [
+                                            html.Div(
+                                                "Nuestra forma de trabajar",
+                                                className="fw-semibold mb-3 reveal-up",
+                                                style={
+                                                    "color": "#101828",
+                                                    "fontSize": "1rem",
+                                                },
+                                            ),
+                                            html.Div(
+                                                [
+                                                    html.Div(
+                                                        "• Atención directa y cercana",
+                                                        className="mb-2 reveal-up",
+                                                        style={"color": "#344054", "fontWeight": "600"},
+                                                    ),
+                                                    html.Div(
+                                                        "• Explicaciones claras y sencillas",
+                                                        className="mb-2 reveal-up",
+                                                        style={"color": "#344054", "fontWeight": "600"},
+                                                    ),
+                                                    html.Div(
+                                                        "• Experiencia en la gestión del día a día",
+                                                        className="mb-2 reveal-up",
+                                                        style={"color": "#344054", "fontWeight": "600"},
+                                                    ),
+                                                    html.Div(
+                                                        "• Acompañamiento estable para clientes y negocios",
+                                                        className="reveal-up",
+                                                        style={"color": "#344054", "fontWeight": "600"},
+                                                    ),
+                                                ]
+                                            ),
+                                        ],
+                                        style={
+                                            "padding": "1.5rem",
+                                            "borderRadius": "22px",
+                                            "background": "linear-gradient(180deg, #ffffff 0%, #f8fbff 100%)",
+                                            "boxShadow": "0 18px 46px rgba(16, 24, 40, 0.06)",
+                                            "height": "100%",
+                                        },
+                                    )
+                                ],
+                                lg=5,
+                            ),
+                        ]
+                    )
+                ),
+                className="border-0",
+                style={
+                    "borderRadius": "30px",
+                    "background": "linear-gradient(135deg, #ffffff 0%, #fbfcfe 100%)",
+                    "boxShadow": "0 24px 62px rgba(16, 24, 40, 0.08)",
+                },
+            )
+        ),
+        className="section-fade",
+        style={
+            "paddingTop": "4.4rem",
+            "paddingBottom": "4.8rem",
+        },
+    )
+
+
 def build_pillars_section():
     return html.Section(
         dbc.Container(
@@ -97,7 +267,7 @@ def build_pillars_section():
                     [
                         dbc.Col(
                             html.H2(
-                                "Una gestoría local puede parecer muchísimo más potente con una presentación adecuada",
+                                "Un despacho de confianza se apoya en experiencia, cercanía y una gestión bien explicada",
                                 className="fw-bold mb-4 reveal-up",
                                 style={
                                     "fontSize": "clamp(2rem, 3.4vw, 3rem)",
@@ -111,7 +281,7 @@ def build_pillars_section():
                         ),
                         dbc.Col(
                             html.P(
-                                "No se trata solo de diseño. Se trata de percepción, confianza y capacidad de convertir una visita en una llamada.",
+                                "La confianza del cliente se construye con una atención profesional, una comunicación clara y una forma de trabajar estable en el tiempo.",
                                 className="mb-4 mb-lg-0 reveal-up",
                                 style={
                                     "color": "#667085",
@@ -146,9 +316,9 @@ def build_featured_section():
                         [
                             dbc.Col(
                                 [
-                                    section_tag("Enfoque"),
+                                    section_tag("Especialidades"),
                                     html.H2(
-                                        "Más de 70 años ayudando a clientes en Ávila",
+                                        "Experiencia, cercanía y servicio profesional para el día a día de tus gestiones",
                                         className="fw-bold mb-3 reveal-up",
                                         style={
                                             "fontSize": "clamp(2rem, 3vw, 2.7rem)",
@@ -158,7 +328,7 @@ def build_featured_section():
                                         },
                                     ),
                                     html.P(
-                                        "La experiencia del despacho es una ventaja enorme. Esta sección la convierte en algo visible, memorable y comercialmente útil.",
+                                        "La trayectoria del despacho permite ofrecer una atención sólida, clara y orientada a resolver con agilidad las necesidades de cada cliente.",
                                         className="mb-4 mb-lg-0 reveal-up",
                                         style={
                                             "color": "#667085",
@@ -200,7 +370,7 @@ def build_process_section():
                     [
                         dbc.Col(
                             html.H2(
-                                "Una experiencia simple y elegante ayuda a reducir fricción y a generar más contacto",
+                                "Una atención clara y bien organizada ayuda a resolver cada gestión con más tranquilidad",
                                 className="fw-bold mb-4 reveal-up",
                                 style={
                                     "fontSize": "clamp(2rem, 3.35vw, 3rem)",
@@ -214,7 +384,7 @@ def build_process_section():
                         ),
                         dbc.Col(
                             html.P(
-                                "Cuando el proceso se entiende rápido, el visitante siente menos distancia y más confianza para dar el paso.",
+                                "Cuando el cliente entiende el proceso y se siente acompañado, la relación resulta más sencilla, más cercana y más eficaz.",
                                 className="mb-4 mb-lg-0 reveal-up",
                                 style={
                                     "color": "#667085",
@@ -242,7 +412,7 @@ def build_testimonials_section():
             [
                 section_tag("Opiniones"),
                 html.H2(
-                    "La confianza aumenta mucho cuando la imagen se apoya en testimonios reales",
+                    "La confianza se refuerza cuando la atención profesional se traduce en buenas experiencias",
                     className="fw-bold mb-3 reveal-up",
                     style={
                         "fontSize": "clamp(2rem, 3.2vw, 3rem)",
@@ -253,7 +423,7 @@ def build_testimonials_section():
                     },
                 ),
                 html.P(
-                    "En la versión final sustituiría estos ejemplos por reseñas reales de Google o testimonios auténticos del despacho.",
+                    "Estas opiniones representan el tipo de trato cercano, claro y profesional que una gestoría consolidada busca ofrecer a sus clientes.",
                     className="mb-5 reveal-up",
                     style={
                         "color": "#667085",
@@ -273,13 +443,162 @@ def build_testimonials_section():
     )
 
 
+def build_location_section():
+    return html.Section(
+        dbc.Container(
+            [
+                section_tag("Ubicación"),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            [
+                                html.H2(
+                                    "Gestoría en Ávila con atención cercana y presencial",
+                                    className="fw-bold mb-3 reveal-up",
+                                    style={
+                                        "fontSize": "clamp(2rem, 3.2vw, 2.9rem)",
+                                        "lineHeight": "1.04",
+                                        "letterSpacing": "-0.05em",
+                                        "color": "#101828",
+                                        "maxWidth": "760px",
+                                    },
+                                ),
+                                html.P(
+                                    "Atendemos desde nuestra oficina en Ávila, ofreciendo un servicio próximo, claro y profesional para clientes particulares, autónomos y empresas.",
+                                    className="mb-4 reveal-up",
+                                    style={
+                                        "color": "#667085",
+                                        "lineHeight": "1.9",
+                                        "maxWidth": "720px",
+                                    },
+                                ),
+                                dbc.Card(
+                                    dbc.CardBody(
+                                        [
+                                            html.Div(
+                                                "Datos de contacto",
+                                                className="fw-semibold mb-3 reveal-up",
+                                                style={"color": "#101828"},
+                                            ),
+                                            html.Div(
+                                                f"📍 {DIRECCION}",
+                                                className="mb-2 reveal-up",
+                                                style={"color": "#667085", "lineHeight": "1.8"},
+                                            ),
+                                            html.Div(
+                                                f"📞 {TELEFONO_1}",
+                                                className="mb-2 reveal-up",
+                                                style={"color": "#667085"},
+                                            ),
+                                            html.Div(
+                                                f"✉️ {EMAIL}",
+                                                className="mb-4 reveal-up",
+                                                style={"color": "#667085"},
+                                            ),
+                                            dbc.Button(
+                                                "Contactar por WhatsApp",
+                                                href=WHATSAPP_URL,
+                                                target="_blank",
+                                                color="success",
+                                                className="rounded-pill fw-semibold me-2 mb-2",
+                                                style={
+                                                    "padding": "0.95rem 1.2rem",
+                                                    "minHeight": "52px",
+                                                },
+                                            ),
+                                            dbc.Button(
+                                                "Enviar email",
+                                                href=f"mailto:{EMAIL}",
+                                                color="light",
+                                                className="rounded-pill fw-semibold border mb-2",
+                                                style={
+                                                    "padding": "0.95rem 1.2rem",
+                                                    "minHeight": "52px",
+                                                },
+                                            ),
+                                        ]
+                                    ),
+                                    className="border-0 reveal-up",
+                                    style={
+                                        "borderRadius": "24px",
+                                        "background": "#ffffff",
+                                        "boxShadow": "0 18px 46px rgba(16, 24, 40, 0.06)",
+                                    },
+                                ),
+                            ],
+                            lg=5,
+                            className="mb-4 mb-lg-0",
+                        ),
+                        dbc.Col(
+                            dbc.Card(
+                                dbc.CardBody(
+                                    html.Div(
+                                        [
+                                            html.Div(
+                                                "Mapa / oficina",
+                                                className="fw-semibold mb-3 reveal-up",
+                                                style={"color": "#101828"},
+                                            ),
+                                            html.Div(
+                                                "Aquí puedes integrar un mapa de Google Maps, una imagen de la oficina o una captura de ubicación para reforzar la confianza del visitante.",
+                                                className="mb-4 reveal-up",
+                                                style={
+                                                    "color": "#667085",
+                                                    "lineHeight": "1.85",
+                                                    "maxWidth": "620px",
+                                                },
+                                            ),
+                                            html.Div(
+                                                style={
+                                                    "height": "340px",
+                                                    "borderRadius": "22px",
+                                                    "background": (
+                                                        "linear-gradient(135deg, #edf4ff 0%, #f8fbff 100%)"
+                                                    ),
+                                                    "border": "1px solid rgba(13,110,253,0.08)",
+                                                    "display": "flex",
+                                                    "alignItems": "center",
+                                                    "justifyContent": "center",
+                                                    "color": "#667085",
+                                                    "fontWeight": "600",
+                                                    "fontSize": "1rem",
+                                                },
+                                                className="reveal-up",
+                                                children="Espacio para mapa o imagen de ubicación",
+                                            ),
+                                        ]
+                                    )
+                                ),
+                                className="border-0 h-100",
+                                style={
+                                    "borderRadius": "28px",
+                                    "background": "linear-gradient(180deg, #ffffff 0%, #fbfcfe 100%)",
+                                    "boxShadow": "0 20px 54px rgba(16, 24, 40, 0.06)",
+                                },
+                            ),
+                            lg=7,
+                        ),
+                    ],
+                    className="align-items-stretch",
+                ),
+            ]
+        ),
+        className="section-fade",
+        style={
+            "paddingTop": "4.6rem",
+            "paddingBottom": "4.8rem",
+            "background": "#f8fafc",
+        },
+    )
+
+
 def build_seo_section():
     return html.Section(
         dbc.Container(
             [
-                section_tag("SEO local"),
+                section_tag("Gestoría en Ávila"),
                 html.H2(
-                    "Gestoría en Ávila con enfoque fiscal, laboral, contable y administrativo",
+                    "Asesoría fiscal, laboral, contable y administrativa para empresas, autónomos y particulares",
                     className="fw-bold mb-3 reveal-up",
                     style={
                         "fontSize": "clamp(1.95rem, 3vw, 2.65rem)",
@@ -290,7 +609,7 @@ def build_seo_section():
                     },
                 ),
                 html.P(
-                    "Esta home está pensada para apoyar búsquedas como gestoría en Ávila, asesoría fiscal en Ávila, asesoría laboral en Ávila, gestoría para autónomos en Ávila o asesoría contable en Ávila. Además, mejora mucho la percepción del despacho al explicar mejor qué hace, a quién ayuda y cómo contactar.",
+                    "Ofrecemos apoyo profesional en gestiones fiscales, laborales, contables y administrativas desde Ávila, con una atención cercana y orientada a resolver de forma clara las necesidades de cada cliente.",
                     className="mb-0 reveal-up",
                     style={
                         "color": "#667085",
@@ -358,7 +677,7 @@ def build_cta_section():
                                 dbc.Col(
                                     [
                                         html.H2(
-                                            "Una mejor imagen digital suele traducirse en más llamadas y más contactos",
+                                            "Contacta con nuestra gestoría en Ávila",
                                             className="fw-bold mb-3 reveal-up",
                                             style={
                                                 "fontSize": "clamp(2rem, 3.45vw, 3rem)",
@@ -369,7 +688,7 @@ def build_cta_section():
                                             },
                                         ),
                                         html.P(
-                                            "Esta demo está pensada para que el visitante entienda rápido el valor del despacho y vea fácil el siguiente paso.",
+                                            "Estamos aquí para ayudarte con tus necesidades fiscales, laborales, contables y administrativas de forma clara, cercana y profesional.",
                                             className="mb-0 reveal-up",
                                             style={
                                                 "color": "#667085",
@@ -443,7 +762,7 @@ def build_footer_section():
                     dbc.Col(
                         [
                             html.Div(
-                                "Gestoría Duque · Demo",
+                                "Gestoría Duque",
                                 className="fw-bold mb-2 reveal-up",
                                 style={
                                     "color": "#101828",
@@ -452,7 +771,7 @@ def build_footer_section():
                                 },
                             ),
                             html.Div(
-                                "Propuesta visual de renovación web con enfoque premium, local y comercial.",
+                                "Asesoría fiscal, laboral, contable y administrativa en Ávila con atención cercana y profesional.",
                                 className="reveal-up",
                                 style={"color": "#667085", "lineHeight": "1.8"},
                             ),
