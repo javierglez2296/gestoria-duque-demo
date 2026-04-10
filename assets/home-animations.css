@@ -1,6 +1,6 @@
 /* =========================================================
-   HOME ANIMATIONS · PREMIUM FULL
-   Versión corregida para entrada izquierda -> derecha
+   HOME ANIMATIONS · TOLEDO MODERNIZADO
+   Animación visible, elegante y corporativa
    ========================================================= */
 
 /* =========================
@@ -10,13 +10,13 @@
     --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
     --ease-soft: cubic-bezier(0.16, 1, 0.3, 1);
 
-    --shadow-soft: 0 18px 44px rgba(16, 24, 40, 0.06);
-    --shadow-medium: 0 24px 60px rgba(16, 24, 40, 0.10);
-    --shadow-strong: 0 32px 90px rgba(16, 24, 40, 0.16);
-    --shadow-button: 0 16px 34px rgba(16, 24, 40, 0.14);
+    --shadow-soft: 0 12px 28px rgba(16, 24, 40, 0.05);
+    --shadow-medium: 0 18px 40px rgba(16, 24, 40, 0.08);
+    --shadow-strong: 0 26px 64px rgba(16, 24, 40, 0.14);
+    --shadow-button: 0 12px 28px rgba(16, 24, 40, 0.12);
 
-    --blur-enter: 10px;
-    --radius-soft: 24px;
+    --blur-enter: 6px;
+    --radius-soft: 20px;
 }
 
 /* =========================
@@ -46,31 +46,31 @@ p {
 .page-shell .section-fade,
 .page-shell .reveal-up {
     opacity: 0;
-    transform: translateX(-34px);
-    filter: blur(10px);
+    transform: translate3d(-22px, 0, 0);
+    filter: blur(6px);
     will-change: transform, opacity, filter;
 }
 
 .page-shell.page-loaded .section-fade,
 .page-shell.page-loaded .reveal-up {
     opacity: 1;
-    transform: translateX(0);
+    transform: translate3d(0, 0, 0);
     filter: blur(0);
 }
 
 .section-fade {
     transition:
-        opacity 1s var(--ease-premium),
-        transform 1s var(--ease-premium),
-        filter 1s var(--ease-premium);
+        opacity 0.95s var(--ease-premium),
+        transform 0.95s var(--ease-premium),
+        filter 0.95s var(--ease-premium);
 }
 
 .reveal-up {
     transition:
-        opacity 0.85s var(--ease-premium),
-        transform 0.85s var(--ease-premium),
-        filter 0.85s var(--ease-premium);
-    transition-delay: 0.10s;
+        opacity 0.78s var(--ease-premium),
+        transform 0.78s var(--ease-premium),
+        filter 0.78s var(--ease-premium);
+    transition-delay: 0.08s;
 }
 
 /* =========================
@@ -80,14 +80,14 @@ p {
     will-change: transform, opacity, filter;
     transform-origin: center center;
     backface-visibility: hidden;
-    animation: heroZoomSoft 1.4s var(--ease-premium) both;
+    animation: heroZoomSoft 1.2s var(--ease-premium) both;
 }
 
 @keyframes heroZoomSoft {
     0% {
-        transform: scale(1.075);
-        opacity: 0.82;
-        filter: saturate(0.94);
+        transform: scale(1.045);
+        opacity: 0.88;
+        filter: saturate(0.96);
     }
     100% {
         transform: scale(1.02);
@@ -98,8 +98,8 @@ p {
 
 .page-shell.page-loaded #hero-background {
     animation:
-        heroZoomSoft 1.4s var(--ease-premium) both,
-        heroFloatSlow 18s ease-in-out 1.5s infinite alternate;
+        heroZoomSoft 1.2s var(--ease-premium) both,
+        heroFloatSlow 18s ease-in-out 1.25s infinite alternate;
 }
 
 @keyframes heroFloatSlow {
@@ -107,7 +107,7 @@ p {
         transform: scale(1.02) translate3d(0, 0, 0);
     }
     100% {
-        transform: scale(1.045) translate3d(0, -8px, 0);
+        transform: scale(1.035) translate3d(0, -6px, 0);
     }
 }
 
@@ -117,7 +117,7 @@ p {
 .hero-content-animate .reveal {
     opacity: 0;
     animation-name: heroContentInLeft;
-    animation-duration: 0.95s;
+    animation-duration: 0.82s;
     animation-timing-function: var(--ease-premium);
     animation-fill-mode: both;
     will-change: transform, opacity, filter;
@@ -126,27 +126,27 @@ p {
 @keyframes heroContentInLeft {
     0% {
         opacity: 0;
-        transform: translateX(-56px) scale(0.99);
-        filter: blur(10px);
+        transform: translate3d(-34px, 0, 0);
+        filter: blur(6px);
     }
     100% {
         opacity: 1;
-        transform: translateX(0) scale(1);
+        transform: translate3d(0, 0, 0);
         filter: blur(0);
     }
 }
 
-.hero-content-animate .reveal-1 { animation-delay: 0.08s; }
-.hero-content-animate .reveal-2 { animation-delay: 0.16s; }
-.hero-content-animate .reveal-3 { animation-delay: 0.24s; }
-.hero-content-animate .reveal-4 { animation-delay: 0.32s; }
-.hero-content-animate .reveal-5 { animation-delay: 0.40s; }
-.hero-content-animate .reveal-6 { animation-delay: 0.48s; }
-.hero-content-animate .reveal-7 { animation-delay: 0.56s; }
-.hero-content-animate .reveal-8 { animation-delay: 0.64s; }
+.hero-content-animate .reveal-1 { animation-delay: 0.06s; }
+.hero-content-animate .reveal-2 { animation-delay: 0.14s; }
+.hero-content-animate .reveal-3 { animation-delay: 0.22s; }
+.hero-content-animate .reveal-4 { animation-delay: 0.30s; }
+.hero-content-animate .reveal-5 { animation-delay: 0.38s; }
+.hero-content-animate .reveal-6 { animation-delay: 0.46s; }
+.hero-content-animate .reveal-7 { animation-delay: 0.54s; }
+.hero-content-animate .reveal-8 { animation-delay: 0.62s; }
 
 /* =========================
-   HERO TIPOGRAFÍA Y DETALLE
+   HERO DETALLE
    ========================= */
 #hero-title,
 #hero-text {
@@ -154,9 +154,6 @@ p {
 }
 
 #hero-eyebrow {
-    box-shadow:
-        inset 0 1px 0 rgba(255,255,255,0.10),
-        0 12px 30px rgba(0,0,0,0.10);
     backface-visibility: hidden;
 }
 
@@ -165,17 +162,15 @@ p {
    ========================= */
 #hero-indicators button {
     transition:
-        width 0.28s var(--ease-soft),
-        opacity 0.28s var(--ease-soft),
-        background-color 0.28s var(--ease-soft),
-        transform 0.28s var(--ease-soft),
-        box-shadow 0.28s var(--ease-soft);
+        width 0.26s var(--ease-soft),
+        opacity 0.26s var(--ease-soft),
+        background-color 0.26s var(--ease-soft),
+        transform 0.26s var(--ease-soft);
     backface-visibility: hidden;
 }
 
 #hero-indicators button:hover {
-    transform: translateY(-1px) scale(1.04);
-    box-shadow: 0 8px 18px rgba(255,255,255,0.12);
+    transform: translateY(-1px);
 }
 
 /* =========================
@@ -184,25 +179,25 @@ p {
 #hero-prev,
 #hero-next {
     transition:
-        transform 0.28s var(--ease-soft),
-        background 0.28s var(--ease-soft),
-        border-color 0.28s var(--ease-soft),
-        box-shadow 0.28s var(--ease-soft),
-        opacity 0.28s var(--ease-soft);
-    box-shadow: 0 18px 36px rgba(0,0,0,0.10);
+        transform 0.26s var(--ease-soft),
+        background 0.26s var(--ease-soft),
+        border-color 0.26s var(--ease-soft),
+        box-shadow 0.26s var(--ease-soft),
+        opacity 0.26s var(--ease-soft);
+    box-shadow: 0 14px 30px rgba(0, 0, 0, 0.10);
 }
 
 #hero-prev:hover,
 #hero-next:hover {
-    transform: translateY(-2px) scale(1.02);
+    transform: translateY(-2px);
     background: rgba(255,255,255,0.14) !important;
-    border-color: rgba(255,255,255,0.26) !important;
-    box-shadow: 0 22px 46px rgba(0,0,0,0.16);
+    border-color: rgba(255,255,255,0.24) !important;
+    box-shadow: 0 18px 36px rgba(0, 0, 0, 0.14);
 }
 
 #hero-prev:active,
 #hero-next:active {
-    transform: translateY(0) scale(0.98);
+    transform: translateY(0) scale(0.985);
 }
 
 /* =========================
@@ -210,11 +205,10 @@ p {
    ========================= */
 .card {
     transition:
-        transform 0.38s var(--ease-soft),
-        box-shadow 0.38s var(--ease-soft),
-        border-color 0.38s var(--ease-soft),
-        background 0.38s var(--ease-soft),
-        filter 0.38s var(--ease-soft);
+        transform 0.30s var(--ease-soft),
+        box-shadow 0.30s var(--ease-soft),
+        border-color 0.30s var(--ease-soft),
+        background 0.30s var(--ease-soft);
     backface-visibility: hidden;
     transform: translateZ(0);
 }
@@ -223,19 +217,17 @@ p {
 .section-fade .card,
 .card.reveal-up {
     transition:
-        transform 0.38s var(--ease-soft),
-        box-shadow 0.38s var(--ease-soft),
-        border-color 0.38s var(--ease-soft),
-        background 0.38s var(--ease-soft),
-        filter 0.38s var(--ease-soft);
+        transform 0.30s var(--ease-soft),
+        box-shadow 0.30s var(--ease-soft),
+        border-color 0.30s var(--ease-soft),
+        background 0.30s var(--ease-soft);
 }
 
 .reveal-up .card:hover,
 .section-fade .card:hover,
 .card.reveal-up:hover {
-    transform: translateY(-8px);
+    transform: translateY(-5px);
     box-shadow: var(--shadow-medium) !important;
-    filter: saturate(1.02);
 }
 
 section .card[style*="backdropFilter"],
@@ -249,16 +241,16 @@ section .card[style*="WebkitBackdropFilter"] {
 .btn,
 button {
     transition:
-        transform 0.28s var(--ease-soft),
-        box-shadow 0.28s var(--ease-soft),
-        opacity 0.28s var(--ease-soft),
-        background-color 0.28s var(--ease-soft),
-        border-color 0.28s var(--ease-soft),
-        color 0.28s var(--ease-soft);
+        transform 0.24s var(--ease-soft),
+        box-shadow 0.24s var(--ease-soft),
+        opacity 0.24s var(--ease-soft),
+        background-color 0.24s var(--ease-soft),
+        border-color 0.24s var(--ease-soft),
+        color 0.24s var(--ease-soft);
 }
 
 .btn:hover {
-    transform: translateY(-2px);
+    transform: translateY(-1px);
 }
 
 .btn:active {
@@ -266,15 +258,13 @@ button {
 }
 
 .btn-primary,
-.btn-dark,
-.btn-success {
+.btn-dark {
     box-shadow: var(--shadow-button);
 }
 
 .btn-primary:hover,
-.btn-dark:hover,
-.btn-success:hover {
-    box-shadow: 0 20px 44px rgba(16, 24, 40, 0.18);
+.btn-dark:hover {
+    box-shadow: 0 16px 34px rgba(16, 24, 40, 0.16);
 }
 
 /* =========================
@@ -282,9 +272,9 @@ button {
    ========================= */
 a {
     transition:
-        opacity 0.25s ease,
-        color 0.25s ease,
-        transform 0.25s ease;
+        opacity 0.24s ease,
+        color 0.24s ease,
+        transform 0.24s ease;
 }
 
 a:hover {
@@ -296,17 +286,15 @@ a:hover {
    ========================= */
 a[href*="wa.me"] {
     transition:
-        transform 0.30s var(--ease-soft),
-        box-shadow 0.30s var(--ease-soft),
-        opacity 0.30s var(--ease-soft),
-        filter 0.30s var(--ease-soft);
+        transform 0.28s var(--ease-soft),
+        box-shadow 0.28s var(--ease-soft),
+        opacity 0.28s var(--ease-soft);
     will-change: transform;
 }
 
 a[href*="wa.me"]:hover {
-    transform: translateY(-4px) scale(1.03);
-    box-shadow: 0 20px 44px rgba(0, 0, 0, 0.20) !important;
-    filter: saturate(1.04);
+    transform: translateY(-3px);
+    box-shadow: 0 18px 34px rgba(0, 0, 0, 0.18) !important;
 }
 
 a[href*="wa.me"]:active {
@@ -318,25 +306,26 @@ a[href*="wa.me"]:active {
    ========================= */
 .accordion-item {
     transition:
-        transform 0.32s var(--ease-soft),
-        box-shadow 0.32s var(--ease-soft),
-        border-color 0.32s var(--ease-soft);
+        transform 0.26s var(--ease-soft),
+        box-shadow 0.26s var(--ease-soft),
+        border-color 0.26s var(--ease-soft);
 }
 
 .accordion-item:hover {
     transform: translateY(-2px);
-    box-shadow: 0 14px 34px rgba(16, 24, 40, 0.05);
+    box-shadow: 0 10px 22px rgba(16, 24, 40, 0.05);
 }
 
 .accordion-button {
     transition:
-        background-color 0.28s ease,
-        color 0.28s ease,
-        box-shadow 0.28s ease;
+        background-color 0.24s ease,
+        color 0.24s ease,
+        box-shadow 0.24s ease;
 }
 
 /* =========================
    GLOW SUAVE DE SECCIONES
+   Muy reducido para no parecer tech
    ========================= */
 .section-fade {
     position: relative;
@@ -347,23 +336,23 @@ a[href*="wa.me"]:active {
     content: "";
     position: absolute;
     inset: auto auto 0 0;
-    width: 220px;
-    height: 220px;
+    width: 180px;
+    height: 180px;
     border-radius: 999px;
     background: radial-gradient(
         circle,
-        rgba(13, 110, 253, 0.05) 0%,
-        rgba(13, 110, 253, 0.00) 70%
+        rgba(17, 24, 39, 0.03) 0%,
+        rgba(17, 24, 39, 0.00) 72%
     );
-    filter: blur(24px);
+    filter: blur(20px);
     pointer-events: none;
     z-index: -1;
-    opacity: 0.60;
+    opacity: 0.32;
 }
 
 footer.section-fade::before,
 #contacto.section-fade::before {
-    opacity: 0.35;
+    opacity: 0.18;
 }
 
 /* =========================
@@ -371,40 +360,40 @@ footer.section-fade::before,
    ========================= */
 @media (max-width: 991.98px) {
     .section-fade {
-        transition-duration: 0.88s;
+        transition-duration: 0.84s;
     }
 
     .reveal-up {
-        transition-duration: 0.78s;
+        transition-duration: 0.72s;
     }
 
     #hero-background {
-        animation-duration: 1.2s;
+        animation-duration: 1.05s;
     }
 
     .reveal-up .card:hover,
     .section-fade .card:hover,
     .card.reveal-up:hover {
-        transform: translateY(-4px);
+        transform: translateY(-3px);
     }
 }
 
 @media (max-width: 767.98px) {
     .page-shell .section-fade,
     .page-shell .reveal-up {
-        filter: blur(7px);
-        transform: translateX(-20px);
+        filter: blur(4px);
+        transform: translate3d(-14px, 0, 0);
     }
 
-    .hero-content-animate .reveal-1 { animation-delay: 0.04s; }
-    .hero-content-animate .reveal-2 { animation-delay: 0.10s; }
-    .hero-content-animate .reveal-3 { animation-delay: 0.16s; }
-    .hero-content-animate .reveal-4 { animation-delay: 0.22s; }
-    .hero-content-animate .reveal-5 { animation-delay: 0.28s; }
-    .hero-content-animate .reveal-6 { animation-delay: 0.34s; }
+    .hero-content-animate .reveal-1 { animation-delay: 0.03s; }
+    .hero-content-animate .reveal-2 { animation-delay: 0.09s; }
+    .hero-content-animate .reveal-3 { animation-delay: 0.15s; }
+    .hero-content-animate .reveal-4 { animation-delay: 0.21s; }
+    .hero-content-animate .reveal-5 { animation-delay: 0.27s; }
+    .hero-content-animate .reveal-6 { animation-delay: 0.33s; }
 
     a[href*="wa.me"] {
-        box-shadow: 0 14px 28px rgba(0, 0, 0, 0.18) !important;
+        box-shadow: 0 12px 24px rgba(0, 0, 0, 0.16) !important;
     }
 }
 
