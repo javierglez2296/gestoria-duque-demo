@@ -6,7 +6,6 @@ def build_navbar():
     return dbc.Navbar(
         dbc.Container(
             [
-                # LOGO
                 html.A(
                     html.Div(
                         [
@@ -18,25 +17,20 @@ def build_navbar():
                     href="/",
                     className="text-decoration-none",
                 ),
-
-                # BOTÓN MOBILE
-                dbc.NavbarToggler(id="navbar-toggler", n_clicks=0),
-
-                # MENÚ
+                dbc.NavbarToggler(id="navbar-toggler", n_clicks=0, className="navbar-toggler-premium"),
                 dbc.Collapse(
                     dbc.Nav(
                         [
                             dbc.NavLink("Inicio", href="/", className="nav-link-premium"),
                             dbc.NavLink("Servicios", href="/#servicios", className="nav-link-premium"),
                             dbc.NavLink("Contacto", href="/#contacto", className="nav-link-premium"),
-
                             dbc.Button(
                                 "Solicitar información",
                                 href="/#contacto",
                                 className="navbar-cta",
                             ),
                         ],
-                        className="ms-auto align-items-center",
+                        className="ms-auto align-items-center navbar-nav-premium",
                         navbar=True,
                     ),
                     id="navbar-collapse",
@@ -44,7 +38,9 @@ def build_navbar():
                 ),
             ],
             fluid=False,
+            className="navbar-container-premium",
         ),
         className="navbar-premium",
         sticky="top",
+        dark=False,
     )
