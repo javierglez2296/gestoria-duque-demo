@@ -1,5 +1,6 @@
 import dash
 from dash import html
+from components.home.hero import build_hero
 
 dash.register_page(
     __name__,
@@ -10,8 +11,7 @@ dash.register_page(
 
 layout = html.Div(
     [
-        html.H1("HOME OK"),
-        html.P("La página está cargando bien."),
+        build_hero(),
     ],
-    style={"padding": "40px"},
+    className="page-shell",
 )
