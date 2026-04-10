@@ -3,10 +3,7 @@ import dash_bootstrap_components as dbc
 
 from components.home.data import (
     TELEFONO_1,
-    TELEFONO_2,
     EMAIL,
-    DIRECCION,
-    WHATSAPP_URL,
     HERO_SLIDES,
 )
 
@@ -127,17 +124,7 @@ def build_hero_content(slide_index):
                     ),
                     html.Div(
                         "Asesoramiento fiscal, laboral y contable",
-                        className="me-4 mb-2 reveal reveal-5",
-                        style={
-                            "display": "inline-block",
-                            "color": "rgba(255,255,255,0.72)",
-                            "fontWeight": "500",
-                            "fontSize": "0.95rem",
-                        },
-                    ),
-                    html.Div(
-                        "Atención cercana en Ávila",
-                        className="mb-2 reveal reveal-6",
+                        className="mb-2 reveal reveal-5",
                         style={
                             "display": "inline-block",
                             "color": "rgba(255,255,255,0.72)",
@@ -168,7 +155,7 @@ def build_hero_content(slide_index):
                         },
                     ),
                     html.A(
-                        "Llamar ahora",
+                        f"Llamar: {TELEFONO_1}",
                         href=f"tel:{TELEFONO_1.replace(' ', '')}",
                         className="reveal reveal-6",
                         style={
@@ -199,237 +186,6 @@ def build_hero_content(slide_index):
                 },
             ),
         ],
-    )
-
-
-def build_contact_card():
-    return dbc.Card(
-        dbc.CardBody(
-            [
-                html.Div(
-                    "Contacto directo",
-                    className="mb-3",
-                    style={
-                        "fontSize": "0.76rem",
-                        "letterSpacing": "0.16em",
-                        "textTransform": "uppercase",
-                        "fontWeight": "700",
-                        "color": "#4b5563",
-                    },
-                ),
-                html.H2(
-                    "Soluciones profesionales con trayectoria y trato cercano",
-                    className="mb-4",
-                    style={
-                        "fontSize": "1.55rem",
-                        "lineHeight": "1.18",
-                        "letterSpacing": "-0.03em",
-                        "fontWeight": "700",
-                        "color": "#111827",
-                        "maxWidth": "520px",
-                    },
-                ),
-                html.P(
-                    "Asesoramiento fiscal, laboral y contable para empresas, autónomos y particulares, con una atención clara, profesional y personalizada.",
-                    className="mb-4",
-                    style={
-                        "color": "#6b7280",
-                        "lineHeight": "1.85",
-                        "fontSize": "0.98rem",
-                    },
-                ),
-                html.Div(
-                    [
-                        html.Div(
-                            [
-                                html.Div(
-                                    "Desde 1950",
-                                    style={
-                                        "fontWeight": "700",
-                                        "fontSize": "1.05rem",
-                                        "color": "#111827",
-                                        "marginBottom": "0.2rem",
-                                    },
-                                ),
-                                html.Div(
-                                    "Trayectoria consolidada",
-                                    style={
-                                        "fontSize": "0.92rem",
-                                        "color": "#6b7280",
-                                    },
-                                ),
-                            ],
-                            style={
-                                "padding": "1rem 1.1rem",
-                                "border": "1px solid rgba(17, 24, 39, 0.08)",
-                                "borderRadius": "18px",
-                                "background": "#f8fafc",
-                            },
-                        ),
-                        html.Div(
-                            [
-                                html.Div(
-                                    "Ávila",
-                                    style={
-                                        "fontWeight": "700",
-                                        "fontSize": "1.05rem",
-                                        "color": "#111827",
-                                        "marginBottom": "0.2rem",
-                                    },
-                                ),
-                                html.Div(
-                                    "Cercanía y atención local",
-                                    style={
-                                        "fontSize": "0.92rem",
-                                        "color": "#6b7280",
-                                    },
-                                ),
-                            ],
-                            style={
-                                "padding": "1rem 1.1rem",
-                                "border": "1px solid rgba(17, 24, 39, 0.08)",
-                                "borderRadius": "18px",
-                                "background": "#f8fafc",
-                            },
-                        ),
-                    ],
-                    style={
-                        "display": "grid",
-                        "gridTemplateColumns": "1fr 1fr",
-                        "gap": "0.9rem",
-                        "marginBottom": "1.45rem",
-                    },
-                ),
-                html.Div(
-                    [
-                        html.Div(
-                            [
-                                html.Div(
-                                    "Teléfono",
-                                    className="mb-1",
-                                    style={
-                                        "fontWeight": "600",
-                                        "color": "#111827",
-                                    },
-                                ),
-                                html.Div(
-                                    TELEFONO_1,
-                                    style={
-                                        "color": "#6b7280",
-                                        "fontSize": "0.98rem",
-                                    },
-                                ),
-                            ],
-                            className="mb-3",
-                        ),
-                        html.Div(
-                            [
-                                html.Div(
-                                    "Móvil",
-                                    className="mb-1",
-                                    style={
-                                        "fontWeight": "600",
-                                        "color": "#111827",
-                                    },
-                                ),
-                                html.Div(
-                                    TELEFONO_2,
-                                    style={
-                                        "color": "#6b7280",
-                                        "fontSize": "0.98rem",
-                                    },
-                                ),
-                            ],
-                            className="mb-3",
-                        ),
-                        html.Div(
-                            [
-                                html.Div(
-                                    "Email",
-                                    className="mb-1",
-                                    style={
-                                        "fontWeight": "600",
-                                        "color": "#111827",
-                                    },
-                                ),
-                                html.Div(
-                                    EMAIL,
-                                    style={
-                                        "color": "#6b7280",
-                                        "fontSize": "0.98rem",
-                                        "wordBreak": "break-word",
-                                    },
-                                ),
-                            ],
-                            className="mb-3",
-                        ),
-                        html.Div(
-                            [
-                                html.Div(
-                                    "Dirección",
-                                    className="mb-1",
-                                    style={
-                                        "fontWeight": "600",
-                                        "color": "#111827",
-                                    },
-                                ),
-                                html.Div(
-                                    DIRECCION,
-                                    style={
-                                        "color": "#6b7280",
-                                        "fontSize": "0.98rem",
-                                        "lineHeight": "1.75",
-                                    },
-                                ),
-                            ],
-                            className="mb-4",
-                        ),
-                    ],
-                    style={
-                        "paddingTop": "1rem",
-                        "borderTop": "1px solid rgba(17, 24, 39, 0.08)",
-                    },
-                ),
-                dbc.Button(
-                    "Solicitar información",
-                    href=f"mailto:{EMAIL}",
-                    color="dark",
-                    className="w-100 fw-semibold mb-2",
-                    style={
-                        "padding": "0.95rem 1.2rem",
-                        "minHeight": "54px",
-                        "borderRadius": "999px",
-                        "background": "#111827",
-                        "border": "none",
-                        "fontSize": "0.98rem",
-                    },
-                ),
-                dbc.Button(
-                    "Contactar por WhatsApp",
-                    href=WHATSAPP_URL,
-                    target="_blank",
-                    color="light",
-                    className="w-100 fw-semibold border-0",
-                    style={
-                        "padding": "0.95rem 1.2rem",
-                        "minHeight": "54px",
-                        "borderRadius": "999px",
-                        "background": "#eef2f7",
-                        "color": "#111827",
-                        "fontSize": "0.98rem",
-                    },
-                ),
-            ]
-        ),
-        className="border-0 h-100",
-        style={
-            "borderRadius": "28px",
-            "background": "rgba(255,255,255,0.94)",
-            "boxShadow": "0 30px 80px rgba(15, 23, 42, 0.18)",
-            "backdropFilter": "blur(10px)",
-            "WebkitBackdropFilter": "blur(10px)",
-            "padding": "0.25rem",
-        },
     )
 
 
@@ -480,15 +236,11 @@ def build_hero():
                             html.Div(
                                 id="hero-content",
                                 children=build_hero_content(0),
-                                style={"paddingRight": "1.2rem"},
+                                style={"maxWidth": "980px"},
                             ),
-                            lg=7,
+                            lg=9,
+                            xl=8,
                             className="mb-5 mb-lg-0",
-                        ),
-                        dbc.Col(
-                            build_contact_card(),
-                            lg=5,
-                            className="reveal reveal-4",
                         ),
                     ],
                     className="align-items-center",
