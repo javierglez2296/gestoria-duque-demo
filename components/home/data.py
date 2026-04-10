@@ -6,21 +6,21 @@ WHATSAPP_URL = "https://wa.me/34620000000"
 
 HERO_SLIDES = [
     {
-        "eyebrow": "GESTORÍA EN ÁVILA · ASESORAMIENTO PROFESIONAL",
-        "title": "Experiencia, rigor y cercanía para su gestión diaria",
-        "text": "Despacho profesional en Ávila especializado en asesoramiento fiscal, laboral y contable para empresas, autónomos y particulares.",
+        "eyebrow": "MÁS DE 70 AÑOS DE EXPERIENCIA",
+        "title": "Experiencia, rigor y cercanía en la gestión diaria",
+        "text": "Asesoramiento fiscal, laboral y contable para empresas, autónomos y particulares, con una atención clara, profesional y personalizada.",
         "image": "https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?auto=format&fit=crop&w=1800&q=80",
     },
     {
-        "eyebrow": "MÁS DE 70 AÑOS DE TRAYECTORIA",
-        "title": "Soluciones profesionales con atención clara y personalizada",
+        "eyebrow": "GESTORÍA EN ÁVILA · ASESORAMIENTO PROFESIONAL",
+        "title": "Un despacho profesional para empresas, autónomos y particulares",
         "text": "Una gestoría consolidada que combina experiencia, cercanía y una gestión ordenada para acompañar cada necesidad con seriedad y confianza.",
         "image": "https://images.unsplash.com/photo-1497366754035-f200968a6e72?auto=format&fit=crop&w=1800&q=80",
     },
     {
         "eyebrow": "FISCAL · LABORAL · CONTABLE",
-        "title": "Asesoramiento cercano para empresas, autónomos y particulares",
-        "text": "Ofrecemos un servicio profesional y accesible para afrontar trámites, obligaciones y gestiones del día a día con mayor tranquilidad.",
+        "title": "Asesoramiento cercano con atención clara y profesional",
+        "text": "Ofrecemos un servicio accesible y bien organizado para afrontar trámites, obligaciones y gestiones del día a día con mayor tranquilidad.",
         "image": "https://images.unsplash.com/photo-1520607162513-77705c0f0d4a?auto=format&fit=crop&w=1800&q=80",
     },
 ]
