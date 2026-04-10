@@ -1,4 +1,3 @@
-import dash
 from dash import html, dcc
 import dash_bootstrap_components as dbc
 
@@ -162,6 +161,8 @@ def build_hero_content(slide_index):
             ),
         ],
     )
+
+
 def build_hero():
     slide = HERO_SLIDES[0]
 
