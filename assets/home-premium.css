@@ -280,23 +280,23 @@ a {
     min-height: 92vh;
     display: flex;
     align-items: center;
+
     background:
         url("/assets/hero-gestoria.jpg") center center / cover no-repeat;
-    isolation: isolate;
 }
 
 .hero-overlay {
     position: absolute;
     inset: 0;
+
     background:
         linear-gradient(
             92deg,
-            rgba(12, 16, 23, 0.76) 0%,
-            rgba(12, 16, 23, 0.56) 34%,
-            rgba(12, 16, 23, 0.24) 68%,
-            rgba(12, 16, 23, 0.10) 100%
+            rgba(12, 16, 23, 0.55) 0%,
+            rgba(12, 16, 23, 0.35) 34%,
+            rgba(12, 16, 23, 0.18) 68%,
+            rgba(12, 16, 23, 0.06) 100%
         );
-    z-index: 0;
 }
 
 .hero-container {
