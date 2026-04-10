@@ -2,38 +2,8 @@ from dash import Dash, html, page_container, Input, Output, State
 import dash_bootstrap_components as dbc
 
 
-TELEFONO = "920 000 000"
 EMAIL = "info@gestoriaduque.com"
-
-
-def build_topbar():
-    return html.Div(
-        dbc.Container(
-            html.Div(
-                [
-                    html.Div(
-                        [
-                            html.A(
-                                TELEFONO,
-                                href=f"tel:{TELEFONO.replace(' ', '')}",
-                                className="topbar-link",
-                            ),
-                            html.Span(className="topbar-separator d-none d-md-inline"),
-                            html.A(
-                                EMAIL,
-                                href=f"mailto:{EMAIL}",
-                                className="topbar-link d-none d-sm-inline",
-                            ),
-                        ],
-                        className="d-flex align-items-center justify-content-center justify-content-md-end gap-3 w-100",
-                    ),
-                ],
-                className="topbar-content",
-            ),
-            fluid=False,
-        ),
-        className="topbar topbar-clean",
-    )
+WHATSAPP_URL = "https://wa.me/34620000000"
 
 
 def build_navbar():
@@ -43,7 +13,7 @@ def build_navbar():
                 html.A(
                     html.Div(
                         html.Img(
-                            src="/assets/logo-duque.png",
+                            src="assets/logo-duque.png",
                             alt="Gestoría Duque",
                             className="navbar-logo-img",
                         ),
@@ -76,9 +46,16 @@ def build_navbar():
                                 className="nav-link-premium",
                             ),
                             dbc.Button(
+                                "WhatsApp",
+                                href=WHATSAPP_URL,
+                                target="_blank",
+                                rel="noopener noreferrer",
+                                className="navbar-whatsapp ms-lg-2",
+                            ),
+                            dbc.Button(
                                 "Solicitar información",
                                 href="/#contacto",
-                                className="navbar-cta ms-lg-3",
+                                className="navbar-cta ms-lg-2",
                             ),
                         ],
                         className="ms-auto align-items-lg-center navbar-nav-premium",
@@ -143,8 +120,8 @@ def build_footer():
                         dbc.Col(
                             [
                                 html.Div("Contacto", className="site-footer-title"),
-                                html.P(TELEFONO, className="site-footer-text"),
                                 html.P(EMAIL, className="site-footer-text"),
+                                html.P("WhatsApp disponible", className="site-footer-text"),
                                 html.P("Ávila", className="site-footer-text"),
                             ],
                             md=4,
@@ -179,7 +156,6 @@ server = app.server
 
 app.layout = html.Div(
     [
-        build_topbar(),
         build_navbar(),
         html.Main(
             page_container,
