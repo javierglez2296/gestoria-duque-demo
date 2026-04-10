@@ -3,7 +3,7 @@ import smtplib
 from email.message import EmailMessage
 
 import dash
-from dash import html, dcc, Input, Output, State, callback
+from dash import html, Input, Output, State, callback
 import dash_bootstrap_components as dbc
 
 dash.register_page(
@@ -58,56 +58,31 @@ layout = html.Div(
                                 [
                                     form_group(
                                         "Nombre de la empresa",
-                                        dbc.Input(
-                                            id="empresa",
-                                            type="text",
-                                            placeholder="Nombre de la empresa",
-                                            className="budget-input",
-                                        ),
+                                        dbc.Input(id="empresa", type="text", placeholder="Nombre de la empresa", className="budget-input"),
                                         required=True,
                                     ),
                                     form_group(
                                         "Persona de contacto",
-                                        dbc.Input(
-                                            id="contacto",
-                                            type="text",
-                                            placeholder="Persona de contacto",
-                                            className="budget-input",
-                                        ),
+                                        dbc.Input(id="contacto", type="text", placeholder="Persona de contacto", className="budget-input"),
                                         required=True,
                                     ),
                                     form_group(
                                         "Dirección",
-                                        dbc.Input(
-                                            id="direccion",
-                                            type="text",
-                                            placeholder="Dirección",
-                                            className="budget-input",
-                                        ),
+                                        dbc.Input(id="direccion", type="text", placeholder="Dirección", className="budget-input"),
                                     ),
                                     dbc.Row(
                                         [
                                             dbc.Col(
                                                 form_group(
                                                     "Ciudad",
-                                                    dbc.Input(
-                                                        id="ciudad",
-                                                        type="text",
-                                                        placeholder="Ciudad",
-                                                        className="budget-input",
-                                                    ),
+                                                    dbc.Input(id="ciudad", type="text", placeholder="Ciudad", className="budget-input"),
                                                 ),
                                                 md=6,
                                             ),
                                             dbc.Col(
                                                 form_group(
                                                     "Código postal",
-                                                    dbc.Input(
-                                                        id="codigo_postal",
-                                                        type="text",
-                                                        placeholder="Código postal",
-                                                        className="budget-input",
-                                                    ),
+                                                    dbc.Input(id="codigo_postal", type="text", placeholder="Código postal", className="budget-input"),
                                                 ),
                                                 md=6,
                                             ),
@@ -115,41 +90,21 @@ layout = html.Div(
                                     ),
                                     form_group(
                                         "Email",
-                                        dbc.Input(
-                                            id="email",
-                                            type="email",
-                                            placeholder="Email",
-                                            className="budget-input",
-                                        ),
+                                        dbc.Input(id="email", type="email", placeholder="Email", className="budget-input"),
                                         required=True,
                                     ),
                                     form_group(
                                         "Teléfono",
-                                        dbc.Input(
-                                            id="telefono",
-                                            type="text",
-                                            placeholder="Teléfono",
-                                            className="budget-input",
-                                        ),
+                                        dbc.Input(id="telefono", type="text", placeholder="Teléfono", className="budget-input"),
                                         required=True,
                                     ),
                                     form_group(
                                         "Actividad de la empresa",
-                                        dbc.Input(
-                                            id="actividad",
-                                            type="text",
-                                            placeholder="Actividad de la empresa",
-                                            className="budget-input",
-                                        ),
+                                        dbc.Input(id="actividad", type="text", placeholder="Actividad de la empresa", className="budget-input"),
                                     ),
                                     form_group(
                                         "Cómo nos ha conocido",
-                                        dbc.Input(
-                                            id="conocido",
-                                            type="text",
-                                            placeholder="Cómo nos ha conocido",
-                                            className="budget-input",
-                                        ),
+                                        dbc.Input(id="conocido", type="text", placeholder="Cómo nos ha conocido", className="budget-input"),
                                     ),
                                     form_group(
                                         "Seleccione la materia sobre la que desea el presupuesto",
@@ -181,18 +136,11 @@ layout = html.Div(
                                     ),
                                     html.Div(
                                         [
-                                            dbc.Checkbox(
-                                                id="terminos",
-                                                className="budget-checkbox-input",
-                                            ),
+                                            dbc.Checkbox(id="terminos", className="budget-checkbox-input"),
                                             html.Label(
                                                 [
                                                     "He leído y acepto la ",
-                                                    html.A(
-                                                        "Política de privacidad",
-                                                        href="/politica-privacidad",
-                                                        className="budget-inline-link",
-                                                    ),
+                                                    html.A("Política de privacidad", href="/politica-privacidad", className="budget-inline-link"),
                                                     " y las condiciones de uso.",
                                                 ],
                                                 htmlFor="terminos",
@@ -201,10 +149,7 @@ layout = html.Div(
                                         ],
                                         className="budget-checkbox-wrap",
                                     ),
-                                    html.Div(
-                                        id="budget-message",
-                                        className="budget-message",
-                                    ),
+                                    html.Div(id="budget-message", className="budget-message"),
                                     html.Div(
                                         dbc.Button(
                                             "Enviar solicitud",
@@ -260,14 +205,15 @@ def enviar_email(
     remitente = os.getenv("SMTP_FROM", smtp_user or DESTINATARIO)
 
     if not smtp_host or not smtp_user or not smtp_password:
-        raise RuntimeError(
-            "Faltan variables SMTP_HOST, SMTP_USER o SMTP_PASSWORD en el entorno."
-        )
+        raise RuntimeError("Faltan variables SMTP_HOST, SMTP_USER o SMTP_PASSWORD en el entorno.")
 
-    asunto = f"Nuevo formulario de presupuesto - {empresa}"
-
-    cuerpo = f"""
-Nueva solicitud de presupuesto recibida
+    msg = EmailMessage()
+    msg["Subject"] = f"Nuevo formulario de presupuesto - {empresa}"
+    msg["From"] = remitente
+    msg["To"] = DESTINATARIO
+    msg["Reply-To"] = email
+    msg.set_content(
+        f"""Nueva solicitud de presupuesto recibida
 
 Nombre de la empresa: {empresa}
 Persona de contacto: {contacto}
@@ -282,14 +228,8 @@ Materia: {materia}
 
 Descripción:
 {descripcion}
-""".strip()
-
-    msg = EmailMessage()
-    msg["Subject"] = asunto
-    msg["From"] = remitente
-    msg["To"] = DESTINATARIO
-    msg["Reply-To"] = email
-    msg.set_content(cuerpo)
+"""
+    )
 
     with smtplib.SMTP(smtp_host, smtp_port, timeout=20) as server:
         if smtp_use_tls:
@@ -363,10 +303,7 @@ def submit_budget_form(
         errores.append("Debe aceptar la política de privacidad y las condiciones.")
 
     if errores:
-        return (
-            html.Ul([html.Li(e) for e in errores], className="mb-0"),
-            "budget-message budget-message-error",
-        )
+        return html.Ul([html.Li(e) for e in errores], className="mb-0"), "budget-message budget-message-error"
 
     try:
         enviar_email(
@@ -383,12 +320,6 @@ def submit_budget_form(
             descripcion=descripcion,
         )
     except Exception as e:
-        return (
-            f"No se pudo enviar la solicitud. Revise la configuración del correo. Detalle: {e}",
-            "budget-message budget-message-error",
-        )
+        return f"No se pudo enviar la solicitud. Revise la configuración del correo. Detalle: {e}", "budget-message budget-message-error"
 
-    return (
-        "Solicitud enviada correctamente. Nos pondremos en contacto con usted lo antes posible.",
-        "budget-message budget-message-success",
-    )
+    return "Solicitud enviada correctamente. Nos pondremos en contacto con usted lo antes posible.", "budget-message budget-message-success"
