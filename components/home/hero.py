@@ -39,6 +39,7 @@ def build_hero_content(slide_index):
         children=[
             html.Div(
                 slide["eyebrow"],
+                id="hero-eyebrow",
                 className="mb-4 reveal reveal-1",
                 style={
                     "display": "inline-flex",
@@ -58,6 +59,7 @@ def build_hero_content(slide_index):
             ),
             html.H1(
                 slide["title"],
+                id="hero-title",
                 className="fw-bold mb-4 reveal reveal-2",
                 style={
                     "fontSize": "clamp(3rem, 5.1vw, 5.7rem)",
@@ -69,6 +71,7 @@ def build_hero_content(slide_index):
             ),
             html.P(
                 slide["text"],
+                id="hero-text",
                 className="mb-4 reveal reveal-3",
                 style={
                     "fontSize": "1.05rem",
@@ -159,8 +162,6 @@ def build_hero_content(slide_index):
             ),
         ],
     )
-
-
 def build_hero():
     slide = HERO_SLIDES[0]
 
