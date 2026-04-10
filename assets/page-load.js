@@ -1,13 +1,15 @@
 (function () {
     function activatePage() {
-        document.body.classList.add("page-loaded");
+        setTimeout(function () {
+            document.body.classList.add("page-loaded");
+        }, 180);
     }
 
-    if (document.readyState === "complete") {
-        requestAnimationFrame(activatePage);
-    } else {
-        window.addEventListener("load", function () {
+    if (document.readyState === "loading") {
+        document.addEventListener("DOMContentLoaded", function () {
             requestAnimationFrame(activatePage);
         });
+    } else {
+        requestAnimationFrame(activatePage);
     }
 })();
