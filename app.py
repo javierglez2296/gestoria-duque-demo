@@ -43,17 +43,15 @@ def build_navbar():
             [
                 html.A(
                     html.Div(
-                        [
-                            html.Div("GESTORÍA DUQUE", className="brand-title"),
-                            html.Div(
-                                "Fiscal · Laboral · Contable",
-                                className="brand-subtitle d-none d-md-block",
-                            ),
-                        ],
-                        className="brand-lockup",
+                        html.Img(
+                            src="/assets/logo-duque.png",
+                            alt="Duque Gestores y Asesores",
+                            className="navbar-logo-img",
+                        ),
+                        className="navbar-logo",
                     ),
                     href="/",
-                    className="brand-link text-decoration-none",
+                    className="text-decoration-none d-flex align-items-center",
                 ),
                 dbc.NavbarToggler(
                     id="navbar-toggler",
@@ -95,7 +93,7 @@ def build_navbar():
             className="navbar-container-premium",
         ),
         sticky="top",
-        className="navbar-premium navbar-premium-clean",
+        className="navbar-premium",
         dark=False,
     )
 
