@@ -13,5 +13,6 @@ dash.register_page(
 layout = html.Div(
     [
         build_hero(),
-    ]
+    ],
+    className="home-page",
 )
