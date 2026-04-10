@@ -9,7 +9,7 @@ dash.register_page(
     name="Inicio",
     description=(
         "Gestoría en Ávila para autónomos, empresas y particulares. "
-        "Asesoría fiscal, laboral, contable y trámites con una imagen moderna, clara y profesional."
+        "Asesoría fiscal, laboral, contable y trámites con una imagen moderna y profesional."
     ),
 )
 
@@ -17,10 +17,6 @@ TELEFONO = "920 000 000"
 EMAIL = "info@gestoriaduque.com"
 WHATSAPP_URL = "https://wa.me/34620000000"
 
-# Orden premium recomendado:
-# 1) edificio moderno
-# 2) skyline urbano
-# 3) oficina ejecutiva
 HERO_IMAGES = [
     "/assets/hero-2.jpg",
     "/assets/hero-1.jpg",
@@ -75,12 +71,12 @@ def build_hero():
                                             dbc.Button(
                                                 "Solicitar información",
                                                 href="#contacto",
-                                                className="home-hero-btn home-hero-btn-primary home-hero-line",
+                                                className="home-hero-btn home-hero-btn-primary home-hero-btn-1 home-hero-line",
                                             ),
                                             dbc.Button(
                                                 "Ver servicios",
                                                 href="#servicios",
-                                                className="home-hero-btn home-hero-btn-secondary home-hero-line",
+                                                className="home-hero-btn home-hero-btn-secondary home-hero-btn-2 home-hero-line",
                                             ),
                                         ],
                                         className="home-hero-actions",
