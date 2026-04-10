@@ -10,44 +10,36 @@ WHATSAPP_URL = "https://wa.me/34620000000"
 def build_topbar():
     return html.Div(
         dbc.Container(
-            dbc.Row(
+            html.Div(
                 [
-                    dbc.Col(
-                        html.Div(
-                            [
-                                html.Span("Ávila", className="topbar-text me-3"),
-                                html.Span("Más de 70 años de experiencia", className="topbar-text me-3"),
-                                html.Span("Atención cercana y profesional", className="topbar-text"),
-                            ],
-                            className="topbar-inner d-none d-md-flex align-items-center flex-wrap",
-                        ),
-                        md=7,
-                        className="d-flex align-items-center",
+                    html.Div(
+                        [
+                            html.Span("Asesoría en Ávila", className="topbar-mini-text"),
+                        ],
+                        className="d-none d-md-flex align-items-center",
                     ),
-                    dbc.Col(
-                        html.Div(
-                            [
-                                html.A(
-                                    TELEFONO,
-                                    href=f"tel:{TELEFONO.replace(' ', '')}",
-                                    className="topbar-link me-3",
-                                ),
-                                html.A(
-                                    EMAIL,
-                                    href=f"mailto:{EMAIL}",
-                                    className="topbar-link",
-                                ),
-                            ],
-                            className="topbar-inner d-flex justify-content-md-end flex-wrap",
-                        ),
-                        md=5,
-                        className="d-flex align-items-center justify-content-start justify-content-md-end",
+                    html.Div(
+                        [
+                            html.A(
+                                TELEFONO,
+                                href=f"tel:{TELEFONO.replace(' ', '')}",
+                                className="topbar-link",
+                            ),
+                            html.Span(className="topbar-separator d-none d-md-inline"),
+                            html.A(
+                                EMAIL,
+                                href=f"mailto:{EMAIL}",
+                                className="topbar-link d-none d-sm-inline",
+                            ),
+                        ],
+                        className="d-flex align-items-center gap-3",
                     ),
                 ],
-                className="py-2 align-items-center",
-            )
+                className="topbar-content",
+            ),
+            fluid=False,
         ),
-        className="topbar",
+        className="topbar topbar-clean",
     )
 
 
@@ -58,13 +50,16 @@ def build_navbar():
                 html.A(
                     html.Div(
                         [
-                            html.Span("GESTORÍA", className="navbar-logo-main"),
-                            html.Span("DUQUE", className="navbar-logo-sub"),
+                            html.Div("GESTORÍA DUQUE", className="brand-title"),
+                            html.Div(
+                                "Fiscal · Laboral · Contable",
+                                className="brand-subtitle d-none d-md-block",
+                            ),
                         ],
-                        className="navbar-logo",
+                        className="brand-lockup",
                     ),
                     href="/",
-                    className="text-decoration-none",
+                    className="brand-link text-decoration-none",
                 ),
                 dbc.NavbarToggler(
                     id="navbar-toggler",
@@ -92,10 +87,10 @@ def build_navbar():
                             dbc.Button(
                                 "Solicitar información",
                                 href="/#contacto",
-                                className="navbar-cta",
+                                className="navbar-cta ms-lg-3",
                             ),
                         ],
-                        className="ms-auto align-items-center navbar-nav-premium",
+                        className="ms-auto align-items-lg-center navbar-nav-premium",
                         navbar=True,
                     ),
                     id="navbar-collapse",
@@ -106,7 +101,7 @@ def build_navbar():
             className="navbar-container-premium",
         ),
         sticky="top",
-        className="navbar-premium",
+        className="navbar-premium navbar-premium-clean",
         dark=False,
     )
 
@@ -133,9 +128,21 @@ def build_footer():
                                 html.Div("Navegación", className="site-footer-title"),
                                 html.Div(
                                     [
-                                        html.A("Inicio", href="/", className="site-footer-link d-block mb-2"),
-                                        html.A("Servicios", href="/#servicios", className="site-footer-link d-block mb-2"),
-                                        html.A("Contacto", href="/#contacto", className="site-footer-link d-block"),
+                                        html.A(
+                                            "Inicio",
+                                            href="/",
+                                            className="site-footer-link d-block mb-2",
+                                        ),
+                                        html.A(
+                                            "Servicios",
+                                            href="/#servicios",
+                                            className="site-footer-link d-block mb-2",
+                                        ),
+                                        html.A(
+                                            "Contacto",
+                                            href="/#contacto",
+                                            className="site-footer-link d-block",
+                                        ),
                                     ]
                                 ),
                             ],
