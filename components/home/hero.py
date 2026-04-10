@@ -21,11 +21,7 @@ def build_hero():
                                         className="hero-line hero-eyebrow",
                                     ),
                                     html.H1(
-                                        [
-                                            html.Span("Gestión fiscal, laboral y contable "),
-                                            html.Br(),
-                                            html.Span("con claridad y confianza."),
-                                        ],
+                                        "Gestión fiscal, laboral y contable con claridad y confianza.",
                                         className="hero-line hero-title",
                                     ),
                                     html.P(
@@ -37,7 +33,7 @@ def build_hero():
                                             dbc.Button(
                                                 "Solicitar información",
                                                 href="#contacto",
-                                                className="hero-cta-btn me-2",
+                                                className="hero-cta-btn",
                                             ),
                                             dbc.Button(
                                                 "Ver servicios",
@@ -45,39 +41,13 @@ def build_hero():
                                                 className="hero-secondary-btn",
                                             ),
                                         ],
-                                        className="hero-line hero-actions d-flex flex-wrap gap-2",
-                                    ),
-                                    html.Div(
-                                        [
-                                            html.Div(
-                                                [
-                                                    html.Div("Fiscal", className="hero-metric-label"),
-                                                    html.Div("Autónomos y empresas", className="hero-metric-value"),
-                                                ],
-                                                className="hero-metric-card",
-                                            ),
-                                            html.Div(
-                                                [
-                                                    html.Div("Laboral", className="hero-metric-label"),
-                                                    html.Div("Nóminas, altas y contratos", className="hero-metric-value"),
-                                                ],
-                                                className="hero-metric-card",
-                                            ),
-                                            html.Div(
-                                                [
-                                                    html.Div("Contable", className="hero-metric-label"),
-                                                    html.Div("Orden y seguimiento", className="hero-metric-value"),
-                                                ],
-                                                className="hero-metric-card",
-                                            ),
-                                        ],
-                                        className="hero-line hero-metrics",
+                                        className="hero-line hero-actions",
                                     ),
                                 ],
                                 className="hero-copy-animate",
                             ),
-                            lg=8,
-                            md=10,
+                            lg=7,
+                            md=9,
                             xs=12,
                         ),
                     ],
