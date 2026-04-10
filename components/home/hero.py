@@ -2,9 +2,9 @@ from dash import html, dcc
 import dash_bootstrap_components as dbc
 
 HERO_IMAGES = [
-    "/assets/hero-1.png",
-    "/assets/hero-2.png",
-    "/assets/hero-3.png",
+    "/assets/hero-1.jpg",
+    "/assets/hero-2.jpg",
+    "/assets/hero-3.jpg",
 ]
 
 
