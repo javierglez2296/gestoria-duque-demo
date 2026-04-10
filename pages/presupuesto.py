@@ -3,7 +3,7 @@ import smtplib
 from email.message import EmailMessage
 
 import dash
-from dash import html, dcc, Input, Output, State, callback, no_update
+from dash import html, dcc, Input, Output, State, callback
 import dash_bootstrap_components as dbc
 
 dash.register_page(
@@ -50,15 +50,12 @@ layout = html.Div(
                 ],
                 className="budget-header",
             ),
-
             dbc.Row(
                 [
                     dbc.Col(
                         dbc.Card(
                             dbc.CardBody(
                                 [
-                                    dcc.Store(id="budget-submit-store"),
-
                                     form_group(
                                         "Nombre de la empresa",
                                         dbc.Input(
@@ -69,7 +66,6 @@ layout = html.Div(
                                         ),
                                         required=True,
                                     ),
-
                                     form_group(
                                         "Persona de contacto",
                                         dbc.Input(
@@ -80,7 +76,6 @@ layout = html.Div(
                                         ),
                                         required=True,
                                     ),
-
                                     form_group(
                                         "Dirección",
                                         dbc.Input(
@@ -90,7 +85,6 @@ layout = html.Div(
                                             className="budget-input",
                                         ),
                                     ),
-
                                     dbc.Row(
                                         [
                                             dbc.Col(
@@ -119,7 +113,6 @@ layout = html.Div(
                                             ),
                                         ]
                                     ),
-
                                     form_group(
                                         "Email",
                                         dbc.Input(
@@ -130,7 +123,6 @@ layout = html.Div(
                                         ),
                                         required=True,
                                     ),
-
                                     form_group(
                                         "Teléfono",
                                         dbc.Input(
@@ -141,7 +133,6 @@ layout = html.Div(
                                         ),
                                         required=True,
                                     ),
-
                                     form_group(
                                         "Actividad de la empresa",
                                         dbc.Input(
@@ -151,7 +142,6 @@ layout = html.Div(
                                             className="budget-input",
                                         ),
                                     ),
-
                                     form_group(
                                         "Cómo nos ha conocido",
                                         dbc.Input(
@@ -161,7 +151,6 @@ layout = html.Div(
                                             className="budget-input",
                                         ),
                                     ),
-
                                     form_group(
                                         "Seleccione la materia sobre la que desea el presupuesto",
                                         dbc.Select(
@@ -180,7 +169,6 @@ layout = html.Div(
                                         ),
                                         required=True,
                                     ),
-
                                     form_group(
                                         "Describa lo que desea que le enviemos en el presupuesto",
                                         dbc.Textarea(
@@ -191,7 +179,6 @@ layout = html.Div(
                                         ),
                                         required=True,
                                     ),
-
                                     html.Div(
                                         [
                                             dbc.Checkbox(
@@ -214,12 +201,10 @@ layout = html.Div(
                                         ],
                                         className="budget-checkbox-wrap",
                                     ),
-
                                     html.Div(
                                         id="budget-message",
                                         className="budget-message",
                                     ),
-
                                     html.Div(
                                         dbc.Button(
                                             "Enviar solicitud",
@@ -378,7 +363,10 @@ def submit_budget_form(
         errores.append("Debe aceptar la política de privacidad y las condiciones.")
 
     if errores:
-        return html.Ul([html.Li(e) for e in errores], className="mb-0"), "budget-message budget-message-error"
+        return (
+            html.Ul([html.Li(e) for e in errores], className="mb-0"),
+            "budget-message budget-message-error",
+        )
 
     try:
         enviar_email(
