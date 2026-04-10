@@ -4,7 +4,6 @@ import dash_bootstrap_components as dbc
 
 TELEFONO = "920 000 000"
 EMAIL = "info@gestoriaduque.com"
-WHATSAPP_URL = "https://wa.me/34620000000"
 
 
 def build_topbar():
@@ -45,7 +44,7 @@ def build_navbar():
                     html.Div(
                         html.Img(
                             src="/assets/logo-duque.png",
-                            alt="Duque Gestores y Asesores",
+                            alt="Gestoría Duque",
                             className="navbar-logo-img",
                         ),
                         className="navbar-logo",
