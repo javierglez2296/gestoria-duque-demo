@@ -18,8 +18,6 @@ def build_hero():
             "backgroundPosition": "center",
         },
         children=[
-
-            # OVERLAY OSCURO PREMIUM
             html.Div(
                 style={
                     "position": "absolute",
@@ -27,16 +25,14 @@ def build_hero():
                     "background": "linear-gradient(90deg, rgba(10,14,22,0.92) 0%, rgba(10,14,22,0.75) 45%, rgba(10,14,22,0.35) 100%)",
                 }
             ),
-
             dbc.Container(
                 dbc.Row(
                     [
                         dbc.Col(
                             [
-                                # EYEBROW
                                 html.Div(
                                     slide["eyebrow"],
-                                    className="reveal",
+                                    className="hero-fade hero-delay-1",
                                     style={
                                         "textTransform": "uppercase",
                                         "fontSize": "0.75rem",
@@ -46,11 +42,9 @@ def build_hero():
                                         "fontWeight": "700",
                                     },
                                 ),
-
-                                # TITULO
                                 html.H1(
                                     slide["title"],
-                                    className="reveal",
+                                    className="hero-fade hero-delay-2",
                                     style={
                                         "fontSize": "clamp(2.6rem, 4.5vw, 4.2rem)",
                                         "lineHeight": "1.02",
@@ -61,11 +55,9 @@ def build_hero():
                                         "maxWidth": "780px",
                                     },
                                 ),
-
-                                # TEXTO
                                 html.P(
                                     slide["text"],
-                                    className="reveal",
+                                    className="hero-fade hero-delay-3",
                                     style={
                                         "fontSize": "1.05rem",
                                         "lineHeight": "1.9",
@@ -74,8 +66,6 @@ def build_hero():
                                         "marginBottom": "2.2rem",
                                     },
                                 ),
-
-                                # BOTONES
                                 html.Div(
                                     [
                                         dbc.Button(
@@ -100,7 +90,7 @@ def build_hero():
                                             },
                                         ),
                                     ],
-                                    className="reveal",
+                                    className="hero-fade hero-delay-4",
                                 ),
                             ],
                             lg=8,
