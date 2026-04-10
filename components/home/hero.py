@@ -1,12 +1,32 @@
-from dash import html
+from dash import html, dcc
 import dash_bootstrap_components as dbc
+
+HERO_IMAGES = [
+    "/assets/hero-1.png",
+    "/assets/hero-2.png",
+    "/assets/hero-3.png",
+]
 
 
 def build_hero():
     return html.Section(
         [
-            html.Div(className="hero-image-layer"),
+            # 👉 Intervalo para cambiar imagen
+            dcc.Interval(
+                id="hero-interval",
+                interval=4000,
+                n_intervals=0,
+            ),
+
+            # 👉 capa de imagen dinámica
+            html.Div(
+                id="hero-bg",
+                className="hero-image-layer",
+                style={"backgroundImage": f"url('{HERO_IMAGES[0]}')"},
+            ),
+
             html.Div(className="hero-overlay"),
+
             dbc.Container(
                 dbc.Row(
                     [
