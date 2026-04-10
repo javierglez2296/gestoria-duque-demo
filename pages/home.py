@@ -17,14 +17,14 @@ TELEFONO = "920 000 000"
 EMAIL = "info@gestoriaduque.com"
 WHATSAPP_URL = "https://wa.me/34620000000"
 
-# Orden recomendado:
-# 1) edificio corporativo
-# 2) skyline elegante
-# 3) oficina interior
+# Orden premium recomendado:
+# 1) edificio moderno
+# 2) skyline urbano
+# 3) oficina ejecutiva
 HERO_IMAGES = [
-    "/assets/hero-2.png",
-    "/assets/hero-1.png",
-    "/assets/hero-3.png",
+    "/assets/hero-2.jpg",
+    "/assets/hero-1.jpg",
+    "/assets/hero-3.jpg",
 ]
 
 
@@ -32,22 +32,19 @@ def build_hero():
     return html.Section(
         [
             dcc.Interval(
-                id="hero-interval",
+                id="home-hero-interval",
                 interval=4500,
                 n_intervals=0,
             ),
-            dcc.Store(id="hero-index", data=0),
+            dcc.Store(id="home-hero-index", data=0),
             html.Div(
-                id="hero-bg",
-                className="hero-bg",
+                id="home-hero-bg",
+                className="home-hero-bg",
                 style={
-                    "backgroundImage": f"url('{HERO_IMAGES[0]}')",
-                    "backgroundSize": "cover",
-                    "backgroundPosition": "center center",
-                    "backgroundRepeat": "no-repeat",
+                    "background": f"center center / cover no-repeat url('{HERO_IMAGES[0]}')",
                 },
             ),
-            html.Div(className="hero-overlay"),
+            html.Div(className="home-hero-overlay"),
             dbc.Container(
                 dbc.Row(
                     [
@@ -59,11 +56,11 @@ def build_hero():
                                             html.Span("ASESORÍA INTEGRAL"),
                                             html.Span("ÁVILA"),
                                         ],
-                                        className="hero-eyebrow hero-line",
+                                        className="home-hero-eyebrow home-hero-line",
                                     ),
                                     html.H1(
                                         "Gestión fiscal, laboral y contable con claridad y confianza.",
-                                        className="hero-title hero-line",
+                                        className="home-hero-title home-hero-line",
                                     ),
                                     html.P(
                                         (
@@ -71,25 +68,25 @@ def build_hero():
                                             "con una atención cercana, procesos claros y una imagen "
                                             "profesional a la altura de su negocio."
                                         ),
-                                        className="hero-subtitle hero-line",
+                                        className="home-hero-subtitle home-hero-line",
                                     ),
                                     html.Div(
                                         [
                                             dbc.Button(
                                                 "Solicitar información",
                                                 href="#contacto",
-                                                className="hero-btn hero-btn-primary hero-line",
+                                                className="home-hero-btn home-hero-btn-primary home-hero-line",
                                             ),
                                             dbc.Button(
                                                 "Ver servicios",
                                                 href="#servicios",
-                                                className="hero-btn hero-btn-secondary hero-line",
+                                                className="home-hero-btn home-hero-btn-secondary home-hero-line",
                                             ),
                                         ],
-                                        className="hero-actions",
+                                        className="home-hero-actions",
                                     ),
                                 ],
-                                className="hero-content",
+                                className="home-hero-content",
                             ),
                             lg=6,
                             md=8,
@@ -99,10 +96,10 @@ def build_hero():
                     className="min-vh-100 align-items-center",
                 ),
                 fluid=False,
-                className="hero-container",
+                className="home-hero-container",
             ),
         ],
-        className="hero-section",
+        className="home-hero-section",
     )
 
 
@@ -229,21 +226,18 @@ layout = html.Div(
 
 
 @callback(
-    Output("hero-index", "data"),
-    Input("hero-interval", "n_intervals"),
+    Output("home-hero-index", "data"),
+    Input("home-hero-interval", "n_intervals"),
 )
 def rotate_hero(n):
     return n % len(HERO_IMAGES)
 
 
 @callback(
-    Output("hero-bg", "style"),
-    Input("hero-index", "data"),
+    Output("home-hero-bg", "style"),
+    Input("home-hero-index", "data"),
 )
 def update_hero_bg(index):
     return {
-        "backgroundImage": f"url('{HERO_IMAGES[index]}')",
-        "backgroundSize": "cover",
-        "backgroundPosition": "center center",
-        "backgroundRepeat": "no-repeat",
+        "background": f"center center / cover no-repeat url('{HERO_IMAGES[index]}')"
     }
