@@ -41,9 +41,7 @@ def build_hero():
                             html.Div(
                                 [
                                     html.Div(
-                                        [
-                                            html.Span("Gestoría en Ávila"),
-                                        ],
+                                        "Gestoría en Ávila",
                                         className="hero-eyebrow hero-line",
                                     ),
                                     html.H1(
@@ -51,7 +49,11 @@ def build_hero():
                                         className="hero-title hero-line",
                                     ),
                                     html.P(
-                                        "Ayudamos a autónomos, empresas y particulares con una gestión cercana, ordenada y orientada a resolver trámites y obligaciones sin complicaciones.",
+                                        (
+                                            "Ayudamos a autónomos, empresas y particulares con una gestión "
+                                            "cercana, ordenada y orientada a resolver trámites y obligaciones "
+                                            "sin complicaciones."
+                                        ),
                                         className="hero-subtitle hero-line",
                                     ),
                                     html.Div(
@@ -63,10 +65,10 @@ def build_hero():
                                                 ),
                                                 href="/presupuesto",
                                             ),
-                                            dbc.Button(
+                                            html.A(
                                                 "Ver servicios",
                                                 href="#servicios",
-                                                className="hero-secondary-btn",
+                                                className="btn hero-secondary-btn",
                                             ),
                                         ],
                                         className="hero-actions hero-line",
@@ -80,7 +82,7 @@ def build_hero():
                             xs=12,
                         ),
                     ],
-                    className="align-items-center hero-row",
+                    className="hero-row",
                 ),
                 fluid="lg",
                 className="hero-content-wrap",
@@ -91,6 +93,21 @@ def build_hero():
 
 
 def build_trust_strip():
+    items = [
+        {
+            "title": "Atención cercana",
+            "text": "Trato directo y seguimiento claro de cada caso.",
+        },
+        {
+            "title": "Gestión integral",
+            "text": "Fiscal, laboral, contable y trámites en un solo despacho.",
+        },
+        {
+            "title": "Respuesta profesional",
+            "text": "Una forma clara y ordenada de resolver sus necesidades.",
+        },
+    ]
+
     return html.Section(
         dbc.Container(
             dbc.Row(
@@ -98,44 +115,15 @@ def build_trust_strip():
                     dbc.Col(
                         html.Div(
                             [
-                                html.Div("Atención cercana", className="trust-strip-value"),
-                                html.Div(
-                                    "Trato directo y seguimiento claro de cada caso.",
-                                    className="trust-strip-label",
-                                ),
+                                html.Div(item["title"], className="trust-strip-value"),
+                                html.P(item["text"], className="trust-strip-label"),
                             ],
                             className="trust-strip-card",
                         ),
                         md=4,
                         className="mb-3 mb-md-0",
-                    ),
-                    dbc.Col(
-                        html.Div(
-                            [
-                                html.Div("Gestión integral", className="trust-strip-value"),
-                                html.Div(
-                                    "Fiscal, laboral, contable y trámites en un solo despacho.",
-                                    className="trust-strip-label",
-                                ),
-                            ],
-                            className="trust-strip-card",
-                        ),
-                        md=4,
-                        className="mb-3 mb-md-0",
-                    ),
-                    dbc.Col(
-                        html.Div(
-                            [
-                                html.Div("Respuesta profesional", className="trust-strip-value"),
-                                html.Div(
-                                    "Una forma clara y ordenada de resolver sus necesidades.",
-                                    className="trust-strip-label",
-                                ),
-                            ],
-                            className="trust-strip-card",
-                        ),
-                        md=4,
-                    ),
+                    )
+                    for item in items
                 ],
                 className="g-3",
             ),
@@ -149,15 +137,24 @@ def build_services():
     services = [
         {
             "title": "Asesoría fiscal",
-            "text": "Planificación y presentación de impuestos, seguimiento de obligaciones tributarias y apoyo continuo para autónomos y empresas.",
+            "text": (
+                "Planificación y presentación de impuestos, seguimiento de "
+                "obligaciones tributarias y apoyo continuo para autónomos y empresas."
+            ),
         },
         {
             "title": "Asesoría laboral",
-            "text": "Gestión laboral, nóminas, seguros sociales, altas, bajas y apoyo en el día a día de la empresa.",
+            "text": (
+                "Gestión laboral, nóminas, seguros sociales, altas, bajas y "
+                "apoyo en el día a día de la empresa."
+            ),
         },
         {
             "title": "Asesoría contable",
-            "text": "Contabilidad clara, organizada y orientada a que la información económica sea útil para tomar decisiones.",
+            "text": (
+                "Contabilidad clara, organizada y orientada a que la información "
+                "económica sea útil para tomar decisiones."
+            ),
         },
     ]
 
@@ -165,14 +162,22 @@ def build_services():
         dbc.Container(
             [
                 html.Div(id="servicios", className="section-anchor"),
-                html.Div("Servicios", className="section-tag"),
-                html.H2(
-                    "Una gestoría pensada para acompañarle con claridad en cada paso.",
-                    className="section-title",
-                ),
-                html.P(
-                    "Trabajamos con autónomos, empresas y particulares para ofrecer una atención profesional, cercana y bien estructurada.",
-                    className="section-subtitle",
+                html.Div(
+                    [
+                        html.Div("Servicios", className="section-tag"),
+                        html.H2(
+                            "Una gestoría pensada para acompañarle con claridad en cada paso.",
+                            className="section-title",
+                        ),
+                        html.P(
+                            (
+                                "Trabajamos con autónomos, empresas y particulares para ofrecer "
+                                "una atención profesional, cercana y bien estructurada."
+                            ),
+                            className="section-subtitle",
+                        ),
+                    ],
+                    className="section-header",
                 ),
                 dbc.Row(
                     [
@@ -180,18 +185,25 @@ def build_services():
                             dbc.Card(
                                 dbc.CardBody(
                                     [
-                                        html.H3(item["title"], className="service-card-title"),
-                                        html.P(item["text"], className="service-card-text"),
+                                        html.H3(
+                                            item["title"],
+                                            className="service-card-title",
+                                        ),
+                                        html.P(
+                                            item["text"],
+                                            className="service-card-text",
+                                        ),
                                     ]
                                 ),
                                 className="service-card h-100",
                             ),
-                            md=4,
-                            className="mb-4",
+                            lg=4,
+                            md=6,
+                            xs=12,
                         )
                         for item in services
                     ],
-                    className="mt-4",
+                    className="services-grid g-4",
                 ),
             ],
             fluid="lg",
@@ -208,24 +220,32 @@ def build_contact():
                 dbc.Row(
                     [
                         dbc.Col(
-                            [
-                                html.Div("Contacto", className="section-tag section-tag-light"),
-                                html.H2(
-                                    "Hablemos sobre lo que necesita.",
-                                    className="contact-title",
-                                ),
-                                html.P(
-                                    "Si desea información, presupuesto o resolver una duda, puede escribirnos y le responderemos lo antes posible.",
-                                    className="contact-subtitle",
-                                ),
-                            ],
+                            html.Div(
+                                [
+                                    html.Div(
+                                        "Contacto",
+                                        className="section-tag section-tag-light",
+                                    ),
+                                    html.H2(
+                                        "Hablemos sobre lo que necesita.",
+                                        className="contact-title",
+                                    ),
+                                    html.P(
+                                        (
+                                            "Si desea información, presupuesto o resolver una duda, "
+                                            "puede escribirnos y le responderemos lo antes posible."
+                                        ),
+                                        className="contact-subtitle",
+                                    ),
+                                ]
+                            ),
                             lg=7,
                             className="mb-4 mb-lg-0",
                         ),
                         dbc.Col(
                             html.Div(
                                 [
-                                    html.A(
+                                    dcc.Link(
                                         "Solicitar presupuesto",
                                         href="/presupuesto",
                                         className="contact-link contact-link-cta",
