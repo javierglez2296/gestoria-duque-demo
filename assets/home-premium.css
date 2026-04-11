@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap');
+
 :root {
     --navy-900: #0f172a;
     --navy-800: #172554;
@@ -14,6 +16,9 @@
     --radius-pill: 999px;
 
     --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
+
+    --font-body: "Inter", system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-display: "Cormorant Garamond", Georgia, serif;
 }
 
 html {
@@ -22,6 +27,8 @@ html {
 
 body {
     background: #f8fafc;
+    font-family: var(--font-body);
+    text-rendering: optimizeLegibility;
 }
 
 /* HERO */
@@ -55,16 +62,16 @@ body {
     background:
         linear-gradient(
             90deg,
-            rgba(15, 23, 42, 0.82) 0%,
-            rgba(15, 23, 42, 0.72) 24%,
-            rgba(15, 23, 42, 0.52) 44%,
-            rgba(15, 23, 42, 0.24) 68%,
+            rgba(15, 23, 42, 0.84) 0%,
+            rgba(15, 23, 42, 0.76) 24%,
+            rgba(15, 23, 42, 0.56) 44%,
+            rgba(15, 23, 42, 0.28) 68%,
             rgba(15, 23, 42, 0.10) 100%
         ),
         linear-gradient(
             180deg,
-            rgba(15, 23, 42, 0.16) 0%,
-            rgba(15, 23, 42, 0.30) 100%
+            rgba(15, 23, 42, 0.14) 0%,
+            rgba(15, 23, 42, 0.28) 100%
         );
 }
 
@@ -95,7 +102,7 @@ body {
 
 .hero-copy-animate {
     position: relative;
-    max-width: 640px;
+    max-width: 660px;
 }
 
 .hero-copy-animate::before {
@@ -127,8 +134,9 @@ body {
     align-items: center;
     gap: 0.9rem;
     margin-bottom: 1rem;
-    color: rgba(255, 255, 255, 0.96);
-    font-size: 0.78rem;
+    color: rgba(255, 255, 255, 0.94);
+    font-family: var(--font-body);
+    font-size: 0.76rem;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
@@ -137,23 +145,26 @@ body {
 
 .hero-title {
     margin: 0;
-    font-size: clamp(2.45rem, 4.1vw, 3.85rem);
-    line-height: 1.04;
-    font-weight: 700;
-    letter-spacing: -0.04em;
+    font-family: var(--font-display);
+    font-size: clamp(3rem, 4.8vw, 4.9rem);
+    line-height: 0.92;
+    font-weight: 600;
+    letter-spacing: -0.03em;
     color: #ffffff;
-    max-width: 680px;
+    max-width: 760px;
     text-wrap: balance;
     text-shadow: 0 14px 34px rgba(0, 0, 0, 0.20);
 }
 
 .hero-subtitle {
-    margin-top: 1.25rem;
+    margin-top: 1.35rem;
     margin-bottom: 0;
-    font-size: 1.04rem;
-    line-height: 1.72;
-    color: rgba(255, 255, 255, 0.88);
-    max-width: 560px;
+    font-family: var(--font-body);
+    font-size: 1.02rem;
+    font-weight: 400;
+    line-height: 1.82;
+    color: rgba(255, 255, 255, 0.86);
+    max-width: 570px;
     text-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
 }
 
@@ -161,7 +172,7 @@ body {
     display: flex;
     flex-wrap: wrap;
     gap: 0.9rem;
-    margin-top: 1.8rem;
+    margin-top: 1.9rem;
 }
 
 .hero-cta-btn,
@@ -169,8 +180,10 @@ body {
     min-height: 54px;
     padding: 0.9rem 1.45rem;
     border-radius: var(--radius-pill);
-    font-size: 0.96rem;
+    font-family: var(--font-body);
+    font-size: 0.94rem;
     font-weight: 700;
+    letter-spacing: 0.01em;
     transition:
         transform 0.28s var(--ease-premium),
         box-shadow 0.28s var(--ease-premium),
@@ -287,22 +300,24 @@ body {
     border: 1px solid rgba(148, 163, 184, 0.16);
     border-radius: 22px;
     box-shadow: 0 18px 44px rgba(15, 23, 42, 0.08);
-    padding: 1.4rem 1.35rem;
+    padding: 1.45rem 1.35rem;
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
 }
 
 .trust-strip-value {
+    font-family: var(--font-body);
     font-size: 1rem;
     font-weight: 800;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.01em;
     color: #0f172a;
     margin-bottom: 0.45rem;
 }
 
 .trust-strip-label {
+    font-family: var(--font-body);
     font-size: 0.95rem;
-    line-height: 1.65;
+    line-height: 1.7;
     color: #64748b;
     margin: 0;
 }
@@ -311,7 +326,8 @@ body {
 .section-tag {
     display: inline-block;
     margin-bottom: 1rem;
-    font-size: 0.78rem;
+    font-family: var(--font-body);
+    font-size: 0.76rem;
     font-weight: 800;
     letter-spacing: 0.18em;
     color: var(--navy-800);
@@ -323,19 +339,22 @@ body {
 }
 
 .section-title {
-    font-size: clamp(2rem, 3vw, 3rem);
-    line-height: 1.06;
-    font-weight: 800;
-    letter-spacing: -0.04em;
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 3.4vw, 4rem);
+    line-height: 0.95;
+    font-weight: 600;
+    letter-spacing: -0.03em;
     color: var(--navy-900);
-    max-width: 820px;
+    max-width: 860px;
+    text-wrap: balance;
 }
 
 .section-subtitle {
-    margin-top: 1rem;
+    margin-top: 1.15rem;
     margin-bottom: 0;
-    font-size: 1.05rem;
-    line-height: 1.8;
+    font-family: var(--font-body);
+    font-size: 1.03rem;
+    line-height: 1.85;
     color: var(--slate-500);
     max-width: 760px;
 }
@@ -347,11 +366,12 @@ body {
 }
 
 .service-card {
-    border: 1px solid rgba(148, 163, 184, 0.18);
+    height: 100%;
+    border: 1px solid rgba(148, 163, 184, 0.16);
     border-radius: var(--radius-xl);
     background: rgba(255, 255, 255, 0.88);
-    box-shadow: var(--shadow-soft);
-    padding: 0.4rem;
+    box-shadow: 0 14px 40px rgba(15, 23, 42, 0.06);
+    padding: 0.55rem;
     transition:
         transform 0.28s var(--ease-premium),
         box-shadow 0.28s var(--ease-premium),
@@ -360,13 +380,15 @@ body {
 
 .service-card:hover {
     transform: translateY(-4px);
-    box-shadow: var(--shadow-medium);
+    box-shadow: 0 24px 54px rgba(15, 23, 42, 0.10);
     border-color: rgba(30, 41, 59, 0.12);
 }
 
 .service-card-title {
-    font-size: 1.2rem;
-    font-weight: 800;
+    font-family: var(--font-display);
+    font-size: 2rem;
+    font-weight: 600;
+    line-height: 1;
     color: var(--navy-900);
     margin-bottom: 0.85rem;
     letter-spacing: -0.02em;
@@ -374,8 +396,9 @@ body {
 
 .service-card-text {
     margin: 0;
-    font-size: 1rem;
-    line-height: 1.75;
+    font-family: var(--font-body);
+    font-size: 0.98rem;
+    line-height: 1.8;
     color: var(--slate-500);
 }
 
@@ -388,19 +411,22 @@ body {
 }
 
 .contact-title {
-    font-size: clamp(2rem, 3vw, 3rem);
-    line-height: 1.06;
-    font-weight: 800;
-    letter-spacing: -0.04em;
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 3.4vw, 4rem);
+    line-height: 0.95;
+    font-weight: 600;
+    letter-spacing: -0.03em;
     color: #ffffff;
     margin-bottom: 1rem;
-    max-width: 700px;
+    max-width: 720px;
+    text-wrap: balance;
 }
 
 .contact-subtitle {
     margin: 0;
-    font-size: 1.05rem;
-    line-height: 1.8;
+    font-family: var(--font-body);
+    font-size: 1.03rem;
+    line-height: 1.85;
     color: rgba(255, 255, 255, 0.78);
     max-width: 680px;
 }
@@ -422,7 +448,10 @@ body {
     display: block;
     text-decoration: none;
     color: #ffffff;
+    font-family: var(--font-body);
+    font-size: 0.97rem;
     font-weight: 600;
+    letter-spacing: 0.01em;
     padding: 0.95rem 1rem;
     border-radius: 16px;
     background: rgba(255, 255, 255, 0.05);
@@ -460,14 +489,14 @@ body {
     }
 
     .hero-title {
-        font-size: clamp(2.2rem, 7vw, 3.2rem);
+        font-size: clamp(2.5rem, 7vw, 3.8rem);
         max-width: 100%;
-        line-height: 1.06;
+        line-height: 0.96;
     }
 
     .hero-subtitle {
         font-size: 1rem;
-        line-height: 1.68;
+        line-height: 1.72;
         max-width: 100%;
     }
 
@@ -475,14 +504,23 @@ body {
         background:
             linear-gradient(
                 180deg,
-                rgba(15, 23, 42, 0.66) 0%,
-                rgba(15, 23, 42, 0.56) 34%,
+                rgba(15, 23, 42, 0.68) 0%,
+                rgba(15, 23, 42, 0.58) 34%,
                 rgba(15, 23, 42, 0.44) 100%
             );
     }
 
     .trust-strip-section {
         margin-top: -34px;
+    }
+
+    .section-title,
+    .contact-title {
+        line-height: 0.98;
+    }
+
+    .service-card-title {
+        font-size: 1.7rem;
     }
 }
 
@@ -504,19 +542,19 @@ body {
 
     .hero-eyebrow {
         gap: 0.6rem;
-        font-size: 0.72rem;
+        font-size: 0.7rem;
         letter-spacing: 0.14em;
     }
 
     .hero-title {
-        font-size: clamp(1.95rem, 9vw, 2.7rem);
-        line-height: 1.08;
+        font-size: clamp(2.2rem, 9vw, 3rem);
+        line-height: 0.98;
     }
 
     .hero-subtitle {
         margin-top: 1rem;
         font-size: 0.95rem;
-        line-height: 1.65;
+        line-height: 1.7;
     }
 
     .hero-actions {
@@ -536,7 +574,11 @@ body {
 
     .section-title,
     .contact-title {
-        font-size: clamp(1.75rem, 8vw, 2.35rem);
+        font-size: clamp(2rem, 8vw, 2.8rem);
+    }
+
+    .service-card-title {
+        font-size: 1.55rem;
     }
 }
 
