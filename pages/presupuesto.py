@@ -40,15 +40,24 @@ def build_budget_sidebar():
     items = [
         {
             "title": "Respuesta clara",
-            "text": "Revisamos su solicitud y le respondemos con una propuesta adaptada a lo que realmente necesita.",
+            "text": (
+                "Revisamos su solicitud y le respondemos con una propuesta "
+                "adaptada a lo que realmente necesita."
+            ),
         },
         {
             "title": "Atención personalizada",
-            "text": "Cada caso se estudia de forma individual para ofrecerle una orientación profesional y útil.",
+            "text": (
+                "Cada caso se estudia de forma individual para ofrecerle una "
+                "orientación profesional y útil."
+            ),
         },
         {
             "title": "Proceso ágil",
-            "text": "Le contactaremos lo antes posible para ampliar información o enviarle el presupuesto correspondiente.",
+            "text": (
+                "Le contactaremos lo antes posible para ampliar información "
+                "o enviarle el presupuesto correspondiente."
+            ),
         },
     ]
 
@@ -60,7 +69,8 @@ def build_budget_sidebar():
                 className="budget-title",
             ),
             html.P(
-                "Complete el formulario y prepararemos una respuesta clara, profesional y adaptada a su caso.",
+                "Complete el formulario y prepararemos una respuesta clara, "
+                "profesional y adaptada a su caso.",
                 className="budget-subtitle",
             ),
             html.Div(
@@ -200,11 +210,26 @@ def build_budget_form():
                         dcc.Dropdown(
                             id="materia",
                             options=[
-                                {"label": "Gestoría administrativa", "value": "Gestoría administrativa"},
-                                {"label": "Asesoría laboral", "value": "Asesoría laboral"},
-                                {"label": "Asesoría tributaria", "value": "Asesoría tributaria"},
-                                {"label": "Asesoría jurídica", "value": "Asesoría jurídica"},
-                                {"label": "Externalización de servicios", "value": "Externalización de servicios"},
+                                {
+                                    "label": "Gestoría administrativa",
+                                    "value": "Gestoría administrativa",
+                                },
+                                {
+                                    "label": "Asesoría laboral",
+                                    "value": "Asesoría laboral",
+                                },
+                                {
+                                    "label": "Asesoría tributaria",
+                                    "value": "Asesoría tributaria",
+                                },
+                                {
+                                    "label": "Asesoría jurídica",
+                                    "value": "Asesoría jurídica",
+                                },
+                                {
+                                    "label": "Externalización de servicios",
+                                    "value": "Externalización de servicios",
+                                },
                             ],
                             value="Asesoría laboral",
                             clearable=False,
@@ -284,7 +309,7 @@ layout = html.Div(
                         lg=7,
                     ),
                 ],
-                className="align-items-start budget-layout-row",
+                className="budget-layout-row",
             ),
         ],
         fluid="lg",
@@ -305,8 +330,18 @@ layout = html.Div(
     State("privacidad", "value"),
     prevent_initial_call=True,
 )
-def submit_budget(n_clicks, empresa, contacto, email, telefono, materia, mensaje, privacidad):
+def submit_budget(
+    n_clicks,
+    empresa,
+    contacto,
+    email,
+    telefono,
+    materia,
+    mensaje,
+    privacidad,
+):
     required_values = [empresa, contacto, email, telefono, materia, mensaje]
+
     if not all(required_values):
         return html.Div(
             "Revise los campos obligatorios antes de enviar la solicitud.",
