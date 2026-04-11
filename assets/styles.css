@@ -294,6 +294,220 @@ img {
 }
 
 /* =========================
+   PRESUPUESTO · REDISEÑO
+   ========================= */
+.budget-page {
+    padding-top: 4.5rem;
+    padding-bottom: 5.5rem;
+    background:
+        radial-gradient(circle at top left, rgba(15, 23, 42, 0.03) 0%, rgba(15, 23, 42, 0) 28%),
+        linear-gradient(180deg, #ffffff 0%, #f8fafc 100%);
+}
+
+.budget-header {
+    max-width: 920px;
+    margin: 0 auto 2.8rem auto;
+}
+
+.budget-eyebrow {
+    display: inline-block;
+    margin-bottom: 0.9rem;
+    font-size: 0.76rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #64748b;
+}
+
+.budget-title {
+    font-family: var(--font-display);
+    font-size: clamp(2.8rem, 4.5vw, 4.8rem);
+    line-height: 1.04;
+    letter-spacing: -0.025em;
+    color: var(--ink);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    max-width: 980px;
+}
+
+.budget-subtitle {
+    font-size: 1.06rem;
+    line-height: 1.9;
+    color: var(--muted);
+    margin: 0;
+    max-width: 760px;
+}
+
+.budget-card {
+    border: 1px solid rgba(15, 23, 42, 0.08);
+    border-radius: 30px;
+    box-shadow: 0 24px 60px rgba(15, 23, 42, 0.08);
+    background: rgba(255, 255, 255, 0.96);
+    overflow: hidden;
+}
+
+.budget-card .card-body {
+    padding: 2.2rem;
+}
+
+.budget-group {
+    margin-bottom: 1.2rem;
+}
+
+.budget-label {
+    display: block;
+    margin-bottom: 0.55rem;
+    color: var(--ink);
+    font-size: 0.92rem;
+    font-weight: 600;
+    letter-spacing: 0.01em;
+}
+
+.budget-required {
+    color: #dc2626;
+}
+
+.budget-input,
+.budget-textarea {
+    border-radius: 16px !important;
+    border: 1px solid rgba(15, 23, 42, 0.10) !important;
+    min-height: 54px;
+    padding: 0.85rem 1rem !important;
+    color: var(--ink) !important;
+    background: #fcfdff !important;
+    box-shadow: none !important;
+    font-size: 0.98rem !important;
+}
+
+.budget-input::placeholder,
+.budget-textarea::placeholder {
+    color: #94a3b8;
+}
+
+.budget-textarea {
+    min-height: 160px;
+    resize: vertical;
+    padding-top: 0.95rem !important;
+}
+
+.budget-input:focus,
+.budget-textarea:focus {
+    border-color: #1e293b !important;
+    box-shadow: 0 0 0 0.18rem rgba(15, 23, 42, 0.07) !important;
+    background: #ffffff !important;
+}
+
+/* Dropdown de dash react-select */
+.budget-dropdown .Select-control,
+.budget-dropdown .Select-menu-outer,
+.budget-dropdown .Select-placeholder,
+.budget-dropdown .Select-value-label,
+.budget-dropdown .Select-input > input {
+    font-family: var(--font-body);
+}
+
+.budget-dropdown .Select-control {
+    border-radius: 16px !important;
+    border: 1px solid rgba(15, 23, 42, 0.10) !important;
+    min-height: 54px !important;
+    background: #fcfdff !important;
+    box-shadow: none !important;
+}
+
+.budget-dropdown.is-focused .Select-control,
+.budget-dropdown .Select-control:hover {
+    border-color: #1e293b !important;
+    box-shadow: 0 0 0 0.18rem rgba(15, 23, 42, 0.07) !important;
+}
+
+/* Dropdown nuevo de dcc.Dropdown */
+.budget-dropdown .Select-value,
+.budget-dropdown .Select-placeholder {
+    line-height: 52px !important;
+}
+
+.budget-dropdown .VirtualizedSelectFocusedOption {
+    background-color: #f8fafc;
+    color: var(--ink);
+}
+
+.budget-dropdown .VirtualizedSelectOption {
+    padding-top: 10px;
+    padding-bottom: 10px;
+    font-size: 0.96rem;
+}
+
+.budget-checkbox-wrap {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    margin-top: 0.75rem;
+    margin-bottom: 1.6rem;
+}
+
+.budget-checkbox {
+    margin-top: 0.18rem;
+}
+
+.budget-checkbox-label {
+    font-size: 0.94rem;
+    line-height: 1.75;
+    color: #475569;
+}
+
+.budget-inline-link {
+    color: var(--ink);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+.budget-submit-wrap {
+    display: flex;
+    justify-content: flex-start;
+    margin-top: 0.6rem;
+}
+
+.budget-submit-btn {
+    min-height: 54px;
+    padding: 0.9rem 1.6rem;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #0b132b 0%, #111c3d 100%);
+    color: #ffffff;
+    font-weight: 700;
+    letter-spacing: 0.01em;
+    border: none;
+    box-shadow: 0 16px 34px rgba(15, 23, 42, 0.14);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, opacity 0.25s ease;
+}
+
+.budget-submit-btn:hover {
+    color: #ffffff;
+    opacity: 0.98;
+    transform: translateY(-1px);
+    box-shadow: 0 22px 42px rgba(15, 23, 42, 0.18);
+}
+
+.budget-message {
+    border-radius: 18px;
+    padding: 1rem 1.05rem;
+    margin-top: 1.15rem;
+    font-size: 0.95rem;
+    line-height: 1.65;
+}
+
+.budget-message-error {
+    background: rgba(220, 38, 38, 0.08);
+    color: #991b1b;
+    border: 1px solid rgba(220, 38, 38, 0.16);
+}
+
+.budget-message-success {
+    background: rgba(22, 163, 74, 0.08);
+    color: #166534;
+    border: 1px solid rgba(22, 163, 74, 0.16);
+}
+
+/* =========================
    RESPONSIVE
    ========================= */
 @media (max-width: 991px) {
@@ -354,6 +568,15 @@ img {
         padding-top: 3rem;
         padding-bottom: 4rem;
     }
+
+    .budget-page {
+        padding-top: 3.2rem;
+        padding-bottom: 4.3rem;
+    }
+
+    .budget-title {
+        font-size: clamp(2.25rem, 6vw, 3.5rem);
+    }
 }
 
 @media (max-width: 767px) {
@@ -368,6 +591,19 @@ img {
 
     .service-page-title {
         font-size: 2.3rem;
+    }
+
+    .budget-card .card-body {
+        padding: 1.35rem;
+    }
+
+    .budget-submit-btn {
+        width: 100%;
+    }
+
+    .budget-subtitle {
+        font-size: 1rem;
+        line-height: 1.8;
     }
 }
 
