@@ -12,7 +12,7 @@
     --shadow-soft: 0 20px 50px rgba(15, 23, 42, 0.08);
     --shadow-medium: 0 24px 60px rgba(15, 23, 42, 0.12);
 
-    --radius-xl: 24px;
+    --radius-xl: 28px;
     --radius-pill: 999px;
 
     --ease-premium: cubic-bezier(0.22, 1, 0.36, 1);
@@ -31,6 +31,14 @@ body {
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+}
+
+.page-shell {
+    overflow-x: hidden;
+}
+
+.section-anchor {
+    scroll-margin-top: 110px;
 }
 
 /* =========================
@@ -187,6 +195,10 @@ body {
 }
 
 .hero-secondary-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
     background: rgba(255, 255, 255, 0.08);
     color: #ffffff;
     border: 1px solid rgba(255, 255, 255, 0.24);
@@ -196,6 +208,7 @@ body {
 
 .hero-secondary-btn:hover {
     color: #ffffff;
+    text-decoration: none;
     background: rgba(255, 255, 255, 0.14);
     border-color: rgba(255, 255, 255, 0.34);
     transform: translateY(-2px);
@@ -321,6 +334,10 @@ body {
     color: rgba(255, 255, 255, 0.72);
 }
 
+.section-header {
+    margin-bottom: 2.4rem;
+}
+
 .section-title {
     font-family: var(--font-display);
     font-size: clamp(2.7rem, 3.6vw, 4.2rem);
@@ -352,10 +369,6 @@ body {
     padding-bottom: 4.75rem;
 }
 
-.services-section .section-header {
-    margin-bottom: 2.4rem;
-}
-
 .services-grid {
     row-gap: 1.5rem;
 }
@@ -366,11 +379,15 @@ body {
     border-radius: 28px;
     background: rgba(255, 255, 255, 0.96);
     box-shadow: 0 14px 40px rgba(15, 23, 42, 0.05);
-    padding: 2rem 2rem 1.9rem;
+    padding: 0;
     transition:
         transform 0.28s var(--ease-premium),
         box-shadow 0.28s var(--ease-premium),
         border-color 0.28s var(--ease-premium);
+}
+
+.service-card .card-body {
+    padding: 2rem 2rem 1.9rem;
 }
 
 .service-card:hover {
@@ -459,6 +476,7 @@ body {
 
 .contact-link:hover {
     color: #ffffff;
+    text-decoration: none;
     background: rgba(255, 255, 255, 0.11);
     transform: translateY(-2px);
 }
@@ -518,7 +536,7 @@ body {
         line-height: 1.12;
     }
 
-    .service-card {
+    .service-card .card-body {
         padding: 1.75rem 1.6rem 1.65rem;
     }
 
@@ -598,13 +616,16 @@ body {
         padding-bottom: 3.6rem;
     }
 
-    .services-section .section-header {
+    .section-header {
         margin-bottom: 1.8rem;
     }
 
     .service-card {
-        padding: 1.5rem 1.35rem 1.45rem;
         border-radius: 24px;
+    }
+
+    .service-card .card-body {
+        padding: 1.5rem 1.35rem 1.45rem;
     }
 
     .service-card-title {
