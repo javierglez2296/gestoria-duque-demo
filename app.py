@@ -1,9 +1,54 @@
 from dash import Dash, html, page_container, Input, Output, State
 import dash_bootstrap_components as dbc
 
-
+TELEFONO = "920 000 000"
 EMAIL = "info@gestoriaduque.com"
 WHATSAPP_URL = "https://wa.me/34620000000"
+
+
+def build_topbar():
+    return html.Div(
+        dbc.Container(
+            dbc.Row(
+                [
+                    dbc.Col(
+                        html.Div(
+                            [
+                                html.Span("Ávila"),
+                                html.Span("Más de 70 años de experiencia"),
+                                html.Span("Atención cercana y profesional"),
+                            ],
+                            className="topbar-left d-none d-md-flex",
+                        ),
+                        md=7,
+                        className="d-flex align-items-center",
+                    ),
+                    dbc.Col(
+                        html.Div(
+                            [
+                                html.A(
+                                    TELEFONO,
+                                    href=f"tel:{TELEFONO.replace(' ', '')}",
+                                    className="topbar-link",
+                                ),
+                                html.A(
+                                    EMAIL,
+                                    href=f"mailto:{EMAIL}",
+                                    className="topbar-link",
+                                ),
+                            ],
+                            className="topbar-right",
+                        ),
+                        md=5,
+                        className="d-flex align-items-center justify-content-md-end",
+                    ),
+                ],
+                className="g-2 align-items-center",
+            ),
+            fluid="lg",
+        ),
+        className="topbar-premium",
+    )
 
 
 def build_navbar():
@@ -11,116 +56,104 @@ def build_navbar():
         dbc.Container(
             [
                 html.A(
-                    html.Div(
-                        html.Img(
-                            src="assets/logo-duque.png",
-                            alt="Gestoría Duque",
-                            className="navbar-logo-img",
-                        ),
-                        className="navbar-logo",
+                    html.Img(
+                        src="/assets/logo-duque.png",
+                        alt="Gestoría Duque",
+                        className="navbar-logo-img",
                     ),
                     href="/",
-                    className="text-decoration-none d-flex align-items-center",
+                    className="navbar-logo",
                 ),
-                dbc.NavbarToggler(
-                    id="navbar-toggler",
-                    n_clicks=0,
-                    className="navbar-toggler-premium",
-                ),
+                dbc.NavbarToggler(id="navbar-toggler", className="navbar-toggler-premium"),
                 dbc.Collapse(
                     dbc.Nav(
                         [
-                            dbc.NavLink(
-                                "Inicio",
-                                href="/",
-                                className="nav-link-premium",
+                            dbc.NavItem(
+                                dbc.NavLink("Inicio", href="/", className="nav-link-premium")
                             ),
-                            dbc.NavLink(
-                                "Servicios",
-                                href="/#servicios",
-                                className="nav-link-premium",
+                            html.Div(
+                                [
+                                    html.Button(
+                                        "Servicios",
+                                        id="services-dropdown-toggle",
+                                        className="nav-link-premium nav-dropdown-trigger",
+                                        n_clicks=0,
+                                        type="button",
+                                    ),
+                                    html.Div(
+                                        [
+                                            html.A(
+                                                "Gestoría administrativa",
+                                                href="#servicios",
+                                                className="services-dropdown-link",
+                                            ),
+                                            html.A(
+                                                "Asesoría laboral",
+                                                href="#servicios",
+                                                className="services-dropdown-link",
+                                            ),
+                                            html.A(
+                                                "Asesoría tributaria",
+                                                href="#servicios",
+                                                className="services-dropdown-link",
+                                            ),
+                                            html.A(
+                                                "Asesoría jurídica",
+                                                href="#servicios",
+                                                className="services-dropdown-link",
+                                            ),
+                                            html.A(
+                                                "Externalización de servicios",
+                                                href="#servicios",
+                                                className="services-dropdown-link",
+                                            ),
+                                        ],
+                                        id="services-dropdown-menu",
+                                        className="services-dropdown-menu",
+                                    ),
+                                ],
+                                className="services-dropdown-wrap",
                             ),
-                            dbc.NavLink(
-                                "Contacto",
-                                href="/#contacto",
-                                className="nav-link-premium",
+                            dbc.NavItem(
+                                dbc.NavLink(
+                                    "Presupuesto",
+                                    href="/presupuesto",
+                                    className="nav-link-premium",
+                                )
                             ),
-                            dbc.Button(
+                            dbc.NavItem(
+                                dbc.NavLink(
+                                    "Contacto",
+                                    href="#contacto",
+                                    className="nav-link-premium",
+                                )
+                            ),
+                            html.A(
                                 "WhatsApp",
                                 href=WHATSAPP_URL,
                                 target="_blank",
                                 rel="noopener noreferrer",
-                                className="navbar-whatsapp ms-lg-2",
+                                className="navbar-whatsapp",
                             ),
-                            dbc.Button(
+                            html.A(
                                 "Solicitar información",
                                 href="/presupuesto",
-                                className="navbar-cta ms-lg-2",
+                                className="navbar-cta",
                             ),
                         ],
-                        className="ms-auto align-items-lg-center navbar-nav-premium",
+                        className="ms-auto navbar-nav-premium align-items-lg-center",
                         navbar=True,
                     ),
                     id="navbar-collapse",
+                    is_open=False,
                     navbar=True,
                 ),
             ],
-            fluid=False,
+            fluid="lg",
             className="navbar-container-premium",
         ),
-        sticky="top",
         className="navbar-premium",
-        dark=False,
-    )
-
-
-def build_footer():
-    return html.Footer(
-        dbc.Container(
-            [
-                dbc.Row(
-                    [
-                        dbc.Col(
-                            [
-                                html.Div("Gestoría Duque", className="site-footer-title"),
-                                html.P(
-                                    "Asesoría fiscal, laboral y contable en Ávila con una imagen clara, actual y profesional.",
-                                    className="site-footer-text",
-                                ),
-                            ],
-                            md=4,
-                            className="mb-4",
-                        ),
-                        dbc.Col(
-                            [
-                                html.Div("Navegación", className="site-footer-title"),
-                                html.Div(
-                                    [
-                                        html.A("Inicio", href="/", className="site-footer-link d-block mb-2"),
-                                        html.A("Servicios", href="/#servicios", className="site-footer-link d-block mb-2"),
-                                        html.A("Contacto", href="/#contacto", className="site-footer-link d-block mb-2"),
-                                        html.A("Solicitar presupuesto", href="/presupuesto", className="site-footer-link d-block"),
-                                    ]
-                                ),
-                            ],
-                            md=4,
-                            className="mb-4",
-                        ),
-                        dbc.Col(
-                            [
-                                html.Div("Contacto", className="site-footer-title"),
-                                html.P(EMAIL, className="site-footer-text"),
-                                html.P("WhatsApp disponible", className="site-footer-text"),
-                                html.P("Ávila", className="site-footer-text"),
-                            ],
-                            md=4,
-                            className="mb-4",
-                        ),
-                    ]
-                ),
-            ],
-        ),
-        className="site-footer",
+        sticky="top",
     )
 
 
@@ -129,30 +162,16 @@ app = Dash(
     use_pages=True,
     external_stylesheets=[dbc.themes.BOOTSTRAP],
     suppress_callback_exceptions=True,
-    title="Gestoría Duque | Demo premium",
-    update_title=None,
-    meta_tags=[
-        {"name": "viewport", "content": "width=device-width, initial-scale=1"},
-        {
-            "name": "description",
-            "content": "Gestoría en Ávila para autónomos, empresas y particulares. Demo premium con enfoque visual moderno, local y comercial.",
-        },
-        {"name": "theme-color", "content": "#ffffff"},
-    ],
 )
 
 server = app.server
 
 app.layout = html.Div(
     [
+        build_topbar(),
         build_navbar(),
-        html.Main(
-            page_container,
-            className="site-main",
-        ),
-        build_footer(),
-    ],
-    className="site-shell",
+        html.Main(page_container, className="site-main"),
+    ]
 )
 
 
@@ -165,6 +184,17 @@ def toggle_navbar(n, is_open):
     if n:
         return not is_open
     return is_open
+
+
+@app.callback(
+    Output("services-dropdown-menu", "className"),
+    Input("services-dropdown-toggle", "n_clicks"),
+    prevent_initial_call=False,
+)
+def toggle_services_dropdown(n_clicks):
+    if n_clicks and n_clicks % 2 == 1:
+        return "services-dropdown-menu services-dropdown-menu-open"
+    return "services-dropdown-menu"
 
 
 if __name__ == "__main__":
