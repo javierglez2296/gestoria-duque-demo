@@ -36,216 +36,255 @@ def build_input(label, input_id, placeholder, required=False, type_="text"):
     )
 
 
+def build_budget_sidebar():
+    items = [
+        {
+            "title": "Respuesta clara",
+            "text": "Revisamos su solicitud y le respondemos con una propuesta adaptada a lo que realmente necesita.",
+        },
+        {
+            "title": "Atención personalizada",
+            "text": "Cada caso se estudia de forma individual para ofrecerle una orientación profesional y útil.",
+        },
+        {
+            "title": "Proceso ágil",
+            "text": "Le contactaremos lo antes posible para ampliar información o enviarle el presupuesto correspondiente.",
+        },
+    ]
+
+    return html.Div(
+        [
+            html.Div("Solicitud de presupuesto", className="budget-eyebrow"),
+            html.H1(
+                "Cuéntenos qué necesita y le responderemos lo antes posible.",
+                className="budget-title",
+            ),
+            html.P(
+                "Complete el formulario y prepararemos una respuesta clara, profesional y adaptada a su caso.",
+                className="budget-subtitle",
+            ),
+            html.Div(
+                [
+                    html.Div(
+                        [
+                            html.Div(item["title"], className="budget-feature-title"),
+                            html.P(item["text"], className="budget-feature-text"),
+                        ],
+                        className="budget-feature-card",
+                    )
+                    for item in items
+                ],
+                className="budget-feature-list",
+            ),
+        ],
+        className="budget-sidebar",
+    )
+
+
+def build_budget_form():
+    return dbc.Card(
+        dbc.CardBody(
+            [
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            build_input(
+                                "Nombre de la empresa",
+                                "empresa",
+                                "Nombre de la empresa",
+                                required=True,
+                            ),
+                            md=6,
+                        ),
+                        dbc.Col(
+                            build_input(
+                                "Persona de contacto",
+                                "contacto",
+                                "Persona de contacto",
+                                required=True,
+                            ),
+                            md=6,
+                        ),
+                    ],
+                    className="g-4",
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            build_input(
+                                "Dirección",
+                                "direccion",
+                                "Dirección",
+                            ),
+                            md=12,
+                        ),
+                    ],
+                    className="g-4",
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            build_input(
+                                "Ciudad",
+                                "ciudad",
+                                "Ciudad",
+                            ),
+                            md=6,
+                        ),
+                        dbc.Col(
+                            build_input(
+                                "Código postal",
+                                "codigo_postal",
+                                "Código postal",
+                            ),
+                            md=6,
+                        ),
+                    ],
+                    className="g-4",
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            build_input(
+                                "Email",
+                                "email",
+                                "Email",
+                                required=True,
+                                type_="email",
+                            ),
+                            md=6,
+                        ),
+                        dbc.Col(
+                            build_input(
+                                "Teléfono",
+                                "telefono",
+                                "Teléfono",
+                                required=True,
+                            ),
+                            md=6,
+                        ),
+                    ],
+                    className="g-4",
+                ),
+                dbc.Row(
+                    [
+                        dbc.Col(
+                            build_input(
+                                "Actividad de la empresa",
+                                "actividad",
+                                "Actividad de la empresa",
+                            ),
+                            md=6,
+                        ),
+                        dbc.Col(
+                            build_input(
+                                "Cómo nos ha conocido",
+                                "origen",
+                                "Cómo nos ha conocido",
+                            ),
+                            md=6,
+                        ),
+                    ],
+                    className="g-4",
+                ),
+                html.Div(
+                    [
+                        html.Label(
+                            [
+                                "Seleccione la materia sobre la que desea el presupuesto",
+                                html.Span(" *", className="budget-required"),
+                            ],
+                            htmlFor="materia",
+                            className="budget-label",
+                        ),
+                        dcc.Dropdown(
+                            id="materia",
+                            options=[
+                                {"label": "Gestoría administrativa", "value": "Gestoría administrativa"},
+                                {"label": "Asesoría laboral", "value": "Asesoría laboral"},
+                                {"label": "Asesoría tributaria", "value": "Asesoría tributaria"},
+                                {"label": "Asesoría jurídica", "value": "Asesoría jurídica"},
+                                {"label": "Externalización de servicios", "value": "Externalización de servicios"},
+                            ],
+                            value="Asesoría laboral",
+                            clearable=False,
+                            className="budget-dropdown",
+                        ),
+                    ],
+                    className="budget-group",
+                ),
+                html.Div(
+                    [
+                        html.Label(
+                            [
+                                "Describa lo que desea que le enviemos en el presupuesto",
+                                html.Span(" *", className="budget-required"),
+                            ],
+                            htmlFor="mensaje",
+                            className="budget-label",
+                        ),
+                        dbc.Textarea(
+                            id="mensaje",
+                            placeholder="Explique brevemente qué necesita",
+                            className="budget-textarea",
+                        ),
+                    ],
+                    className="budget-group",
+                ),
+                html.Div(
+                    [
+                        dbc.Checkbox(
+                            id="privacidad",
+                            className="budget-checkbox",
+                        ),
+                        html.Label(
+                            [
+                                "He leído y acepto la ",
+                                html.A(
+                                    "Política de privacidad",
+                                    href="/politica-privacidad",
+                                    className="budget-inline-link",
+                                ),
+                                " y las condiciones de uso.",
+                            ],
+                            htmlFor="privacidad",
+                            className="budget-checkbox-label",
+                        ),
+                    ],
+                    className="budget-checkbox-wrap",
+                ),
+                html.Div(
+                    dbc.Button(
+                        "Enviar solicitud",
+                        id="budget-submit",
+                        className="budget-submit-btn",
+                        n_clicks=0,
+                    ),
+                    className="budget-submit-wrap",
+                ),
+                html.Div(id="budget-response"),
+            ]
+        ),
+        className="budget-card",
+    )
+
+
 layout = html.Div(
     dbc.Container(
         [
-            html.Section(
-                [
-                    html.Div("Solicitud de presupuesto", className="budget-eyebrow"),
-                    html.H1(
-                        "Cuéntenos qué necesita y le responderemos lo antes posible.",
-                        className="budget-title",
-                    ),
-                    html.P(
-                        "Complete el formulario y prepararemos una respuesta clara, profesional y adaptada a su caso.",
-                        className="budget-subtitle",
-                    ),
-                ],
-                className="budget-header",
-            ),
             dbc.Row(
                 [
                     dbc.Col(
-                        dbc.Card(
-                            dbc.CardBody(
-                                [
-                                    dbc.Row(
-                                        [
-                                            dbc.Col(
-                                                build_input(
-                                                    "Nombre de la empresa",
-                                                    "empresa",
-                                                    "Nombre de la empresa",
-                                                    required=True,
-                                                ),
-                                                md=6,
-                                            ),
-                                            dbc.Col(
-                                                build_input(
-                                                    "Persona de contacto",
-                                                    "contacto",
-                                                    "Persona de contacto",
-                                                    required=True,
-                                                ),
-                                                md=6,
-                                            ),
-                                        ],
-                                        className="g-4",
-                                    ),
-                                    dbc.Row(
-                                        [
-                                            dbc.Col(
-                                                build_input(
-                                                    "Dirección",
-                                                    "direccion",
-                                                    "Dirección",
-                                                ),
-                                                md=12,
-                                            ),
-                                        ],
-                                        className="g-4",
-                                    ),
-                                    dbc.Row(
-                                        [
-                                            dbc.Col(
-                                                build_input(
-                                                    "Ciudad",
-                                                    "ciudad",
-                                                    "Ciudad",
-                                                ),
-                                                md=6,
-                                            ),
-                                            dbc.Col(
-                                                build_input(
-                                                    "Código postal",
-                                                    "codigo_postal",
-                                                    "Código postal",
-                                                ),
-                                                md=6,
-                                            ),
-                                        ],
-                                        className="g-4",
-                                    ),
-                                    dbc.Row(
-                                        [
-                                            dbc.Col(
-                                                build_input(
-                                                    "Email",
-                                                    "email",
-                                                    "Email",
-                                                    required=True,
-                                                    type_="email",
-                                                ),
-                                                md=6,
-                                            ),
-                                            dbc.Col(
-                                                build_input(
-                                                    "Teléfono",
-                                                    "telefono",
-                                                    "Teléfono",
-                                                    required=True,
-                                                ),
-                                                md=6,
-                                            ),
-                                        ],
-                                        className="g-4",
-                                    ),
-                                    dbc.Row(
-                                        [
-                                            dbc.Col(
-                                                build_input(
-                                                    "Actividad de la empresa",
-                                                    "actividad",
-                                                    "Actividad de la empresa",
-                                                ),
-                                                md=6,
-                                            ),
-                                            dbc.Col(
-                                                build_input(
-                                                    "Cómo nos ha conocido",
-                                                    "origen",
-                                                    "Cómo nos ha conocido",
-                                                ),
-                                                md=6,
-                                            ),
-                                        ],
-                                        className="g-4",
-                                    ),
-                                    html.Div(
-                                        [
-                                            html.Label(
-                                                [
-                                                    "Seleccione la materia sobre la que desea el presupuesto",
-                                                    html.Span(" *", className="budget-required"),
-                                                ],
-                                                htmlFor="materia",
-                                                className="budget-label",
-                                            ),
-                                            dcc.Dropdown(
-                                                id="materia",
-                                                options=[
-                                                    {"label": "Gestoría administrativa", "value": "Gestoría administrativa"},
-                                                    {"label": "Asesoría laboral", "value": "Asesoría laboral"},
-                                                    {"label": "Asesoría tributaria", "value": "Asesoría tributaria"},
-                                                    {"label": "Asesoría jurídica", "value": "Asesoría jurídica"},
-                                                    {"label": "Externalización de servicios", "value": "Externalización de servicios"},
-                                                ],
-                                                value="Asesoría laboral",
-                                                clearable=False,
-                                                className="budget-dropdown",
-                                            ),
-                                        ],
-                                        className="budget-group",
-                                    ),
-                                    html.Div(
-                                        [
-                                            html.Label(
-                                                [
-                                                    "Describa lo que desea que le enviemos en el presupuesto",
-                                                    html.Span(" *", className="budget-required"),
-                                                ],
-                                                htmlFor="mensaje",
-                                                className="budget-label",
-                                            ),
-                                            dbc.Textarea(
-                                                id="mensaje",
-                                                placeholder="Explique brevemente qué necesita",
-                                                className="budget-textarea",
-                                            ),
-                                        ],
-                                        className="budget-group",
-                                    ),
-                                    html.Div(
-                                        [
-                                            dbc.Checkbox(
-                                                id="privacidad",
-                                                className="budget-checkbox",
-                                            ),
-                                            html.Label(
-                                                [
-                                                    "He leído y acepto la ",
-                                                    html.A(
-                                                        "Política de privacidad",
-                                                        href="/politica-privacidad",
-                                                        className="budget-inline-link",
-                                                    ),
-                                                    " y las condiciones de uso.",
-                                                ],
-                                                htmlFor="privacidad",
-                                                className="budget-checkbox-label",
-                                            ),
-                                        ],
-                                        className="budget-checkbox-wrap",
-                                    ),
-                                    html.Div(
-                                        dbc.Button(
-                                            "Enviar solicitud",
-                                            id="budget-submit",
-                                            className="budget-submit-btn",
-                                            n_clicks=0,
-                                        ),
-                                        className="budget-submit-wrap",
-                                    ),
-                                    html.Div(id="budget-response"),
-                                ]
-                            ),
-                            className="budget-card",
-                        ),
-                        lg=10,
-                        xl=9,
+                        build_budget_sidebar(),
+                        lg=5,
+                        className="mb-4 mb-lg-0",
+                    ),
+                    dbc.Col(
+                        build_budget_form(),
+                        lg=7,
                     ),
                 ],
-                justify="center",
+                className="align-items-start budget-layout-row",
             ),
         ],
         fluid="lg",
