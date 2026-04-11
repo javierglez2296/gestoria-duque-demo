@@ -1,54 +1,8 @@
-from dash import Dash, html, page_container, Input, Output, State
+from dash import Dash, html, page_container, Input, Output, State, dcc
 import dash_bootstrap_components as dbc
 
-TELEFONO = "920 000 000"
-EMAIL = "info@gestoriaduque.com"
+
 WHATSAPP_URL = "https://wa.me/34620000000"
-
-
-def build_topbar():
-    return html.Div(
-        dbc.Container(
-            dbc.Row(
-                [
-                    dbc.Col(
-                        html.Div(
-                            [
-                                html.Span("Ávila"),
-                                html.Span("Más de 70 años de experiencia"),
-                                html.Span("Atención cercana y profesional"),
-                            ],
-                            className="topbar-left d-none d-md-flex",
-                        ),
-                        md=7,
-                        className="d-flex align-items-center",
-                    ),
-                    dbc.Col(
-                        html.Div(
-                            [
-                                html.A(
-                                    TELEFONO,
-                                    href=f"tel:{TELEFONO.replace(' ', '')}",
-                                    className="topbar-link",
-                                ),
-                                html.A(
-                                    EMAIL,
-                                    href=f"mailto:{EMAIL}",
-                                    className="topbar-link",
-                                ),
-                            ],
-                            className="topbar-right",
-                        ),
-                        md=5,
-                        className="d-flex align-items-center justify-content-md-end",
-                    ),
-                ],
-                className="g-2 align-items-center",
-            ),
-            fluid="lg",
-        ),
-        className="topbar-premium",
-    )
 
 
 def build_navbar():
@@ -64,12 +18,15 @@ def build_navbar():
                     href="/",
                     className="navbar-logo",
                 ),
-                dbc.NavbarToggler(id="navbar-toggler", className="navbar-toggler-premium"),
+                dbc.NavbarToggler(
+                    id="navbar-toggler",
+                    className="navbar-toggler-premium",
+                ),
                 dbc.Collapse(
                     dbc.Nav(
                         [
                             dbc.NavItem(
-                                dbc.NavLink("Inicio", href="/", className="nav-link-premium")
+                                dcc.Link("Inicio", href="/", className="nav-link-premium")
                             ),
                             html.Div(
                                 [
@@ -82,29 +39,29 @@ def build_navbar():
                                     ),
                                     html.Div(
                                         [
-                                            html.A(
+                                            dcc.Link(
                                                 "Gestoría administrativa",
-                                                href="#servicios",
+                                                href="/gestoria-administrativa",
                                                 className="services-dropdown-link",
                                             ),
-                                            html.A(
+                                            dcc.Link(
                                                 "Asesoría laboral",
-                                                href="#servicios",
+                                                href="/asesoria-laboral",
                                                 className="services-dropdown-link",
                                             ),
-                                            html.A(
+                                            dcc.Link(
                                                 "Asesoría tributaria",
-                                                href="#servicios",
+                                                href="/asesoria-tributaria",
                                                 className="services-dropdown-link",
                                             ),
-                                            html.A(
+                                            dcc.Link(
                                                 "Asesoría jurídica",
-                                                href="#servicios",
+                                                href="/asesoria-juridica",
                                                 className="services-dropdown-link",
                                             ),
-                                            html.A(
+                                            dcc.Link(
                                                 "Externalización de servicios",
-                                                href="#servicios",
+                                                href="/externalizacion-de-servicios",
                                                 className="services-dropdown-link",
                                             ),
                                         ],
@@ -115,33 +72,21 @@ def build_navbar():
                                 className="services-dropdown-wrap",
                             ),
                             dbc.NavItem(
-                                dbc.NavLink(
+                                dcc.Link(
                                     "Presupuesto",
                                     href="/presupuesto",
                                     className="nav-link-premium",
                                 )
                             ),
                             dbc.NavItem(
-                                dbc.NavLink(
+                                html.A(
                                     "Contacto",
                                     href="#contacto",
                                     className="nav-link-premium",
                                 )
                             ),
-                            html.A(
-                                "WhatsApp",
-                                href=WHATSAPP_URL,
-                                target="_blank",
-                                rel="noopener noreferrer",
-                                className="navbar-whatsapp",
-                            ),
-                            html.A(
-                                "Solicitar información",
-                                href="/presupuesto",
-                                className="navbar-cta",
-                            ),
                         ],
-                        className="ms-auto navbar-nav-premium align-items-lg-center",
+                        className="navbar-nav-premium ms-auto",
                         navbar=True,
                     ),
                     id="navbar-collapse",
@@ -168,7 +113,6 @@ server = app.server
 
 app.layout = html.Div(
     [
-        build_topbar(),
         build_navbar(),
         html.Main(page_container, className="site-main"),
     ]
