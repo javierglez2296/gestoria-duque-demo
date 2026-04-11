@@ -62,11 +62,11 @@ body {
     background:
         linear-gradient(
             90deg,
-            rgba(15, 23, 42, 0.84) 0%,
-            rgba(15, 23, 42, 0.76) 24%,
-            rgba(15, 23, 42, 0.56) 44%,
-            rgba(15, 23, 42, 0.28) 68%,
-            rgba(15, 23, 42, 0.10) 100%
+            rgba(15, 23, 42, 0.88) 0%,
+            rgba(15, 23, 42, 0.82) 22%,
+            rgba(15, 23, 42, 0.64) 42%,
+            rgba(15, 23, 42, 0.34) 68%,
+            rgba(15, 23, 42, 0.14) 100%
         ),
         linear-gradient(
             180deg,
@@ -102,7 +102,7 @@ body {
 
 .hero-copy-animate {
     position: relative;
-    max-width: 660px;
+    max-width: 560px;
 }
 
 .hero-copy-animate::before {
@@ -134,38 +134,38 @@ body {
     align-items: center;
     gap: 0.9rem;
     margin-bottom: 1rem;
-    color: rgba(255, 255, 255, 0.94);
+    color: rgba(255, 255, 255, 0.92);
     font-family: var(--font-body);
-    font-size: 0.76rem;
+    font-size: 0.74rem;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
-    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
 }
 
 .hero-title {
     margin: 0;
     font-family: var(--font-display);
-    font-size: clamp(3rem, 4.8vw, 4.9rem);
-    line-height: 0.92;
+    font-size: clamp(3rem, 4.6vw, 4.8rem);
+    line-height: 0.94;
     font-weight: 600;
     letter-spacing: -0.03em;
     color: #ffffff;
-    max-width: 760px;
+    max-width: 720px;
     text-wrap: balance;
-    text-shadow: 0 14px 34px rgba(0, 0, 0, 0.20);
+    text-shadow: 0 16px 36px rgba(0, 0, 0, 0.30);
 }
 
 .hero-subtitle {
     margin-top: 1.35rem;
     margin-bottom: 0;
     font-family: var(--font-body);
-    font-size: 1.02rem;
+    font-size: 1.03rem;
     font-weight: 400;
-    line-height: 1.82;
-    color: rgba(255, 255, 255, 0.86);
-    max-width: 570px;
-    text-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
+    line-height: 1.85;
+    color: rgba(255, 255, 255, 0.84);
+    max-width: 540px;
+    text-shadow: 0 8px 24px rgba(0, 0, 0, 0.24);
 }
 
 .hero-actions {
