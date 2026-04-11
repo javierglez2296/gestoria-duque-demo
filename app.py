@@ -1,7 +1,6 @@
 from dash import Dash, html, page_container, Input, Output, State, dcc
 import dash_bootstrap_components as dbc
 
-
 WHATSAPP_URL = "https://wa.me/34620000000"
 
 
@@ -26,7 +25,11 @@ def build_navbar():
                     dbc.Nav(
                         [
                             dbc.NavItem(
-                                dcc.Link("Inicio", href="/", className="nav-link-premium")
+                                dcc.Link(
+                                    "Inicio",
+                                    href="/",
+                                    className="nav-link-premium",
+                                )
                             ),
                             html.Div(
                                 [
@@ -107,12 +110,25 @@ app = Dash(
     use_pages=True,
     external_stylesheets=[dbc.themes.BOOTSTRAP],
     suppress_callback_exceptions=True,
+    meta_tags=[
+        {"name": "viewport", "content": "width=device-width, initial-scale=1"},
+        {
+            "name": "description",
+            "content": (
+                "Gestoría en Ávila para autónomos, empresas y particulares. "
+                "Asesoría fiscal, laboral, contable y trámites con una imagen moderna, clara y profesional."
+            ),
+        },
+    ],
+    title="Gestoría Duque",
+    update_title=None,
 )
 
 server = app.server
 
 app.layout = html.Div(
     [
+        dcc.Location(id="main-url"),
         build_navbar(),
         html.Main(page_container, className="site-main"),
     ]
@@ -124,8 +140,8 @@ app.layout = html.Div(
     Input("navbar-toggler", "n_clicks"),
     State("navbar-collapse", "is_open"),
 )
-def toggle_navbar(n, is_open):
-    if n:
+def toggle_navbar(n_clicks, is_open):
+    if n_clicks:
         return not is_open
     return is_open
 
